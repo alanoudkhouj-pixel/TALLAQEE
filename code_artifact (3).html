@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة تلاقي | سوق واستوديو الفنون والأشغال التكيفية</title>
+    
+    <!-- الخطوط المعتمدة: Tajawal و Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- مكتبة الأيقونات الاحترافية Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- إعداد لوحة الألوان المعتمدة -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Tajawal"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Plus Jakarta Sans"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0F3934',       /* الأخضر الداكن الفاخر الأساسي */
+                            teal: '#46A889',       /* الأخضر الزمردي التفاعلي */
+                            lavender: '#B5A6E4',   /* البنفسجي اللافندر الهادئ */
+                            lime: '#B7E348',       /* الليموني المشع عالي التباين */
+                            mint: '#E4F4ED',       /* النعناعي الثلجي للخلفيات */
+                            darkSurface: '#092320',/* مساحات خلفية فائقة التباين */
+                            cardDark: '#12302C',   /* بطاقات بيئة العمل الداكنة */
+                        }
+                    },
+                    boxShadow: {
+                        'glow-lime': '0 0 20px rgba(183, 227, 72, 0.4)',
+                        'glow-teal': '0 0 20px rgba(70, 168, 137, 0.35)',
+                        'glow-lavender': '0 0 20px rgba(181, 166, 228, 0.35)',
+                        'card-soft': '0 12px 32px -8px rgba(15, 57, 52, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-page: #E4F4ED;
+            --text-main: #0F3934;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(70, 168, 137, 0.22);
+        }
+
+        .dark {
+            --bg-page: #092320;
+            --text-main: #E4F4ED;
+            --card-bg: #12302C;
+            --border-color: rgba(181, 166, 228, 0.2);
+        }
+
+        .high-contrast {
+            --bg-page: #000000 !important;
+            --text-main: #B7E348 !important;
+            --card-bg: #0d0d0d !important;
+            filter: contrast(1.35);
+        }
+
+        .large-cursor, .large-cursor * {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 24 24' fill='%23B7E348' stroke='%230F3934' stroke-width='2.2'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto !important;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .prevent-clip {
+            padding-bottom: 0.3em !important;
+            line-height: 1.4 !important;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
+        }
+
+        .dark .glass-panel {
+            background: rgba(18, 48, 44, 0.94);
+            border: 1px solid var(--border-color);
+        }
+
+        /* حلقة دوران عجلة الخزف */
+        .pottery-spin-active {
+            animation: spinPottery 2.2s linear infinite;
+        }
+
+        @keyframes spinPottery {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* وميض الاستماع الصوتي الدائري */
+        .mic-listening-pulse {
+            animation: micPulse 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+        }
+
+        @keyframes micPulse {
+            0% { box-shadow: 0 0 0 0 rgba(183, 227, 72, 0.7); }
+            70% { box-shadow: 0 0 0 16px rgba(183, 227, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(183, 227, 72, 0); }
+        }
+
+        /* نظام المسح بالتبديل الفردي (Switch Scanning Focus) */
+        .switch-scan-highlight {
+            outline: 4px solid #B7E348 !important;
+            outline-offset: 3px !important;
+            transform: scale(1.02) !important;
+            transition: all 0.2s ease;
+        }
+
+        /* مؤشر النظرة الثابتة لتتبع العين */
+        .dwell-pie-loader {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* مواءمة اتجاه النصوص عند التبديل للإنجليزية */
+        [dir="ltr"] .text-right {
+            text-align: left !important;
+        }
+        [dir="ltr"] .rounded-tr-none {
+            border-top-right-radius: 1rem !important;
+            border-top-left-radius: 0 !important;
+        }
+        [dir="ltr"] .rounded-tl-none {
+            border-top-left-radius: 1rem !important;
+            border-top-right-radius: 0 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased relative overflow-x-hidden selection:bg-brand-lime selection:text-brand-dark">
+
+    <!-- خلفيات ضوئية ناعمة تعزز العمق دون تشتيت الانتباه البصري -->
+    <div class="fixed top-[-10%] right-[-5%] w-[420px] h-[420px] rounded-full bg-brand-teal/10 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] left-[-5%] w-[450px] h-[450px] rounded-full bg-brand-lavender/15 blur-[130px] pointer-events-none z-0"></div>
+
+    <!-- شريط الإعلان المؤسسي والتوثيق الحرفي -->
+    <aside aria-label="شريط الإعلانات والاعتماد المهني" class="bg-brand-dark text-brand-mint text-xs py-2 px-4 border-b border-brand-teal/30 relative z-30">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <div class="flex items-center gap-2">
+                <span class="bg-brand-lime text-brand-dark px-2.5 py-0.5 rounded font-black text-[10px] tracking-wider uppercase" data-i18n="badgeNational">توثيق وطني</span>
+                <span class="font-medium text-gray-200" data-i18n="topBannerText">سوق موحد للفنون والحرف: تمكين البيع والشراء لجميع الحرفيين ومبدعي الإرادة بالتكامل مع الأنظمة الصحية المساندة</span>
+            </div>
+            <div class="flex items-center gap-4 text-[11px]">
+                <button onclick="openSellModal()" class="text-brand-lime font-bold hover:underline flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-brand-lime">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="topBannerSell">طرح قطعة للبيع</span>
+                </button>
+                <span class="text-gray-500">|</span>
+                <span class="flex items-center gap-1 text-gray-300">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-lime"></i>
+                    <span data-i18n="topBannerAudit">فحص سريري وهندسي للأدوات التكيفية</span>
+                </span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- الترويسة الرئيسية للمنصة -->
+    <header class="sticky top-0 z-40 w-full glass-panel shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-3">
+            
+            <!-- الهوية البصرية وشعار تلاقي -->
+            <div class="flex items-center gap-3 cursor-pointer select-none" onclick="navigate('market')" role="button" tabindex="0" onkeydown="if(event.key==='Enter') navigate('market')">
+                <div class="h-11 w-11 rounded-xl bg-brand-dark border border-brand-teal/40 flex items-center justify-center text-white shadow-card-soft">
+                    <i data-lucide="layers" class="w-5 h-5 text-brand-lime"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-black text-2xl text-brand-dark dark:text-brand-lime tracking-tight prevent-clip" data-i18n="siteTitle">تلاقي</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-brand-lime text-brand-dark font-black tracking-wider">TALLAQEE</span>
+                    </div>
+                    <p class="text-[11px] text-brand-teal dark:text-brand-lavender font-bold" data-i18n="siteSubtitle">منصة الفنون التمكينية وسوق الأشغال الحرفية</p>
+                </div>
+            </div>
+
+            <!-- قائمة التنقل الأساسية -->
+            <nav class="hidden lg:flex items-center gap-1.5" aria-label="التنقل الأساسي">
+                <button onclick="navigate('market')" id="nav-market" class="nav-link px-4 py-2 rounded-xl text-xs font-black bg-brand-dark text-brand-lime shadow-sm transition-all flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                    <span data-i18n="navMarket">سوق القطع والتحف</span>
+                </button>
+                <button onclick="navigate('crafts')" id="nav-crafts" class="nav-link px-4 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-brand-teal/15 transition-all flex items-center gap-2">
+                    <i data-lucide="compass" class="w-4 h-4"></i>
+                    <span data-i18n="navCrafts">استوديو الخزف الهندسي</span>
+                </button>
+                <button onclick="navigate('sadu-loom')" id="nav-sadu-loom" class="nav-link px-4 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-brand-teal/15 transition-all flex items-center gap-2">
+                    <i data-lucide="grid" class="w-4 h-4"></i>
+                    <span data-i18n="navSaduLoom">السدو والموزاييك التكيفي</span>
+                </button>
+                <button onclick="navigate('coach')" id="nav-coach" class="nav-link px-4 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-brand-teal/15 transition-all flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                    <span data-i18n="navCoach">المرشد الفني والمهني</span>
+                </button>
+                <button onclick="navigate('tools-sandbox')" id="nav-tools-sandbox" class="nav-link px-4 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-brand-teal/15 transition-all flex items-center gap-2">
+                    <i data-lucide="activity" class="w-4 h-4"></i>
+                    <span data-i18n="navSandbox">مختبر الأجهزة المساندة</span>
+                </button>
+            </nav>
+
+            <!-- أدوات التحكم والوصول السريع وسلة التسوق ومزامنة صحتي -->
+            <div class="flex items-center gap-2">
+                
+                <!-- زر تبديل اللغة بين العربية والإنجليزية -->
+                <button onclick="toggleLanguage()" id="lang-switcher-btn" title="Switch Language / تبديل اللغة" aria-label="تبديل اللغة إلى الإنجليزية" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 hover:border-brand-lime text-brand-dark dark:text-brand-lime text-xs font-black transition-all shadow-sm">
+                    <i data-lucide="languages" class="w-4 h-4 text-brand-teal"></i>
+                    <span id="lang-btn-label" class="font-mono">EN</span>
+                </button>
+
+                <!-- زر طرح قطعة للبيع -->
+                <button onclick="openSellModal()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-lime text-brand-dark text-xs font-black shadow-sm hover:opacity-90 transition-all">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span data-i18n="navSellPiece">طرح قطعة</span>
+                </button>
+
+                <!-- سلة المقتنيات -->
+                <button onclick="openCartDrawer()" title="سلة المشتريات" aria-label="عرض سلة المشتريات" class="relative h-10 w-10 rounded-xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 grid place-items-center text-brand-dark dark:text-brand-lime hover:bg-brand-teal/10 transition-colors shadow-sm">
+                    <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                    <span id="cart-counter" class="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-brand-dark text-brand-lime text-[10px] font-black grid place-items-center border border-brand-lime">
+                        0
+                    </span>
+                </button>
+
+                <!-- نظام التحكم الصوتي والمايكروفون -->
+                <button onclick="toggleVoiceControl()" id="voice-control-btn" title="التحكم الصوتي المباشر (اضغط مسافة Space)" aria-label="تفعيل أو إيقاف الأوامر الصوتية" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-lavender text-brand-dark text-xs font-black shadow-sm hover:bg-brand-lime transition-all">
+                    <i data-lucide="mic" class="w-4 h-4"></i>
+                    <span class="hidden md:inline" id="voice-btn-label" data-i18n="voiceBtnLabel">أوامر صوتية</span>
+                </button>
+
+                <!-- زر محاكي منصة صحتي الذكي -->
+                <button onclick="openSehhatySyncModal()" title="الربط بالملف الصحي في صحتي" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-dark text-brand-mint text-xs font-bold border border-brand-teal/40 hover:border-brand-lime transition-all">
+                    <i data-lucide="heart-pulse" class="w-4 h-4 text-brand-lime"></i>
+                    <span class="hidden xl:inline text-gray-300" data-i18n="sehhatyLabel">صحتي:</span>
+                    <span id="active-profile-badge" class="bg-brand-teal text-white text-[10px] px-2 py-0.5 rounded font-black">مستخدم عام</span>
+                </button>
+
+                <!-- زر لوحة سهولة الوصول المتقدمة -->
+                <button onclick="toggleQuickAccPanel()" aria-label="أدوات سهولة الوصول الشامل" class="h-10 w-10 rounded-xl border border-brand-teal/30 bg-white dark:bg-brand-cardDark grid place-items-center text-brand-dark dark:text-brand-lime hover:bg-brand-teal/10 transition-colors shadow-sm">
+                    <i data-lucide="accessibility" class="w-4 h-4"></i>
+                </button>
+
+                <!-- زر القائمة للأجهزة الصغيرة -->
+                <button onclick="toggleMobileMenu()" aria-label="فتح القائمة المتنقلة" class="lg:hidden h-10 w-10 rounded-xl border border-brand-teal/30 bg-white dark:bg-brand-cardDark grid place-items-center text-brand-dark dark:text-brand-lime">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- القائمة المتنقلة المنسدلة للأجهزة المحمولة -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-brand-teal/20 bg-brand-mint dark:bg-brand-darkSurface p-4 space-y-2 shadow-xl text-right">
+            <button onclick="toggleLanguage()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center justify-between text-gray-800 dark:text-gray-100 bg-white/50 dark:bg-brand-cardDark border border-brand-teal/20">
+                <span class="flex items-center gap-2">
+                    <i data-lucide="languages" class="w-4 h-4 text-brand-teal"></i>
+                    <span data-i18n="menuSwitchLang">تبديل اللغة (English / العربية)</span>
+                </span>
+                <span id="mobile-lang-code" class="font-mono font-black text-brand-teal">EN</span>
+            </button>
+            <button onclick="navigate('market'); toggleMobileMenu()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center gap-2 text-gray-800 dark:text-gray-100 hover:bg-brand-teal/10">
+                <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-teal"></i>
+                <span data-i18n="navMarket">سوق القطع والتحف</span>
+            </button>
+            <button onclick="navigate('crafts'); toggleMobileMenu()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center gap-2 text-gray-800 dark:text-gray-100 hover:bg-brand-teal/10">
+                <i data-lucide="compass" class="w-4 h-4 text-brand-teal"></i>
+                <span data-i18n="navCrafts">استوديو الخزف الهندسي</span>
+            </button>
+            <button onclick="navigate('sadu-loom'); toggleMobileMenu()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center gap-2 text-gray-800 dark:text-gray-100 hover:bg-brand-teal/10">
+                <i data-lucide="grid" class="w-4 h-4 text-brand-teal"></i>
+                <span data-i18n="navSaduLoom">السدو والموزاييك التكيفي</span>
+            </button>
+            <button onclick="navigate('coach'); toggleMobileMenu()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center gap-2 text-gray-800 dark:text-gray-100 hover:bg-brand-teal/10">
+                <i data-lucide="brain-circuit" class="w-4 h-4 text-brand-teal"></i>
+                <span data-i18n="navCoach">المرشد الفني والمهني</span>
+            </button>
+            <button onclick="navigate('tools-sandbox'); toggleMobileMenu()" class="w-full text-right p-3 rounded-xl font-bold text-xs flex items-center gap-2 text-gray-800 dark:text-gray-100 hover:bg-brand-teal/10">
+                <i data-lucide="activity" class="w-4 h-4 text-brand-teal"></i>
+                <span data-i18n="navSandbox">مختبر الأجهزة المساندة</span>
+            </button>
+            <button onclick="openSellModal(); toggleMobileMenu()" class="w-full text-center p-3 rounded-xl font-black text-xs bg-brand-lime text-brand-dark mt-2" data-i18n="navSellPiece">
+                طرح قطعة للبيع الآن
+            </button>
+        </div>
+    </header>
+
+    <!-- شريط معلومات التوجيه الصوتي والمايكروفون المباشر -->
+    <div id="voice-indicator-bar" class="hidden bg-brand-dark text-brand-lime px-4 py-2 text-xs font-bold border-b border-brand-lime/40 flex items-center justify-between gap-3 z-30 relative shadow-md">
+        <div class="flex items-center gap-2.5">
+            <span class="h-2.5 w-2.5 rounded-full bg-brand-lime animate-ping"></span>
+            <span id="voice-indicator-text" data-i18n="voiceIndicatorPrompt">المايكروفون يستمع بنشاط: تحدث بأوامرك ("سوق"، "خزف"، "سدو"، "مدرب"، "سلة"، "صحتي")</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-1.5">
+            <button onclick="processVoiceCommand('سوق')" class="px-2.5 py-1 rounded bg-brand-teal/30 hover:bg-brand-teal text-[10px] text-white font-mono" data-i18n="voiceCmdMarket">سوق</button>
+            <button onclick="processVoiceCommand('خزف')" class="px-2.5 py-1 rounded bg-brand-teal/30 hover:bg-brand-teal text-[10px] text-white font-mono" data-i18n="voiceCmdPottery">خزف</button>
+            <button onclick="processVoiceCommand('سدو')" class="px-2.5 py-1 rounded bg-brand-teal/30 hover:bg-brand-teal text-[10px] text-white font-mono" data-i18n="voiceCmdSadu">سدو</button>
+            <button onclick="processVoiceCommand('سلة')" class="px-2.5 py-1 rounded bg-brand-teal/30 hover:bg-brand-teal text-[10px] text-white font-mono" data-i18n="voiceCmdCart">سلة</button>
+            <button onclick="toggleVoiceControl()" class="px-2.5 py-1 rounded bg-red-950 text-red-300 text-[10px] border border-red-800" data-i18n="voiceStop">إيقاف</button>
+        </div>
+    </div>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 md:px-6 py-8 relative z-10" id="main-content">
+
+        <!-- ==================== 1. سوق القطع والتحف الحرفية (MARKETPLACE) ==================== -->
+        <section id="page-market" class="page-section space-y-8" aria-labelledby="market-heading">
+            
+            <!-- بطاقة الترحيب والملف السريري النشط من صحتي -->
+            <div class="rounded-3xl bg-brand-dark text-white p-6 md:p-8 shadow-2xl relative overflow-hidden border border-brand-teal/30">
+                <div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-brand-lime/10 blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-brand-lavender/10 blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 space-y-4 max-w-4xl text-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-teal/25 border border-brand-teal/40 text-brand-lime text-xs font-bold">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="marketBadge">منظومة التمكين الاقتصادي الحرفي المعتمدة</span>
+                    </div>
+
+                    <h1 id="market-heading" class="text-2xl md:text-3xl font-black text-brand-mint leading-tight prevent-clip" data-i18n="marketHeading">
+                        سوق القطع الفنية والأشغال اليدوية التمكينية
+                    </h1>
+                    
+                    <p class="text-xs md:text-sm text-gray-300 leading-relaxed max-w-3xl" data-i18n="marketSub">
+                        بيئة مفتوحة تتيح للحرفيين المستقلين ومبدعي الإرادة من ذوي الإعاقة عرض واقتناء التحف الأصيلة في مجالات الخزف، والسدو، والموزاييك، والجلود، والفنون التشكيلية مع شفافية كاملة في تفاصيل التقنيات التكيفية المستخدمة وساعات الإنتاج.
+                    </p>
+
+                    <!-- شريط المواءمة السريرية الفورية المقروءة من صحتي -->
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <span class="h-2 w-2 rounded-full bg-brand-lime"></span>
+                            <span class="font-bold text-brand-mint" id="active-user-status-text">
+                                الملف الحالي: مستخدم عام (حرفي / مقتنٍ) - الأدوات المساعدة وواجهات التفاعل جاهزة للمواءمة السريرية
+                            </span>
+                        </div>
+                        <button onclick="openSehhatySyncModal()" class="px-3 py-1.5 rounded-lg bg-brand-teal text-white font-bold hover:bg-brand-lime hover:text-brand-dark transition-all text-xs flex items-center gap-1.5">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                            <span data-i18n="switchHealthProfileBtn">تبديل الملف السريري</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أشرطة البحث والفلترة الاحترافية -->
+            <div class="bg-white dark:bg-brand-cardDark p-5 rounded-3xl border border-brand-teal/20 shadow-card-soft space-y-4">
+                
+                <div class="flex flex-col md:flex-row gap-3 items-center justify-between">
+                    <!-- حقل البحث النصي -->
+                    <div class="relative w-full md:w-96">
+                        <i data-lucide="search" class="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="market-search-input" oninput="applyMarketFilters()" placeholder="ابحث باسم القطعة، الحرفة، أو الفنان..." class="w-full pr-10 pl-4 py-2.5 rounded-xl border border-brand-teal/25 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none focus:border-brand-lime transition-all">
+                    </div>
+
+                    <!-- أزرار تصنيف نوع الصانع -->
+                    <div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0" role="group" aria-label="تصفية حسب نوع الصانع">
+                        <span class="text-xs font-bold text-gray-500 whitespace-nowrap ml-1" data-i18n="sellerFilterLabel">جهة الإنتاج:</span>
+                        <button onclick="filterSellerType('all')" class="seller-filter-btn active px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-dark text-brand-lime" data-i18n="allSellers">كافة الصناع</button>
+                        <button onclick="filterSellerType('special')" class="seller-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint" data-i18n="specialSellers">مبدعو الإرادة</button>
+                        <button onclick="filterSellerType('regular')" class="seller-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint" data-i18n="regularSellers">حرفيون مستقلون</button>
+                    </div>
+                </div>
+
+                <!-- تصنيفات الحرف والأشغال التراثية -->
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-brand-teal/10" role="group" aria-label="تصفية حسب الحرفة">
+                    <button onclick="filterCategory('all')" class="cat-filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-teal text-white flex items-center gap-1.5">
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catAll">كافة المعروضات</span>
+                    </button>
+                    <button onclick="filterCategory('خزف')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5">
+                        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catPottery">خزف وفخار</span>
+                    </button>
+                    <button onclick="filterCategory('سدو')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5">
+                        <i data-lucide="align-justify" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catSadu">نسيج وسدو</span>
+                    </button>
+                    <button onclick="filterCategory('موزاييك')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5">
+                        <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catMosaic">موزاييك وفسيفساء</span>
+                    </button>
+                    <button onclick="filterCategory('لوحات')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5">
+                        <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catPaintings">لوحات تشكيلية</span>
+                    </button>
+                    <button onclick="filterCategory('جلود')" class="cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5">
+                        <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="catLeather">مشغولات جلدية</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- شبكة بطاقات القطع المعروضة للبيع -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="marketplace-grid">
+                <!-- يتم الحقن عبر المحرك البرمجي بدون أي رموز تعبيرية -->
+            </div>
+        </section>
+
+        <!-- ==================== 2. استوديو الخزف الهندسي التكيفي (POTTERY STUDIO) ==================== -->
+        <section id="page-crafts" class="page-section hidden space-y-8" aria-labelledby="pottery-heading">
+            <div class="text-right space-y-2">
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full">
+                    <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="potteryBadge">نظام النحت الدوراني التكيفي</span>
+                </div>
+                <h2 id="pottery-heading" class="text-2xl md:text-3xl font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="potteryTitle">
+                    استوديو تشكيل الخزف الهندسي المساند
+                </h2>
+                <p class="text-xs text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed" data-i18n="potterySub">
+                    منظومة تشكيل رقمية تمكن الحرفي من التحكم الكامل في أبعاد القطعة الفخارية بالصوت، أو بنظرات العين، أو بنظام المسح بالتبديل الفردي، مع محاكاة دقيقة لمعدل الدوران والتزجيج المعدني وعرضها المباشر في السوق.
+                </p>
+            </div>
+
+            <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-6 md:p-8 shadow-card-soft grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- لوحة التحكم الهندسي والأبعاد القياسية -->
+                <div class="lg:col-span-5 space-y-5 text-right order-2 lg:order-1">
+                    
+                    <div class="p-4 rounded-2xl bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/25 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-bold">
+                            <span class="flex items-center gap-1 text-brand-dark dark:text-brand-lime">
+                                <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+                                <span data-i18n="potteryVoiceTitle">التحكم الصوتي في التشكيل:</span>
+                            </span>
+                            <span class="text-[10px] bg-brand-lime text-brand-dark px-2 py-0.5 rounded font-black font-mono" data-i18n="potteryVoiceReady">نظام صوتي جاهز</span>
+                        </div>
+                        <p class="text-[11px] text-gray-600 dark:text-gray-300" data-i18n="potteryVoicePrompt">
+                            يمكنك نطق الأوامر: "وسع الفوهة"، "خصر الإناء"، أو اختيار نماذج القوالب القياسية:
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <button onclick="changePotteryShape('vase')" class="px-3 py-1 rounded-lg bg-white dark:bg-brand-cardDark text-xs font-bold border border-brand-teal/30 hover:bg-brand-teal hover:text-white transition-colors" data-i18n="shapeVase">مزهرية نجدية</button>
+                            <button onclick="changePotteryShape('bowl')" class="px-3 py-1 rounded-lg bg-white dark:bg-brand-cardDark text-xs font-bold border border-brand-teal/30 hover:bg-brand-teal hover:text-white transition-colors" data-i18n="shapeBowl">إناء فخاري عريض</button>
+                            <button onclick="changePotteryShape('amphora')" class="px-3 py-1 rounded-lg bg-white dark:bg-brand-cardDark text-xs font-bold border border-brand-teal/30 hover:bg-brand-teal hover:text-white transition-colors" data-i18n="shapeAmphora">جرة تراثية ذات عنق</button>
+                        </div>
+                    </div>
+
+                    <!-- أشرطة القياس المليمترية (Caliper Controls) -->
+                    <div class="space-y-3.5">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-700 dark:text-gray-200 mb-1">
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="maximize-2" class="w-3.5 h-3.5 text-brand-teal"></i>
+                                    <span data-i18n="potteryCaliperRim">قطر فوهة الإناء:</span>
+                                </span>
+                                <span id="val-width-ind" class="text-brand-teal font-black font-mono">55 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-width" min="20" max="95" value="55" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-700 dark:text-gray-200 mb-1">
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="minimize-2" class="w-3.5 h-3.5 text-brand-teal"></i>
+                                    <span data-i18n="potteryCaliperWaist">محيط الخصر الأوسط:</span>
+                                </span>
+                                <span id="val-waist-ind" class="text-brand-teal font-black font-mono">65 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-waist" min="25" max="95" value="65" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-gray-700 dark:text-gray-200 mb-1">
+                                <span class="flex items-center gap-1">
+                                    <i data-lucide="move-vertical" class="w-3.5 h-3.5 text-brand-teal"></i>
+                                    <span data-i18n="potteryCaliperHeight">الارتفاع الكلي:</span>
+                                </span>
+                                <span id="val-height-ind" class="text-brand-teal font-black font-mono">220 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-height" min="120" max="300" value="220" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- طلاء التزجيج التراثي بالألوان المعتمدة -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-extrabold text-brand-dark dark:text-brand-mint block" data-i18n="potteryGlazeLabel">طلاء التزجيج الحراري المعتمد:</span>
+                        <div class="flex gap-2">
+                            <button onclick="setGlaze('#46A889', 'طلاء زمردي تراثي مصقول')" title="أخضر زمردي" class="h-8 w-8 rounded-xl bg-[#46A889] border-2 border-white shadow hover:scale-105 transition-transform"></button>
+                            <button onclick="setGlaze('#B5A6E4', 'تزجيج لافندر جبلي')" title="بنفسجي لافندر" class="h-8 w-8 rounded-xl bg-[#B5A6E4] border-2 border-white shadow hover:scale-105 transition-transform"></button>
+                            <button onclick="setGlaze('#B7E348', 'تزجيج ليموني عالي اللمعان')" title="ليموني مشع" class="h-8 w-8 rounded-xl bg-[#B7E348] border-2 border-white shadow hover:scale-105 transition-transform"></button>
+                            <button onclick="setGlaze('#A06535', 'طين طمي أحمر صحراوي')" title="طمي طبيعي" class="h-8 w-8 rounded-xl bg-[#A06535] border-2 border-white shadow hover:scale-105 transition-transform"></button>
+                            <button onclick="setGlaze('#0F3934', 'تزجيج ملكي داكن')" title="أخضر داكن فاخر" class="h-8 w-8 rounded-xl bg-[#0F3934] border-2 border-white shadow hover:scale-105 transition-transform"></button>
+                        </div>
+                    </div>
+
+                    <!-- أزرار الإجراءات وعرض التحفة في السوق -->
+                    <div class="pt-2 flex flex-col sm:flex-row gap-2">
+                        <button onclick="sellCurrentCraftPiece()" class="flex-1 py-3 rounded-xl bg-brand-lime text-brand-dark text-xs font-black shadow-glow-lime hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="tag" class="w-4 h-4"></i>
+                            <span data-i18n="potterySellBtn">طرح هذه التحفة في السوق للبيع</span>
+                        </button>
+                        <button onclick="togglePotteryRotation()" id="btn-pottery-spin" class="px-4 py-3 rounded-xl bg-brand-teal text-white text-xs font-bold hover:bg-brand-dark transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                            <span id="btn-pottery-spin-text" data-i18n="potterySpinStop">إيقاف الدوران</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مساحة العرض البصري لعجلة الخزف التفاعلية -->
+                <div class="lg:col-span-7 flex flex-col items-center justify-center p-6 bg-brand-mint/40 dark:bg-brand-darkSurface rounded-3xl border border-brand-teal/25 relative min-h-[390px] order-1 lg:order-2 overflow-hidden">
+                    <div class="absolute top-4 right-4 flex items-center gap-2">
+                        <span id="pottery-label" class="text-xs font-black bg-brand-dark text-brand-lime px-3 py-1.5 rounded-lg shadow border border-brand-teal/30 font-mono">
+                            مزهرية انسيابية متوازنة
+                        </span>
+                        <span class="text-[10px] bg-brand-teal/20 text-brand-dark dark:text-brand-mint px-2 py-1 rounded font-mono font-bold">
+                            RPM: 120
+                        </span>
+                    </div>
+
+                    <div id="pottery-visual-container" class="relative flex flex-col items-center justify-end h-64 w-64 mt-6">
+                        <div id="pottery-visual" class="transition-all duration-300 shadow-2xl relative" 
+                             style="width: 176px; height: 220px; background: radial-gradient(circle at 35% 30%, #68d6b2, #46A889 40%, #0F3934 90%); border-radius: 30% 30% 50% 50% / 40% 40% 60% 60%;">
+                             <div class="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-white/20 via-transparent to-black/25 pointer-events-none"></div>
+                        </div>
+
+                        <!-- رأس العجلة الميكانيكية الدوارة -->
+                        <div id="wheel-head" class="w-60 h-6 bg-gradient-to-r from-gray-400 via-gray-300 to-gray-500 rounded-full mt-2 shadow-inner border-t-2 border-gray-200 pottery-spin-active"></div>
+                        <div class="w-44 h-8 bg-gradient-to-b from-gray-600 to-gray-800 rounded-b-xl shadow-lg flex items-center justify-center text-[9px] text-gray-300 font-mono tracking-wider">
+                            ADAPTIVE LATHE PRECISION
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-[11px] text-gray-600 dark:text-gray-300 font-bold bg-white/70 dark:bg-black/30 px-4 py-1.5 rounded-lg border border-brand-teal/20 flex items-center gap-2">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-brand-teal"></i>
+                        <span data-i18n="potterySupportedSystems">متوافق مع: محاكي تتبع حركة العين، المسح بالمفتاح الفردي، والأوامر الصوتية</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 3. استوديو السدو والموزاييك التكيفي ==================== -->
+        <section id="page-sadu-loom" class="page-section hidden space-y-8" aria-labelledby="sadu-heading">
+            <div class="text-right space-y-2">
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-lavender bg-brand-dark px-3 py-1 rounded-full">
+                    <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="saduBadge">حرف النسيج والفسيفساء التكيفية</span>
+                </div>
+                <h2 id="sadu-heading" class="text-2xl md:text-3xl font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="saduTitle">
+                    نول السدو الآلي وملقاط الموزاييك المغناطيسي
+                </h2>
+                <p class="text-xs text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed" data-i18n="saduSub">
+                    تقنيات هندسية تتيح حياكة نقوش السدو بضغطة زر واحدة لمصابي الشلل الرباعي، وترصيع أحجار الفسيفساء مع ميزة الجذب المغناطيسي لامتصاص ارتعاش الأصابع وتثبيتها بدقة مليمترية.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- وحدة نول السدو الآلي -->
+                <div class="lg:col-span-6 rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-6 space-y-4 shadow-card-soft text-right flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-brand-teal/15">
+                            <span class="text-xs font-black text-brand-teal flex items-center gap-1.5">
+                                <i data-lucide="align-justify" class="w-4 h-4"></i>
+                                <span data-i18n="saduLoomTitle">نول السدو بآلية تمرير المكوك الذاتي</span>
+                            </span>
+                            <span class="text-[10px] bg-brand-lime text-brand-dark px-2.5 py-0.5 rounded font-bold font-mono" data-i18n="saduCertified">سدو تراثي موثق</span>
+                        </div>
+
+                        <!-- تمثيل بصري لحياكة السدو -->
+                        <div id="sadu-loom-visual" class="mt-4 h-36 rounded-xl bg-[#151B19] p-3 border-2 border-brand-teal/30 overflow-hidden flex flex-col justify-around relative shadow-inner">
+                            <div class="flex gap-1 h-5 w-full" id="sadu-row-1"></div>
+                            <div class="flex gap-1 h-5 w-full" id="sadu-row-2"></div>
+                            <div class="flex gap-1 h-5 w-full" id="sadu-row-3"></div>
+                            <div class="flex gap-1 h-5 w-full" id="sadu-row-4"></div>
+                            
+                            <div id="sadu-shuttle" class="absolute top-1/2 left-3 -translate-y-1/2 bg-brand-lime text-brand-dark px-2.5 py-1 rounded text-[10px] font-black shadow-lg transition-all duration-500 font-mono">
+                                المكوك الآلي
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-3">
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="setSaduPattern('shajara')" class="flex-1 px-3 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold border border-brand-teal/25 hover:border-brand-lime transition-all" data-i18n="saduPatternShajara">
+                                نقش الشجرة النجدية
+                            </button>
+                            <button onclick="setSaduPattern('dhur')" class="flex-1 px-3 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold border border-brand-teal/25 hover:border-brand-lime transition-all" data-i18n="saduPatternDhur">
+                                نقش المذخر التراثي
+                            </button>
+                        </div>
+                        <button onclick="advanceSaduWeave()" class="w-full py-3 rounded-xl bg-brand-teal text-white text-xs font-black shadow-glow-teal hover:bg-brand-dark transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="corner-down-left" class="w-4 h-4"></i>
+                            <span data-i18n="saduAdvanceWeave">تمرير المكوك وحياكة صف جديد (أمر بمفتاح فردي)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- وحدة ملقاط الموزاييك المغناطيسي الذكي -->
+                <div class="lg:col-span-6 rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-6 space-y-4 shadow-card-soft text-right flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 border-b border-brand-teal/15">
+                            <span class="text-xs font-black text-brand-lavender flex items-center gap-1.5">
+                                <i data-lucide="grid" class="w-4 h-4"></i>
+                                <span data-i18n="mosaicTitle">جدارية الفسيفساء بخاصية الجذب المغناطيسي</span>
+                            </span>
+                            <span class="text-[10px] bg-brand-lavender text-brand-dark px-2.5 py-0.5 rounded font-bold font-mono" data-i18n="mosaicAntiSlip">محاذاة مانعة للانزلاق</span>
+                        </div>
+
+                        <!-- شبكة الموزاييك 6x6 -->
+                        <div class="mt-4 grid grid-cols-6 gap-1.5 p-3 rounded-2xl bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/20" id="mosaic-grid">
+                            <!-- حقن الخلايا برمجياً -->
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-gray-700 dark:text-gray-300" data-i18n="mosaicSelectedColor">لون الحجر المحدد:</span>
+                            <div class="flex gap-2" id="mosaic-palette">
+                                <button onclick="selectMosaicTileColor('#46A889')" aria-label="أخضر زمردي" class="h-6 w-6 rounded-lg bg-[#46A889] border border-white shadow-sm hover:scale-110 transition-transform"></button>
+                                <button onclick="selectMosaicTileColor('#B5A6E4')" aria-label="بنفسجي لافندر" class="h-6 w-6 rounded-lg bg-[#B5A6E4] border border-white shadow-sm hover:scale-110 transition-transform"></button>
+                                <button onclick="selectMosaicTileColor('#B7E348')" aria-label="ليموني مشع" class="h-6 w-6 rounded-lg bg-[#B7E348] border border-white shadow-sm hover:scale-110 transition-transform"></button>
+                                <button onclick="selectMosaicTileColor('#0F3934')" aria-label="أخضر داكن" class="h-6 w-6 rounded-lg bg-[#0F3934] border border-white shadow-sm hover:scale-110 transition-transform"></button>
+                            </div>
+                            <button onclick="resetMosaicGrid()" class="text-xs font-bold text-brand-teal hover:underline flex items-center gap-1">
+                                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                                <span data-i18n="mosaicReset">إعادة ضبط الجدارية</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 4. المرشد الفني والمهني الذكي (AI ART COACH) ==================== -->
+        <section id="page-coach" class="page-section hidden space-y-8" aria-labelledby="coach-heading">
+            <div class="text-right space-y-2">
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-lime bg-brand-dark px-3 py-1 rounded-full">
+                    <i data-lucide="brain-circuit" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="coachBadge">نظام التوجيه المهني والسريري المعتمد</span>
+                </div>
+                <h2 id="coach-heading" class="text-2xl md:text-3xl font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="coachTitle">
+                    المرشد الفني والمهني الذكي
+                </h2>
+                <p class="text-xs text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed" data-i18n="coachSub">
+                    مدرب ذكاء اصطناعي متخصص في تقنيات العلاج بالفن التكيفي، وتقدير أسعار الأعمال الحرفية، وتقديم إرشادات هندسية ملائمة للقدرات الوظيفية المسجلة في تقرير المستخدم الطبي.
+                </p>
+            </div>
+
+            <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-6 flex flex-col h-[540px] shadow-card-soft text-right">
+                <div class="flex items-center justify-between pb-3 border-b border-brand-teal/20">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-10 rounded-xl bg-brand-dark text-brand-lime flex items-center justify-center border border-brand-teal/40">
+                            <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-sm text-brand-dark dark:text-brand-mint" data-i18n="coachSubHeading">مرشد تلاقي الفني والوظيفي</h3>
+                            <span class="text-[10px] text-brand-teal font-bold flex items-center gap-1.5 font-mono">
+                                <span class="h-2 w-2 rounded-full bg-brand-lime inline-block animate-pulse"></span>
+                                <span data-i18n="coachBadgeGemini">نظام مدعوم بـ Gemini AI ومواءم لمعايير التأهيل المهني</span>
+                            </span>
+                        </div>
+                    </div>
+                    <button onclick="readAloudLastCoachMessage()" title="قراءة النص الأخير صوتياً" class="text-xs font-bold text-brand-teal bg-brand-teal/10 px-3 py-1.5 rounded-xl hover:bg-brand-teal hover:text-white transition-all flex items-center gap-1.5">
+                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="coachReadAloud">قراءة صوتية</span>
+                    </button>
+                </div>
+
+                <!-- صندوق سجل المحادثة -->
+                <div id="coach-chat-box" class="flex-grow overflow-y-auto py-4 space-y-3 pr-1">
+                    <div class="flex items-start gap-3" id="coach-initial-greeting">
+                        <div class="h-8 w-8 rounded-lg bg-brand-teal text-white grid place-items-center shrink-0">
+                            <i data-lucide="bot" class="w-4 h-4"></i>
+                        </div>
+                        <div class="bg-brand-mint dark:bg-brand-darkSurface p-4 rounded-2xl rounded-tr-none border border-brand-teal/20 text-xs md:text-sm max-w-xl space-y-1.5" id="coach-welcome-card">
+                            <p class="font-semibold text-brand-dark dark:text-brand-mint" data-i18n="coachGreeting">
+                                أهلاً بك في استوديو تلاقي. بصفتي مرشدك الفني والمهني، يمكنني تقديم الدعم المباشر في:
+                            </p>
+                            <ul class="space-y-1 text-gray-600 dark:text-gray-300 text-xs list-none pr-0">
+                                <li class="flex items-center gap-1.5">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-teal"></i>
+                                    <span data-i18n="coachBullet1">مواءمة تقنيات تشكيل الخزف والسدو مع مداك الحركي وقوة القبضة.</span>
+                                </li>
+                                <li class="flex items-center gap-1.5">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-teal"></i>
+                                    <span data-i18n="coachBullet2">حساب التكلفة وسعر البيع العادل لقطعتك لطرحها في السوق.</span>
+                                </li>
+                                <li class="flex items-center gap-1.5">
+                                    <i data-lucide="check" class="w-3 h-3 text-brand-teal"></i>
+                                    <span data-i18n="coachBullet3">إرشادات الوقاية من الإجهاد العضلي أثناء العمل الحرفي.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- استفسارات سريعة مقترحة -->
+                <div class="py-2 flex flex-wrap gap-1.5" id="coach-quick-prompts">
+                    <button onclick="quickPromptCoach('ما هي معادلة التسعير العادلة لمزهرية خزفية نجدية استغرقت 8 ساعات عمل؟')" class="text-[11px] bg-brand-mint dark:bg-brand-darkSurface px-3 py-1.5 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-colors" data-i18n="coachPrompt1">
+                        معادلة تسعير الخزف اليدوي
+                    </button>
+                    <button onclick="quickPromptCoach('كيف أضبط زوايا الجلسة وحامل الذراع لتفادي إجهاد الرقبة أثناء حياكة السدو؟')" class="text-[11px] bg-brand-mint dark:bg-brand-darkSurface px-3 py-1.5 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-colors" data-i18n="coachPrompt2">
+                        إرشادات بيئة العمل للسدو
+                    </button>
+                    <button onclick="quickPromptCoach('ما هي أفضل طريقة لتثبيت أدوات النحت في حال وجود ضعف في الأعصاب الطرفية؟')" class="text-[11px] bg-brand-mint dark:bg-brand-darkSurface px-3 py-1.5 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-colors" data-i18n="coachPrompt3">
+                        أدوات دعم قبضة اليد الضعيفة
+                    </button>
+                </div>
+
+                <!-- حقل إدخال الرسالة وزر المايكروفون الخاص بالمدرب -->
+                <div class="pt-2 flex items-center gap-2 border-t border-brand-teal/20">
+                    <button onclick="startVoiceInputForCoach()" id="coach-mic-btn" title="تحدث صوتياً للمدرب" class="h-10 w-10 rounded-xl bg-brand-lavender text-brand-dark grid place-items-center hover:bg-brand-lime transition-all shrink-0">
+                        <i data-lucide="mic" class="w-4 h-4"></i>
+                    </button>
+                    <input type="text" id="coach-input" onkeypress="if(event.key==='Enter') sendCoachMessage()" placeholder="اطرح استفسارك الفني، السريري، أو التجاري هنا..." class="flex-grow bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/30 rounded-xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-brand-lime">
+                    <button onclick="sendCoachMessage()" class="px-5 py-2.5 rounded-xl bg-brand-dark text-brand-lime text-xs font-black hover:bg-brand-teal hover:text-white transition-all flex items-center gap-1.5">
+                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="coachSend">إرسال</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. مختبر الأجهزة والتقنيات المساندة (TOOLS SANDBOX) ==================== -->
+        <section id="page-tools-sandbox" class="page-section hidden space-y-8" aria-labelledby="sandbox-heading">
+            <div class="text-right space-y-2">
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-lime bg-brand-dark px-3 py-1 rounded-full">
+                    <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="sandboxBadge">مختبر المعايرة الهندسية الحية</span>
+                </div>
+                <h2 id="sandbox-heading" class="text-2xl md:text-3xl font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="sandboxTitle">
+                    مختبر الرسم التكيفي وفلتر تنعيم الرعاش الحركي
+                </h2>
+                <p class="text-xs text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed" data-i18n="sandboxSub">
+                    اختبر عملياً خوارزمية تخميد اهتزاز اليد، ومحول الألوان إلى ترددات نغمية مسموعة للمكفوفين، ونظام مؤشر تتبع العين بالاستقرار الزمني.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- لوحة الإعدادات والتحكم في المختبر -->
+                <div class="lg:col-span-4 space-y-4 text-right">
+                    <div class="p-5 rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 space-y-4 shadow-card-soft">
+                        <h3 class="font-extrabold text-xs text-brand-dark dark:text-brand-mint flex items-center gap-1.5">
+                            <i data-lucide="music" class="w-4 h-4 text-brand-teal"></i>
+                            <span data-i18n="sandboxAudioTonesTitle">نغمات الألوان السمعية للمكفوفين:</span>
+                        </h3>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button onclick="setSandboxColor('#0F3934'); playColorTone('dark', currentLang === 'ar' ? 'أخضر داكن بتردد 396 هرتز' : 'Dark green tone 396 Hz')" class="py-2 rounded-xl bg-brand-dark text-brand-lime text-xs font-bold font-mono" data-i18n="colorDark">داكن</button>
+                            <button onclick="setSandboxColor('#46A889'); playColorTone('green', currentLang === 'ar' ? 'أخضر زمردي بتردد 528 هرتز' : 'Emerald tone 528 Hz')" class="py-2 rounded-xl bg-brand-teal text-white text-xs font-bold font-mono" data-i18n="colorEmerald">زمردي</button>
+                            <button onclick="setSandboxColor('#B5A6E4'); playColorTone('lavender', currentLang === 'ar' ? 'بنفسجي لافندر بتردد 432 هرتز' : 'Lavender tone 432 Hz')" class="py-2 rounded-xl bg-brand-lavender text-brand-dark text-xs font-bold font-mono" data-i18n="colorLavender">لافندر</button>
+                            <button onclick="setSandboxColor('#B7E348'); playColorTone('lime', currentLang === 'ar' ? 'ليموني مشع بتردد 639 هرتز' : 'Lime tone 639 Hz')" class="py-2 rounded-xl bg-brand-lime text-brand-dark text-xs font-bold font-mono" data-i18n="colorLime">ليموني</button>
+                        </div>
+
+                        <!-- التحكم في نسبة تخميد الرعاش الحركي -->
+                        <div class="pt-2 space-y-1.5">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span data-i18n="sandboxDampingLabel">معامل تخميد الرعاش (Kalman Filter):</span>
+                                <span id="tremor-damping-val" class="text-brand-teal font-mono font-bold">85%</span>
+                            </div>
+                            <input type="range" id="tremor-damping-slider" min="10" max="98" value="85" oninput="updateTremorDamping(this.value)" class="w-full accent-brand-teal cursor-pointer">
+                            <span class="text-[10px] text-gray-500 block" data-i18n="sandboxDampingNotice">يقوم بامتصاص الترددات الحركية غير الإرادية الناتجة عن متلازمة باركنسون أو الارتعاش الأساسي.</span>
+                        </div>
+
+                        <!-- مفتاح تتبع العين بنظام النظرة الثابتة (Dwell Click) -->
+                        <div class="pt-2">
+                            <button onclick="toggleSandboxGazeMode()" id="sandbox-gaze-btn" class="w-full py-2.5 rounded-xl text-xs font-bold bg-brand-lavender text-brand-dark hover:bg-brand-lime transition-all flex items-center justify-center gap-1.5">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                <span id="sandbox-gaze-text" data-i18n="sandboxGazeOff">نمط تتبع العين: معطل (اضغط للتفعيل)</span>
+                            </button>
+                        </div>
+
+                        <div class="pt-1">
+                            <button onclick="clearCanvasSandbox()" class="w-full py-2 rounded-xl text-xs font-bold bg-red-50 text-red-700 hover:bg-red-100 dark:bg-red-950/40 dark:text-red-300 transition-colors flex items-center justify-center gap-1">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                                <span data-i18n="sandboxClear">مسح لوحة الرسم</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مساحة كانفاس الرسم الحي مع فلتر الرعاش -->
+                <div class="lg:col-span-8 rounded-3xl bg-white dark:bg-brand-cardDark border-2 border-brand-teal p-4 flex flex-col shadow-card-soft min-h-[420px]" id="sandbox-canvas-area">
+                    <div class="flex items-center justify-between pb-2 border-b border-brand-teal/20 text-xs font-bold">
+                        <span class="text-brand-dark dark:text-brand-mint flex items-center gap-1.5">
+                            <i data-lucide="activity" class="w-4 h-4 text-brand-teal"></i>
+                            <span data-i18n="sandboxCanvasTitle">كانفاس المعايرة مع ممتص الرعاش الحركي الفوري</span>
+                        </span>
+                        <span class="bg-brand-lime text-brand-dark px-2.5 py-0.5 rounded font-mono text-[10px] font-black" data-i18n="sandboxSmoothingActive">
+                            تنعيم الخطوط: نشط
+                        </span>
+                    </div>
+
+                    <div class="flex-grow relative mt-3 rounded-2xl overflow-hidden bg-[#FAFCFB] dark:bg-[#071916] border border-brand-teal/15 min-h-[320px]">
+                        <canvas id="live-art-canvas" class="w-full h-full cursor-crosshair" 
+                                onmousedown="startDrawing(event)" onmouseup="stopDrawing()" onmouseleave="stopDrawing()" onmousemove="handleSandboxDrawing(event)" 
+                                ontouchstart="startDrawing(event)" ontouchend="stopDrawing()" ontouchmove="handleSandboxDrawing(event)"></canvas>
+                        
+                        <div id="gaze-pointer" class="hidden absolute h-9 w-9 rounded-full border-2 border-brand-lime bg-brand-lime/25 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                            <span class="h-1.5 w-1.5 bg-brand-dark rounded-full"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- درج سلة المقتنيات الجانبي -->
+    <div id="cart-drawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex justify-end" role="dialog" aria-modal="true" aria-labelledby="cart-heading">
+        <div class="w-full max-w-md bg-white dark:bg-brand-cardDark h-full p-6 flex flex-col justify-between shadow-2xl border-r border-brand-teal/20 text-right">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-brand-teal/20">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="shopping-cart" class="w-5 h-5 text-brand-teal"></i>
+                        <h3 id="cart-heading" class="font-extrabold text-lg text-brand-dark dark:text-brand-mint" data-i18n="cartTitle">سلة المقتنيات الفنية</h3>
+                    </div>
+                    <button onclick="closeCartDrawer()" aria-label="إغلاق السلة" class="h-8 w-8 rounded-lg bg-gray-100 dark:bg-brand-darkSurface grid place-items-center hover:bg-gray-200">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- قائمة عناصر السلة المشتراة -->
+                <div id="cart-items-list" class="py-4 space-y-3 overflow-y-auto max-h-[55vh]">
+                    <!-- يتم الحقن تلقائياً -->
+                </div>
+            </div>
+
+            <!-- ملخص القيمة والإتمام المالي -->
+            <div class="border-t border-brand-teal/20 pt-4 space-y-3">
+                <div class="flex justify-between items-center text-sm font-bold">
+                    <span data-i18n="cartTotalLabel">القيمة الإجمالية:</span>
+                    <span id="cart-total-price" class="text-brand-teal text-xl font-black font-mono">0 ر.س</span>
+                </div>
+                <p class="text-[11px] text-gray-500 leading-tight" data-i18n="cartNotice">
+                    * يذهب العائد بنسبة 100% مباشرة إلى الحرفي أو الفنان الصانع لتمكين الاستقلالية المهنية.
+                </p>
+                <button onclick="startCheckoutProcess()" class="w-full py-3.5 rounded-xl bg-brand-dark text-brand-lime text-xs font-black shadow-glow-lime hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="credit-card" class="w-4 h-4"></i>
+                    <span data-i18n="cartCheckoutBtn">إتمام الشراء والدعم المالي المباشر</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة طرح قطعة جديدة للبيع (مفتوحة للشخص العادي ومبدعي الإرادة) -->
+    <div id="sell-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="sell-modal-title">
+        <div class="bg-white dark:bg-brand-cardDark border border-brand-teal/40 rounded-3xl max-w-xl w-full p-6 md:p-8 space-y-4 shadow-2xl text-right max-h-[90vh] overflow-y-auto">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-brand-teal/20">
+                <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 rounded-lg bg-brand-lime text-brand-dark grid place-items-center font-black">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </div>
+                    <h3 id="sell-modal-title" class="font-extrabold text-base text-brand-dark dark:text-brand-mint" data-i18n="sellModalTitle">طرح قطعة فنية أو حرفية في السوق</h3>
+                </div>
+                <button onclick="closeSellModal()" aria-label="إغلاق النافذة" class="h-8 w-8 rounded-lg bg-gray-100 dark:bg-brand-darkSurface grid place-items-center">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="sellModalSub">
+                المنصة ترحب بكافة الفنانين ومبدعي الإرادة. أدخل تفاصيل عملك الحرفي لعرضه في المعرض وسوق الشراء الفوري:
+            </p>
+
+            <form onsubmit="handleNewItemSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceTitleLabel">اسم العمل أو القطعة الحرفية:</label>
+                    <input type="text" id="new-item-title" required placeholder="مثال: جرة خزفية مزججة بصبغة الزمرد" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none focus:border-brand-lime">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceCatLabel">نوع الحرفة:</label>
+                        <select id="new-item-category" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none">
+                            <option value="خزف" data-i18n="catPottery">خزف وفخار</option>
+                            <option value="سدو" data-i18n="catSadu">نسيج وسدو تراثي</option>
+                            <option value="موزاييك" data-i18n="catMosaic">موزاييك وفسيفساء</option>
+                            <option value="لوحات" data-i18n="catPaintings">لوحة تشكيلية / رقمية</option>
+                            <option value="جلود" data-i18n="catLeather">مشغولات جلدية</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPiecePriceLabel">السعر المطلوب (ريال سعودي):</label>
+                        <input type="number" id="new-item-price" min="10" required placeholder="مثال: 350" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none focus:border-brand-lime">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceArtistLabel">اسم الفنان أو الحرفي:</label>
+                        <input type="text" id="new-item-artist" required placeholder="اسم الصانع أو ورشة العمل" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceSellerTypeLabel">تصنيف العضوية:</label>
+                        <select id="new-item-seller-type" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none">
+                            <option value="special" data-i18n="specialSellerOpt">مبدع إرادة (ربط الملف الصحي)</option>
+                            <option value="regular" data-i18n="regularSellerOpt">حرفي وفنان مستقل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceTechLabel">الوسيلة أو التقنية التكيفية المستخدمة في الإنتاج:</label>
+                    <input type="text" id="new-item-tech" placeholder="مثال: عجلة خزف تكيفية بالتحكم الصوتي / حامل ذراع هيدروليكي / يدوي تقليدي" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1" data-i18n="sellPieceDescLabel">وصف العمل والخامات المستخدمة:</label>
+                    <textarea id="new-item-desc" rows="2" placeholder="صف الخامات، الطين، خيوط الصوف الطبيعية، والأبعاد..." class="w-full px-3.5 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-3 flex gap-2">
+                    <button type="submit" class="flex-1 py-3 rounded-xl bg-brand-dark text-brand-lime text-xs font-black shadow-glow-lime hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-1.5">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                        <span data-i18n="sellSubmitBtn">طرح القطعة في السوق فوراً</span>
+                    </button>
+                    <button type="button" onclick="closeSellModal()" class="px-5 py-3 rounded-xl bg-gray-100 dark:bg-brand-darkSurface text-xs font-bold" data-i18n="sellCancelBtn">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة محاكاة منصة "صحتي" (Sehhaty Clinical Integration) -->
+    <div id="sehhaty-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="sehhaty-modal-title">
+        <div class="bg-white dark:bg-brand-cardDark border border-brand-teal/40 rounded-3xl max-w-xl w-full p-6 md:p-8 space-y-4 shadow-2xl text-right max-h-[90vh] overflow-y-auto">
+            
+            <div class="flex items-center justify-between pb-3 border-b border-brand-teal/20">
+                <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 rounded-lg bg-brand-teal text-white grid place-items-center">
+                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                    </div>
+                    <h3 id="sehhaty-modal-title" class="font-extrabold text-base text-brand-dark dark:text-brand-mint" data-i18n="sehhatyModalTitle">محاكي منصة صحتي والتهيئة السريرية الذكية</h3>
+                </div>
+                <button onclick="closeSehhatyModal()" aria-label="إغلاق النافذة" class="h-8 w-8 rounded-lg bg-gray-100 dark:bg-brand-darkSurface grid place-items-center">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="sehhatyModalSub">
+                اختر نوع الملف الصحي لاختبار محاكاة قراءة الذكاء الاصطناعي للتقرير السريري من منصة "صحتي" وتكييف واجهات المنصة واستوديوهات الحرف تلقائياً:
+            </p>
+
+            <div class="space-y-2.5">
+                <!-- 1. مستخدم عام / حرفي مستقل -->
+                <button onclick="selectHealthProfile('regular')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileRegTitle">مستخدم عام / حرفي مستقل (بدون إعاقة حركية)</span>
+                        <span class="text-[10px] bg-brand-teal text-white px-2 py-0.5 rounded font-bold font-mono" data-i18n="profileRegBadge">الوضع القياسي</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500" data-i18n="profileRegDesc">تصفح السوق، الشراء الفوري، وإدراج المنتجات اليدوية بحرية تامة دون متطلبات تكيفية إضافية.</p>
+                </button>
+
+                <!-- 2. شلل رباعي / إصابة نخاع شوكي -->
+                <button onclick="selectHealthProfile('quadriplegia')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileQuadTitle">أحمد القحطاني (إصابة نخاع شوكي C5-C6 / شلل رباعي)</span>
+                        <span class="text-[10px] bg-brand-lime text-brand-dark px-2 py-0.5 rounded font-bold font-mono" data-i18n="profileQuadBadge">تتبع العين + أوامر صوتية</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500" data-i18n="profileQuadDesc">تفعيل الشراء الصوتي، عجلة الخزف بالتحكم الصوتي، ومكوك السدو الآلي بنقرة زر واحدة أو بالرمش.</p>
+                </button>
+
+                <!-- 3. رعاش حركي / باركنسون -->
+                <button onclick="selectHealthProfile('tremor')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileTremorTitle">فيصل الغامدي (رعاش حركي / ارتعاش أساسي 6 هرتز)</span>
+                        <span class="text-[10px] bg-brand-lavender text-brand-dark px-2 py-0.5 rounded font-bold font-mono" data-i18n="profileTremorBadge">ممتص الرعاش 85%</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500" data-i18n="profileTremorDesc">تفعيل فلتر تنعيم ارتعاش الخطوط، محاذاة الموزاييك المغناطيسية، وتكبير مساحات النقر في كافة القوائم.</p>
+                </button>
+
+                <!-- 4. كف بصر تام -->
+                <button onclick="selectHealthProfile('visual')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileVisualTitle">سارة السبيعي (كف بصر كلي)</span>
+                        <span class="text-[10px] bg-brand-teal text-white px-2 py-0.5 rounded font-bold font-mono" data-i18n="profileVisualBadge">ترددات سمعية + قارئ فوري</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500" data-i18n="profileVisualDesc">تفعيل النطق الصوتي الفوري لكافة المعروضات وترجمة ألوان الخزف والسدو لنغمات سمعية محددة.</p>
+                </button>
+
+                <!-- 5. ضعف قبضة اليد والتهاب المفاصل -->
+                <button onclick="selectHealthProfile('weakgrip')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileGripTitle">منيرة الدوسري (ضمور عضلات وضعف قبضة أقل من 4 كجم)</span>
+                        <span class="text-[10px] bg-brand-lime text-brand-dark px-2 py-0.5 rounded font-bold font-mono" data-i18n="profileGripBadge">دعم ذراع Zero-G</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500" data-i18n="profileGripDesc">إرشادات وقائية لحماية المفاصل الصغيرة وتفعيل أزرار التشكيل الخزفي خفيفة المقاومة.</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- لوحة سهولة الوصول الشامل المتقدمة -->
+    <div id="quick-acc-panel" class="hidden fixed bottom-6 left-6 z-50 w-72 p-5 rounded-3xl bg-white dark:bg-brand-cardDark border-2 border-brand-teal shadow-2xl text-right space-y-3">
+        <div class="flex justify-between items-center pb-2 border-b border-brand-teal/20">
+            <span class="font-extrabold text-xs text-brand-dark dark:text-brand-mint" data-i18n="accPanelTitle">خيارات سهولة الوصول الشامل</span>
+            <button onclick="toggleQuickAccPanel()" class="text-xs font-bold text-gray-500 hover:text-gray-800">✕</button>
+        </div>
+        <button onclick="toggleLanguage()" class="w-full py-2 px-3 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold flex items-center justify-between">
+            <span data-i18n="accToggleLang">تبديل لغة الواجهة</span>
+            <span class="font-mono font-black text-brand-teal" id="acc-lang-ind">EN / عربي</span>
+        </button>
+        <button onclick="toggleDarkMode()" class="w-full py-2 px-3 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold flex items-center justify-between">
+            <span data-i18n="accDarkMode">الوضع الداكن / المضيء</span>
+            <i data-lucide="moon" class="w-4 h-4 text-brand-teal"></i>
+        </button>
+        <button onclick="toggleHighContrast()" class="w-full py-2 px-3 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold flex items-center justify-between">
+            <span data-i18n="accHighContrast">التباين العالي المخصص</span>
+            <i data-lucide="contrast" class="w-4 h-4 text-brand-lime"></i>
+        </button>
+        <button onclick="toggleLargeCursor()" class="w-full py-2 px-3 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold flex items-center justify-between">
+            <span data-i18n="accLargeCursor">مؤشر الفأرة المكبر عالي الرؤية</span>
+            <i data-lucide="mouse-pointer" class="w-4 h-4 text-brand-lavender"></i>
+        </button>
+        <button onclick="toggleSingleSwitchMode()" id="switch-mode-btn" class="w-full py-2 px-3 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold flex items-center justify-between">
+            <span data-i18n="accSingleSwitch">المسح بالمفتاح الفردي (Switch Access)</span>
+            <i data-lucide="toggle-left" class="w-4 h-4 text-brand-teal"></i>
+        </button>
+        <div class="flex gap-2 pt-1">
+            <button onclick="adjustGlobalFontSize(10)" class="flex-1 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold" data-i18n="accFontIncrease">تكبير الخط +</button>
+            <button onclick="resetGlobalFontSize()" class="flex-1 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-xs font-bold" data-i18n="accFontReset">الحجم الأصلي</button>
+        </div>
+    </div>
+
+    <!-- تذييل المنصة المؤسسي -->
+    <footer class="mt-16 border-t border-brand-teal/20 bg-brand-dark text-brand-mint py-10 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-right">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2 font-black text-xl text-brand-lime">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                    <span data-i18n="footerBrand">منصة تلاقي | Tallaqee</span>
+                </div>
+                <p class="text-xs text-gray-300 leading-relaxed" data-i18n="footerDesc">
+                    منظومة وطنية متكاملة لربط مهارات الحرف اليدوية والفنون المساندة بالتمكين الاقتصادي الشامل عبر تقنيات التكيف السريري المتقدمة.
+                </p>
+            </div>
+            <div class="space-y-2">
+                <h4 class="font-extrabold text-sm text-brand-lime" data-i18n="footerPortals">بوابات المنصة</h4>
+                <ul class="text-xs space-y-1.5 text-gray-300 list-none pr-0">
+                    <li><button onclick="navigate('market')" class="hover:text-brand-lime transition-colors" data-i18n="navMarket">سوق القطع والتحف الحرفية</button></li>
+                    <li><button onclick="navigate('crafts')" class="hover:text-brand-lime transition-colors" data-i18n="navCrafts">استوديو الخزف الهندسي المساند</button></li>
+                    <li><button onclick="navigate('sadu-loom')" class="hover:text-brand-lime transition-colors" data-i18n="navSaduLoom">حياكة السدو والموزاييك التكيفي</button></li>
+                    <li><button onclick="navigate('coach')" class="hover:text-brand-lime transition-colors" data-i18n="navCoach">المرشد الفني والمهني الذكي</button></li>
+                </ul>
+            </div>
+            <div class="space-y-2">
+                <h4 class="font-extrabold text-sm text-brand-lime" data-i18n="footerComplianceTitle">المعايير الهندسية والامتثال</h4>
+                <p class="text-xs text-gray-300 leading-relaxed" data-i18n="footerComplianceDesc">
+                    متوافقة مع إرشادات النفاذ الرقمي العالمية WCAG 2.1 بمستوى AAA وتدعم بروتوكولات المزامنة مع المنصات الصحية الوطنية.
+                </p>
+            </div>
+        </div>
+        <div class="border-t border-brand-teal/20 max-w-7xl mx-auto mt-6 pt-4 text-center text-xs text-gray-400 font-mono" data-i18n="footerRights">
+            جميع الحقوق محفوظة لمنصة تلاقي - تمكين وإبداع مهني شامل
+        </div>
+    </footer>
+
+    <script>
+        // إدارة اللغة النشطة والنصوص ثنائية اللغة
+        let currentLang = 'ar'; // 'ar' أو 'en'
+
+        let cart = [];
+        let selectedCategoryFilter = 'all';
+        let selectedSellerFilter = 'all';
+        let isPotteryRotating = true;
+        let selectedMosaicColor = '#46A889';
+        let currentCoachMode = 'comprehensive';
+        let chatHistory = [];
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let currentColor = '#0F3934';
+        let brushSize = 4;
+        let tremorDampingFactor = 0.85;
+        let isGazeActive = false;
+        let isVoiceListening = false;
+        let speechRecognition = null;
+        let isDarkMode = false;
+        let isHighContrast = false;
+        let isLargeCursor = false;
+        let isSingleSwitchActive = false;
+        let baseFontSize = 100;
+        let currentSection = 'market';
+
+        const healthProfilesData = {
+            regular: {
+                id: 'regular',
+                name_ar: 'مستخدم عام / حرفي مستقل',
+                name_en: 'General User / Independent Artisan',
+                diagnosis_ar: 'سليم - لا توجد إعاقة مسجلة',
+                diagnosis_en: 'Standard - No recorded physical disability',
+                badge_ar: 'مستخدم عام',
+                badge_en: 'General User',
+                statusText_ar: 'الملف الحالي: مستخدم عام (حرفي / مقتنٍ) - الأدوات المساعدة وواجهات التفاعل جاهزة للمواءمة السريرية',
+                statusText_en: 'Current Profile: General User (Artisan/Buyer) - Assistive tools and UI ready for clinical adaptation'
+            },
+            quadriplegia: {
+                id: 'quadriplegia',
+                name_ar: 'أحمد القحطاني',
+                name_en: 'Ahmed Al-Qahtani',
+                diagnosis_ar: 'إصابة نخاع شوكي C5-C6 / شلل حركي رباعي',
+                diagnosis_en: 'Spinal Cord Injury C5-C6 / Quadriplegia',
+                badge_ar: 'شلل رباعي (عين وصوت)',
+                badge_en: 'Quadriplegic (Eye/Voice)',
+                statusText_ar: 'تم الربط بـ صحتي: شلل رباعي - تفعيل: الشراء الصوتي وتتبع العين ومكوك السدو الآلي',
+                statusText_en: 'Synced with Sehhaty: Quadriplegia - Activated: Voice checkout, Eye-gaze lathe & Auto Sadu shuttle'
+            },
+            tremor: {
+                id: 'tremor',
+                name_ar: 'فيصل الغامدي',
+                name_en: 'Faisal Al-Ghamdi',
+                diagnosis_ar: 'رعاش حركي / ارتعاش أساسي 6 هرتز',
+                diagnosis_en: 'Motor Tremor / Essential Tremor 6 Hz',
+                badge_ar: 'ممتص الرعاش 85%',
+                badge_en: 'Damping 85%',
+                statusText_ar: 'تم الربط بـ صحتي: رعاش حركي - تفعيل: فلتر تنعيم الاهتزاز ومحاذاة الموزاييك المغناطيسية',
+                statusText_en: 'Synced with Sehhaty: Tremor - Activated: Kalman filter smoothing & Magnetic snap mosaic'
+            },
+            visual: {
+                id: 'visual',
+                name_ar: 'سارة السبيعي',
+                name_en: 'Sarah Al-Subaie',
+                diagnosis_ar: 'كف بصر كلي',
+                diagnosis_en: 'Total Visual Impairment',
+                badge_ar: 'كف بصر (نغمي/صوتي)',
+                badge_en: 'Visually Impaired (Audio/Haptic)',
+                statusText_ar: 'تم الربط بـ صحتي: كف بصر - تفعيل: الوصف الصوتي الفوري للأعمال وترددات الألوان السمعية',
+                statusText_en: 'Synced with Sehhaty: Visual Impairment - Activated: Live text-to-speech & Harmonic color tones'
+            },
+            weakgrip: {
+                id: 'weakgrip',
+                name_ar: 'منيرة الدوسري',
+                name_en: 'Munira Al-Dossary',
+                diagnosis_ar: 'ضعف أطراف عليا وقوة قبضة أقل من 4 كجم',
+                diagnosis_en: 'Upper Limb Weakness / Grip Strength < 4kg',
+                badge_ar: 'دعم ذراع Zero-G',
+                badge_en: 'Zero-G Arm Support',
+                statusText_ar: 'تم الربط بـ صحتي: ضعف أطراف - تفعيل: أدوات التشكيل خفيفة المقاومة ودعم الذراع الهيدروليكي',
+                statusText_en: 'Synced with Sehhaty: Weak Grip - Activated: Low-resistance shaping & Hydraulic arm lift'
+            }
+        };
+
+        let activeProfile = healthProfilesData.regular;
+
+        const i18nDictionary = {
+            ar: {
+                siteTitle: "تلاقي",
+                siteSubtitle: "منصة الفنون التمكينية وسوق الأشغال الحرفية",
+                badgeNational: "توثيق وطني",
+                topBannerText: "سوق موحد للفنون والحرف: تمكين البيع والشراء لجميع الحرفيين ومبدعي الإرادة بالتكامل مع الأنظمة الصحية المساندة",
+                topBannerSell: "طرح قطعة للبيع",
+                topBannerAudit: "فحص سريري وهندسي للأدوات التكيفية",
+                navMarket: "سوق القطع والتحف",
+                navCrafts: "استوديو الخزف الهندسي",
+                navSaduLoom: "السدو والموزاييك التكيفي",
+                navCoach: "المرشد الفني والمهني",
+                navSandbox: "مختبر الأجهزة المساندة",
+                navSellPiece: "طرح قطعة",
+                voiceBtnLabel: "أوامر صوتية",
+                sehhatyLabel: "صحتي:",
+                menuSwitchLang: "تبديل اللغة (English / العربية)",
+                marketBadge: "منظومة التمكين الاقتصادي الحرفي المعتمدة",
+                marketHeading: "سوق القطع الفنية والأشغال اليدوية التمكينية",
+                marketSub: "بيئة مفتوحة تتيح للحرفيين المستقلين ومبدعي الإرادة من ذوي الإعاقة عرض واقتناء التحف الأصيلة في مجالات الخزف، والسدو، والموزاييك، والجلود، والفنون التشكيلية مع شفافية كاملة في تفاصيل التقنيات التكيفية المستخدمة وساعات الإنتاج.",
+                searchPlaceholder: "ابحث باسم القطعة، الحرفة، أو الفنان...",
+                sellerFilterLabel: "جهة الإنتاج:",
+                allSellers: "كافة الصناع",
+                specialSellers: "مبدعو الإرادة",
+                regularSellers: "حرفيون مستقلون",
+                catAll: "كافة المعروضات",
+                catPottery: "خزف وفخار",
+                catSadu: "نسيج وسدو",
+                catMosaic: "موزاييك وفسيفساء",
+                catPaintings: "لوحات تشكيلية",
+                catLeather: "مشغولات جلدية",
+                btnAddToCart: "السلة",
+                btnBuyNow: "شراء فوري",
+                certifiedPrice: "السعر المعتمد",
+                verifiedRating: "تقييم موثق: 4.9 / 5",
+                techUsedPrefix: "تقنية الإنتاج:",
+                creatorPrefix: "الصانع:",
+                potteryBadge: "نظام النحت الدوراني التكيفي",
+                potteryTitle: "استوديو تشكيل الخزف الهندسي المساند",
+                potterySub: "منظومة تشكيل رقمية تمكن الحرفي من التحكم الكامل في أبعاد القطعة الفخارية بالصوت، أو بنظرات العين، أو بنظام المسح بالتبديل الفردي، مع محاكاة دقيقة لمعدل الدوران والتزجيج المعدني وعرضها المباشر في السوق.",
+                potteryVoiceTitle: "التحكم الصوتي في التشكيل:",
+                potteryVoiceReady: "نظام صوتي جاهز",
+                potteryVoicePrompt: "يمكنك نطق الأوامر: \"وسع الفوهة\"، \"خصر الإناء\"، أو اختيار نماذج القوالب القياسية:",
+                shapeVase: "مزهرية نجدية",
+                shapeBowl: "إناء فخاري عريض",
+                shapeAmphora: "جرة تراثية ذات عنق",
+                potteryCaliperRim: "قطر فوهة الإناء:",
+                potteryCaliperWaist: "محيط الخصر الأوسط:",
+                potteryCaliperHeight: "الارتفاع الكلي:",
+                potteryGlazeLabel: "طلاء التزجيج الحراري المعتمد:",
+                potterySellBtn: "طرح هذه التحفة في السوق للبيع",
+                potterySpinStop: "إيقاف الدوران",
+                potterySpinStart: "تشغيل الدوران",
+                potterySupportedSystems: "متوافق مع: محاكي تتبع حركة العين، المسح بالمفتاح الفردي، والأوامر الصوتية",
+                saduBadge: "حرف النسيج والفسيفساء التكيفية",
+                saduTitle: "نول السدو الآلي وملقاط الموزاييك المغناطيسي",
+                saduSub: "تقنيات هندسية تتيح حياكة نقوش السدو بضغطة زر واحدة لمصابي الشلل الرباعي، وترصيع أحجار الفسيفساء مع ميزة الجذب المغناطيسي لامتصاص ارتعاش الأصابع وتثبيتها بدقة مليمترية.",
+                saduLoomTitle: "نول السدو بآلية تمرير المكوك الذاتي",
+                saduCertified: "سدو تراثي موثق",
+                saduPatternShajara: "نقش الشجرة النجدية",
+                saduPatternDhur: "نقش المذخر التراثي",
+                saduAdvanceWeave: "تمرير المكوك وحياكة صف جديد (أمر بمفتاح فردي)",
+                mosaicTitle: "جدارية الفسيفساء بخاصية الجذب المغناطيسي",
+                mosaicAntiSlip: "محاذاة مانعة للانزلاق",
+                mosaicSelectedColor: "لون الحجر المحدد:",
+                mosaicReset: "إعادة ضبط الجدارية",
+                coachBadge: "نظام التوجيه المهني والسريري المعتمد",
+                coachTitle: "المرشد الفني والمهني الذكي",
+                coachSub: "مدرب ذكاء اصطناعي متخصص في تقنيات العلاج بالفن التكيفي، وتقدير أسعار الأعمال الحرفية، وتقديم إرشادات هندسية ملائمة للقدرات الوظيفية المسجلة في تقرير المستخدم الطبي.",
+                coachSubHeading: "مرشد تلاقي الفني والوظيفي",
+                coachBadgeGemini: "نظام مدعوم بـ Gemini AI ومواءم لمعايير التأهيل المهني",
+                coachReadAloud: "قراءة صوتية",
+                coachGreeting: "أهلاً بك في استوديو تلاقي. بصفتي مرشدك الفني والمهني، يمكنني تقديم الدعم المباشر في:",
+                coachBullet1: "مواءمة تقنيات تشكيل الخزف والسدو مع مداك الحركي وقوة القبضة.",
+                coachBullet2: "حساب التكلفة وسعر البيع العادل لقطعتك لطرحها في السوق.",
+                coachBullet3: "إرشادات الوقاية من الإجهاد العضلي أثناء العمل الحرفي.",
+                coachPrompt1: "معادلة تسعير الخزف اليدوي",
+                coachPrompt2: "إرشادات بيئة العمل للسدو",
+                coachPrompt3: "أدوات دعم قبضة اليد الضعيفة",
+                coachSend: "إرسال",
+                coachPlaceholder: "اطرح استفسارك الفني، السريري، أو التجاري هنا...",
+                sandboxBadge: "مختبر المعايرة الهندسية الحية",
+                sandboxTitle: "مختبر الرسم التكيفي وفلتر تنعيم الرعاش الحركي",
+                sandboxSub: "اختبر عملياً خوارزمية تخميد اهتزاز اليد، ومحول الألوان إلى ترددات نغمية مسموعة للمكفوفين، ونظام مؤشر تتبع العين بالاستقرار الزمني.",
+                sandboxAudioTonesTitle: "نغمات الألوان السمعية للمكفوفين:",
+                colorDark: "داكن",
+                colorEmerald: "زمردي",
+                colorLavender: "لافندر",
+                colorLime: "ليموني",
+                sandboxDampingLabel: "معامل تخميد الرعاش (Kalman Filter):",
+                sandboxDampingNotice: "يقوم بامتصاص الترددات الحركية غير الإرادية الناتجة عن متلازمة باركنسون أو الارتعاش الأساسي.",
+                sandboxGazeOff: "نمط تتبع العين: معطل (اضغط للتفعيل)",
+                sandboxGazeOn: "نمط تتبع العين: نشط بنظام النظرة الثابتة",
+                sandboxClear: "مسح لوحة الرسم",
+                sandboxCanvasTitle: "كانفاس المعايرة مع ممتص الرعاش الحركي الفوري",
+                sandboxSmoothingActive: "تنعيم الخطوط: نشط",
+                cartTitle: "سلة المقتنيات الفنية",
+                cartTotalLabel: "القيمة الإجمالية:",
+                cartNotice: "* يذهب العائد بنسبة 100% مباشرة إلى الحرفي أو الفنان الصانع لتمكين الاستقلالية المهنية.",
+                cartCheckoutBtn: "إتمام الشراء والدعم المالي المباشر",
+                sellModalTitle: "طرح قطعة فنية أو حرفية في السوق",
+                sellModalSub: "المنصة ترحب بكافة الفنانين ومبدعي الإرادة. أدخل تفاصيل عملك الحرفي لعرضه في المعرض وسوق الشراء الفوري:",
+                sellPieceTitleLabel: "اسم العمل أو القطعة الحرفية:",
+                sellPieceCatLabel: "نوع الحرفة:",
+                sellPiecePriceLabel: "السعر المطلوب (ريال سعودي):",
+                sellPieceArtistLabel: "اسم الفنان أو الحرفي:",
+                sellPieceSellerTypeLabel: "تصنيف العضوية:",
+                specialSellerOpt: "مبدع إرادة (ربط الملف الصحي)",
+                regularSellerOpt: "حرفي وفنان مستقل",
+                sellPieceTechLabel: "الوسيلة أو التقنية التكيفية المستخدمة في الإنتاج:",
+                sellPieceDescLabel: "وصف العمل والخامات المستخدمة:",
+                sellSubmitBtn: "طرح القطعة في السوق فوراً",
+                sellCancelBtn: "إلغاء",
+                sehhatyModalTitle: "محاكي منصة صحتي والتهيئة السريرية الذكية",
+                sehhatyModalSub: "اختر نوع الملف الصحي لاختبار محاكاة قراءة الذكاء الاصطناعي للتقرير السريري من منصة \"صحتي\" وتكييف واجهات المنصة واستوديوهات الحرف تلقائياً:",
+                profileRegTitle: "مستخدم عام / حرفي مستقل (بدون إعاقة حركية)",
+                profileRegBadge: "الوضع القياسي",
+                profileRegDesc: "تصفح السوق، الشراء الفوري، وإدراج المنتجات اليدوية بحرية تامة دون متطلبات تكيفية إضافية.",
+                profileQuadTitle: "أحمد القحطاني (إصابة نخاع شوكي C5-C6 / شلل رباعي)",
+                profileQuadBadge: "تتبع العين + أوامر صوتية",
+                profileQuadDesc: "تفعيل الشراء الصوتي، عجلة الخزف بالتحكم الصوتي، ومكوك السدو الآلي بنقرة زر واحدة أو بالرمش.",
+                profileTremorTitle: "فيصل الغامدي (رعاش حركي / ارتعاش أساسي 6 هرتز)",
+                profileTremorBadge: "ممتص الرعاش 85%",
+                profileTremorDesc: "تفعيل فلتر تنعيم ارتعاش الخطوط، محاذاة الموزاييك المغناطيسية، وتكبير مساحات النقر في كافة القوائم.",
+                profileVisualTitle: "سارة السبيعي (كف بصر كلي)",
+                profileVisualBadge: "ترددات سمعية + قارئ فوري",
+                profileVisualDesc: "تفعيل النطق الصوتي الفوري لكافة المعروضات وترجمة ألوان الخزف والسدو لنغمات سمعية محددة.",
+                profileGripTitle: "منيرة الدوسري (ضمور عضلات وضعف قبضة أقل من 4 كجم)",
+                profileGripBadge: "دعم ذراع Zero-G",
+                profileGripDesc: "إرشادات وقائية لحماية المفاصل الصغيرة وتفعيل أزرار التشكيل الخزفي خفيفة المقاومة.",
+                switchHealthProfileBtn: "تبديل الملف السريري",
+                accPanelTitle: "خيارات سهولة الوصول الشامل",
+                accToggleLang: "تبديل لغة الواجهة",
+                accDarkMode: "الوضع الداكن / المضيء",
+                accHighContrast: "التباين العالي المخصص",
+                accLargeCursor: "مؤشر الفأرة المكبر عالي الرؤية",
+                accSingleSwitch: "المسح بالمفتاح الفردي (Switch Access)",
+                accFontIncrease: "تكبير الخط +",
+                accFontReset: "الحجم الأصلي",
+                footerBrand: "منصة تلاقي | Tallaqee",
+                footerDesc: "منظومة وطنية متكاملة لربط مهارات الحرف اليدوية والفنون المساندة بالتمكين الاقتصادي الشامل عبر تقنيات التكيف السريري المتقدمة.",
+                footerPortals: "بوابات المنصة",
+                footerComplianceTitle: "المعايير الهندسية والامتثال",
+                footerComplianceDesc: "متوافقة مع إرشادات النفاذ الرقمي العالمية WCAG 2.1 بمستوى AAA وتدعم بروتوكولات المزامنة مع المنصات الصحية الوطنية.",
+                footerRights: "جميع الحقوق محفوظة لمنصة تلاقي - تمكين وإبداع مهني شامل",
+                voiceIndicatorPrompt: "المايكروفون يستمع بنشاط: تحدث بأوامرك (\"سوق\"، \"خزف\"، \"سدو\"، \"مدرب\"، \"سلة\"، \"صحتي\")",
+                voiceCmdMarket: "سوق",
+                voiceCmdPottery: "خزف",
+                voiceCmdSadu: "سدو",
+                voiceCmdCart: "سلة",
+                voiceStop: "إيقاف"
+            },
+            en: {
+                siteTitle: "Tallaqee",
+                siteSubtitle: "Adaptive Arts Platform & Craftsmanship Marketplace",
+                badgeNational: "National Accreditation",
+                topBannerText: "Unified Marketplace for Arts & Crafts: Enabling direct trade for all artisans and people of determination linked with assistive healthcare systems",
+                topBannerSell: "List an Artwork for Sale",
+                topBannerAudit: "Clinical & Ergonomic Device Auditing",
+                navMarket: "Masterpiece Marketplace",
+                navCrafts: "Adaptive Pottery Studio",
+                navSaduLoom: "Sadu & Mosaic Studio",
+                navCoach: "Art & Vocational Coach",
+                navSandbox: "Assistive Tech Sandbox",
+                navSellPiece: "List Artwork",
+                voiceBtnLabel: "Voice Commands",
+                sehhatyLabel: "Sehhaty:",
+                menuSwitchLang: "Switch Language (العربية / English)",
+                marketBadge: "Accredited Craft Socioeconomic System",
+                marketHeading: "Empowering Art & Handicraft Marketplace",
+                marketSub: "An inclusive platform allowing independent craftspeople and determined artists with disabilities to showcase and sell authentic pottery, Sadu weaving, mosaic, leatherwork, and fine arts with complete transparency in assistive methods and production hours.",
+                searchPlaceholder: "Search by artwork title, craft type, or artist...",
+                sellerFilterLabel: "Artisan Type:",
+                allSellers: "All Creators",
+                specialSellers: "Determined Artists",
+                regularSellers: "Independent Artisans",
+                catAll: "All Masterpieces",
+                catPottery: "Pottery & Ceramics",
+                catSadu: "Sadu & Weaving",
+                catMosaic: "Mosaics & Tiles",
+                catPaintings: "Fine Arts & Paintings",
+                catLeather: "Handmade Leather",
+                btnAddToCart: "Cart",
+                btnBuyNow: "Instant Buy",
+                certifiedPrice: "Certified Price",
+                verifiedRating: "Verified Score: 4.9 / 5",
+                techUsedPrefix: "Assistive Tech:",
+                creatorPrefix: "Artisan:",
+                potteryBadge: "Adaptive Lathe Precision",
+                potteryTitle: "Assistive Engineering Pottery Studio",
+                potterySub: "A digital lathe allowing artisans to sculpt ceramics via voice commands, eyegaze tracking, or single-switch scanning with precise modeling of wheel RPM and metallic glazing for direct marketplace listing.",
+                potteryVoiceTitle: "Voice-Assisted Sculpting:",
+                potteryVoiceReady: "Voice Engine Ready",
+                potteryVoicePrompt: "Speak commands: \"Widen Rim\", \"Narrow Waist\", or choose standard heritage templates:",
+                shapeVase: "Najdi Amphora",
+                shapeBowl: "Wide Clay Bowl",
+                shapeAmphora: "Fluted Vintage Urn",
+                potteryCaliperRim: "Rim Diameter:",
+                potteryCaliperWaist: "Middle Waist Girth:",
+                potteryCaliperHeight: "Total Height:",
+                potteryGlazeLabel: "Thermal Heritage Glazing:",
+                potterySellBtn: "List this Piece in Marketplace",
+                potterySpinStop: "Pause Rotation",
+                potterySpinStart: "Start Rotation",
+                potterySupportedSystems: "Compatible with: Eye-tracker cursor, Single-switch scanning, and Voice commands",
+                saduBadge: "Adaptive Weaving & Mosaic Crafts",
+                saduTitle: "Automated Sadu Loom & Magnetic Mosaic Tongs",
+                saduSub: "Engineering innovations allowing quadriplegic artists to weave complex Sadu patterns with a single keystroke, and set mosaic stones with magnetic assistance that neutralizes tremor and locks tiles precisely.",
+                saduLoomTitle: "Automated Sadu Loom with Smart Shuttle",
+                saduCertified: "Certified Heritage Sadu",
+                saduPatternShajara: "Najdi Tree Pattern",
+                saduPatternDhur: "Traditional Dhur Pattern",
+                saduAdvanceWeave: "Pass Shuttle & Weave Row (1-Switch Command)",
+                mosaicTitle: "Magnetic Snap Mosaic Wall",
+                mosaicAntiSlip: "Slip-Proof Alignment",
+                mosaicSelectedColor: "Selected Tile Color:",
+                mosaicReset: "Reset Mosaic Wall",
+                coachBadge: "Certified Clinical & Vocational Mentorship",
+                coachTitle: "AI Art & Vocational Coach",
+                coachSub: "An artificial intelligence mentor specialized in adaptive art therapy, fair market pricing, and ergonomic guidelines tailored to clinical mobility profiles registered in healthcare records.",
+                coachSubHeading: "Tallaqee Art & Occupational Mentor",
+                coachBadgeGemini: "Powered by Gemini AI calibrated for Vocational Rehabilitation",
+                coachReadAloud: "Read Aloud",
+                coachGreeting: "Welcome to Tallaqee Studio. As your vocational and clinical art mentor, I can assist you with:",
+                coachBullet1: "Adapting pottery and Sadu mechanics to match your functional range of motion and grip.",
+                coachBullet2: "Calculating fair pricing and raw material budgets to list your pieces in the market.",
+                coachBullet3: "Ergonomic practices to eliminate muscle strain and protect small joints during work.",
+                coachPrompt1: "Handmade Pottery Fair Pricing Formula",
+                coachPrompt2: "Sadu Weaving Ergonomic Guidelines",
+                coachPrompt3: "Adaptive Tools for Peripheral Nerve Weakness",
+                coachSend: "Send",
+                coachPlaceholder: "Ask your artistic, clinical, or commercial question here...",
+                sandboxBadge: "Live Calibration Laboratory",
+                sandboxTitle: "Adaptive Drawing Canvas & Tremor Damping Filter",
+                sandboxSub: "Test the hand-tremor damping algorithm, harmonic color-to-pitch converter for visually impaired creators, and dwell-time eye tracking.",
+                sandboxAudioTonesTitle: "Harmonic Color Tones for Visually Impaired:",
+                colorDark: "Dark",
+                colorEmerald: "Emerald",
+                colorLavender: "Lavender",
+                colorLime: "Lime",
+                sandboxDampingLabel: "Tremor Damping Factor (Kalman Filter):",
+                sandboxDampingNotice: "Absorbs involuntary motor vibrations caused by Parkinson's or essential tremor.",
+                sandboxGazeOff: "Eye-tracking: Disabled (Click to Enable)",
+                sandboxGazeOn: "Eye-tracking: Active (Dwell-Time Click)",
+                sandboxClear: "Clear Drawing Canvas",
+                sandboxCanvasTitle: "Calibration Canvas with Real-Time Tremor Dampener",
+                sandboxSmoothingActive: "Line Smoothing: Active",
+                cartTitle: "Art Collector Cart",
+                cartTotalLabel: "Total Amount:",
+                cartNotice: "* 100% of profit goes directly to the creator/artisan to foster socioeconomic independence.",
+                cartCheckoutBtn: "Checkout & Direct Financial Support",
+                sellModalTitle: "List an Artwork or Craft in Marketplace",
+                sellModalSub: "The platform welcomes all creators and determined artists. Provide details about your piece to publish it immediately:",
+                sellPieceTitleLabel: "Artwork or Craft Title:",
+                sellPieceCatLabel: "Craft Category:",
+                sellPiecePriceLabel: "Requested Price (SAR):",
+                sellPieceArtistLabel: "Artisan or Studio Name:",
+                sellPieceSellerTypeLabel: "Membership Tier:",
+                specialSellerOpt: "Determined Artist (Sync Health Profile)",
+                regularSellerOpt: "Independent Artisan",
+                sellPieceTechLabel: "Assistive Technology / Method Used:",
+                sellPieceDescLabel: "Description & Materials Used:",
+                sellSubmitBtn: "Publish Artwork to Marketplace",
+                sellCancelBtn: "Cancel",
+                sehhatyModalTitle: "Sehhaty Clinical Profiler & Smart Setup",
+                sehhatyModalSub: "Select a clinical profile to simulate AI reading of medical records from \"Sehhaty\" and automatically adapt the platform interface:",
+                profileRegTitle: "General User / Independent Artisan (No physical disability)",
+                profileRegBadge: "Standard Mode",
+                profileRegDesc: "Browse marketplace, instant buy, and list handmade creations freely without assistive overhead.",
+                profileQuadTitle: "Ahmed Al-Qahtani (Spinal Cord Injury C5-C6 / Quadriplegia)",
+                profileQuadBadge: "Eye-Gaze + Voice Commands",
+                profileQuadDesc: "Enables voice-driven checkout, voice-assisted pottery lathe, and 1-key automated Sadu shuttle.",
+                profileTremorTitle: "Faisal Al-Ghamdi (Motor Tremor / Essential Tremor 6 Hz)",
+                profileTremorBadge: "Damping 85%",
+                profileTremorDesc: "Enables line-smoothing Kalman filters, magnetic mosaic tile snapping, and enlarged click targets.",
+                profileVisualTitle: "Sarah Al-Subaie (Total Visual Impairment)",
+                profileVisualBadge: "Harmonic Audio + Live Reader",
+                profileVisualDesc: "Enables live speech synthesis of all artwork metadata and translates ceramic glaze colors into pitch tones.",
+                profileGripTitle: "Munira Al-Dossary (Muscular Dystrophy / Grip < 4 kg)",
+                profileGripBadge: "Zero-G Arm Support",
+                profileGripDesc: "Ergonomic protective recommendations for small joints and low-resistance pottery sculpting controls.",
+                switchHealthProfileBtn: "Switch Clinical Profile",
+                accPanelTitle: "Universal Accessibility Settings",
+                accToggleLang: "Switch Interface Language",
+                accDarkMode: "Dark / Light Mode",
+                accHighContrast: "Custom High Contrast",
+                accLargeCursor: "High-Visibility Large Cursor",
+                accSingleSwitch: "Single-Switch Scanning Access",
+                accFontIncrease: "Increase Font +",
+                accFontReset: "Default Size",
+                footerBrand: "Tallaqee Platform | تلاقي",
+                footerDesc: "An accredited national system connecting craftsmanship and assistive arts with socioeconomic empowerment through clinical ergonomics.",
+                footerPortals: "Platform Portals",
+                footerComplianceTitle: "Engineering Standards & Compliance",
+                footerComplianceDesc: "Compliant with WCAG 2.1 Level AAA global digital accessibility guidelines and integrates with national health platforms.",
+                footerRights: "All Rights Reserved - Tallaqee Platform for Comprehensive Creative Empowerment",
+                voiceIndicatorPrompt: "Microphone actively listening: Speak your command (\"Market\", \"Pottery\", \"Sadu\", \"Coach\", \"Cart\", \"Sehhaty\")",
+                voiceCmdMarket: "Market",
+                voiceCmdPottery: "Pottery",
+                voiceCmdSadu: "Sadu",
+                voiceCmdCart: "Cart",
+                voiceStop: "Stop"
+            }
+        };
+
+        // قاعدة بيانات المنتجات المعروضة للبيع باللغتين
+        let marketItems = [
+            {
+                id: 1,
+                title_ar: "جرة فخارية تراثية بطلاء زمردي مصقول",
+                title_en: "Heritage Clay Amphora with Polished Emerald Glaze",
+                category_ar: "خزف",
+                category_en: "Pottery",
+                price: 380,
+                artist_ar: "سعود الدوسري",
+                artist_en: "Saud Al-Dossary",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined Artist",
+                assistiveTech_ar: "عجلة خزف تكيفية بالتحكم الصوتي",
+                assistiveTech_en: "Voice-Controlled Adaptive Wheel",
+                image: "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "قطعة فخار مصنوعة من طمي طبيعي معالج ومزججة بطلاء زمردي، شُكلت بالكامل عبر منظومة الأوامر الصوتية المعيارية.",
+                desc_en: "A ceramic masterpiece sculpted from organic clay and emerald glaze, shaped entirely using calibrated voice commands."
+            },
+            {
+                id: 2,
+                title_ar: "مفرش سدو تراثي بنقش الشجرة النجدية",
+                title_en: "Authentic Sadu Runner with Najdi Tree Pattern",
+                category_ar: "سدو",
+                category_en: "Sadu",
+                price: 520,
+                artist_ar: "فاطمة الشهري",
+                artist_en: "Fatima Al-Shehri",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined Artist",
+                assistiveTech_ar: "نول آلي ذكي بمكوك بضغطة زر واحدة",
+                assistiveTech_en: "Smart Automated Loom with 1-Key Shuttle",
+                image: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "نسيج أصيل محبوك من الصوف الطبيعي المصبوغ بنباتات برية، يجسد عراقة بادية نجد بدقة حياكة متناهية.",
+                desc_en: "Handcrafted weaving from natural wool dyed with desert plants, embodying Najdi heritage with extreme precision."
+            },
+            {
+                id: 3,
+                title_ar: "طقم أواني قهوة فخارية مذهبة",
+                title_en: "Gilded Ceramic Saudi Coffee Serving Set",
+                category_ar: "خزف",
+                category_en: "Pottery",
+                price: 290,
+                artist_ar: "عبدالله العتيبي",
+                artist_en: "Abdullah Al-Otaibi",
+                sellerType: "regular",
+                sellerTypeLabel_ar: "حرفي مستقل",
+                sellerTypeLabel_en: "Independent Artisan",
+                assistiveTech_ar: "حرفة يدوية كلاسيكية",
+                assistiveTech_en: "Classic Handmade Craftsmanship",
+                image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "أواني خزفية يدوية الصنع مخصصة لتقديم القهوة السعودية الفاخرة بطابع عصري وتراثي مدمج ومقاوم للحرارة.",
+                desc_en: "Handmade ceramic cups and pitcher crafted for authentic Saudi coffee, heat-resistant with luxury gilding."
+            },
+            {
+                id: 4,
+                title_ar: "جدارية موزاييك حجرية بزخارف هندسية",
+                title_en: "Geometric Stone Mosaic Wall Mural",
+                category_ar: "موزاييك",
+                category_en: "Mosaic",
+                price: 740,
+                artist_ar: "نورة القاسم",
+                artist_en: "Noura Al-Qasim",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined Artist",
+                assistiveTech_ar: "ملقاط تثبيت مغناطيسي لمعادلة الرعاش",
+                assistiveTech_en: "Magnetic Anti-Tremor Tile Gripper",
+                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "فسيفساء من الحجر الطبيعي والزجاج المعشق رُصت بدقة مليمترية لتزيين المداخل والمساحات المعمارية.",
+                desc_en: "Stunning natural stone and stained glass mosaic assembled with millimeter precision to decorate interior spaces."
+            },
+            {
+                id: 5,
+                title_ar: "محفظة وحقيبة جلدية منقوشة يدوياً",
+                title_en: "Hand-Tooled Heritage Leather Folio",
+                category_ar: "جلود",
+                category_en: "Leather",
+                price: 210,
+                artist_ar: "خالد المنصور",
+                artist_en: "Khaled Al-Mansoor",
+                sellerType: "regular",
+                sellerTypeLabel_ar: "حرفي مستقل",
+                sellerTypeLabel_en: "Independent Artisan",
+                assistiveTech_ar: "حفر وضغط جلدي متقن",
+                assistiveTech_en: "Master Tooling & Hand Stitching",
+                image: "https://images.unsplash.com/photo-1585914924626-15adac1e6a02?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "جلد طبيعي فاخر مدبوغ باللون العسلي ومحفور بزخارف تراثية ناعمة مع خياطة شمعية ذات متانة عالية.",
+                desc_en: "Premium vegetable-tanned honey leather carved with subtle heritage motifs and durable wax threading."
+            },
+            {
+                id: 6,
+                title_ar: "لوحة تشكيلية رقمية بألوان الأمل والضوء",
+                title_en: "Digital Canvas: Radiance & Hope",
+                category_ar: "لوحات",
+                category_en: "Paintings",
+                price: 450,
+                artist_ar: "سارة الأحمد",
+                artist_en: "Sarah Al-Ahmad",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined Artist",
+                assistiveTech_ar: "رسم بتتبع بؤبؤ العين Eyegaze",
+                assistiveTech_en: "Eyegaze Pupil Tracking System",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "لوحة فنية تنبض بالحياة، رُسمت تفاصيلها وضربات فرشاتها بحركة حدقة العين ونبض الاستقرار البصري فقط.",
+                desc_en: "A vibrant abstract composition drafted entirely using corneal eye-tracking and dwell-time gaze input."
+            }
+        ];
+
+        // دالة تبديل اللغة وتحديث الاتجاه والنصوص
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const isAr = currentLang === 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+            // تحديث مؤشرات أزرار اللغة
+            const langLabel = document.getElementById('lang-btn-label');
+            if (langLabel) langLabel.innerText = isAr ? 'EN' : 'عربي';
+
+            const mobileCode = document.getElementById('mobile-lang-code');
+            if (mobileCode) mobileCode.innerText = isAr ? 'EN' : 'عربي';
+
+            const accInd = document.getElementById('acc-lang-ind');
+            if (accInd) accInd.innerText = isAr ? 'EN / عربي' : 'AR / English';
+
+            // تحديث كافة عناصر النصوص الموسومة بـ data-i18n
+            const dict = i18nDictionary[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerText = dict[key];
+                }
+            });
+
+            // تحديث نصوص حقول الإدخال
+            const searchInput = document.getElementById('market-search-input');
+            if (searchInput) {
+                searchInput.placeholder = dict.searchPlaceholder;
+            }
+            const coachInput = document.getElementById('coach-input');
+            if (coachInput) {
+                coachInput.placeholder = dict.coachPlaceholder;
+            }
+
+            // تحديث شريط صحتي النشط
+            const statusElem = document.getElementById('active-user-status-text');
+            const badgeElem = document.getElementById('active-profile-badge');
+            if (statusElem && activeProfile) {
+                statusElem.innerText = isAr ? activeProfile.statusText_ar : activeProfile.statusText_en;
+            }
+            if (badgeElem && activeProfile) {
+                badgeElem.innerText = isAr ? activeProfile.badge_ar : activeProfile.badge_en;
+            }
+
+            // تحديث نصوص الخزف التفاعلية
+            const spinBtnText = document.getElementById('btn-pottery-spin-text');
+            if (spinBtnText) {
+                spinBtnText.innerText = isPotteryRotating ? dict.potterySpinStop : dict.potterySpinStart;
+            }
+            const gazeText = document.getElementById('sandbox-gaze-text');
+            if (gazeText) {
+                gazeText.innerText = isGazeActive ? dict.sandboxGazeOn : dict.sandboxGazeOff;
+            }
+
+            // إعادة بناء بطاقات السوق بما يناسب اللغة المختارة
+            applyMarketFilters();
+
+            // تحديث سلة المقتنيات
+            updateCartUI();
+
+            // إشعار صوتي باللغة الجديدة
+            const switchedMsg = isAr ? "تم تبديل لغة الواجهة إلى اللغة العربية." : "Interface language switched to English.";
+            speakText(switchedMsg, isAr ? 'ar' : 'en');
+        }
+
+        // عرض بطاقات المنتجات في السوق باللغة النشطة
+        function renderMarketplace(items) {
+            const container = document.getElementById('marketplace-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const isAr = currentLang === 'ar';
+            const dict = i18nDictionary[currentLang];
+
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white dark:bg-brand-cardDark rounded-3xl p-8 border border-brand-teal/20 space-y-3">
+                        <i data-lucide="package-open" class="w-10 h-10 mx-auto text-brand-teal"></i>
+                        <h4 class="font-bold text-sm text-brand-dark dark:text-brand-mint">${isAr ? 'لا توجد نتائج مطابقة لبحثك' : 'No matching masterpieces found'}</h4>
+                        <p class="text-xs text-gray-500">${isAr ? 'جرب البحث بكلمات أخرى أو اختر تصنيفاً حرفياً مختلفاً.' : 'Try different keywords or select another craft category.'}</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            items.forEach(item => {
+                const isSpecial = item.sellerType === 'special';
+                const title = isAr ? (item.title_ar || item.title) : (item.title_en || item.title_ar || item.title);
+                const artist = isAr ? (item.artist_ar || item.artist) : (item.artist_en || item.artist_ar || item.artist);
+                const desc = isAr ? (item.desc_ar || item.desc) : (item.desc_en || item.desc_ar || item.desc);
+                const cat = isAr ? (item.category_ar || item.category) : (item.category_en || item.category_ar || item.category);
+                const tech = isAr ? (item.assistiveTech_ar || item.assistiveTech) : (item.assistiveTech_en || item.assistiveTech_ar || item.assistiveTech);
+                const sellerBadge = isAr ? (item.sellerTypeLabel_ar || item.sellerTypeLabel) : (item.sellerTypeLabel_en || item.sellerTypeLabel_ar || item.sellerTypeLabel);
+                const currency = isAr ? 'ر.س' : 'SAR';
+
+                container.innerHTML += `
+                    <article class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/25 overflow-hidden shadow-card-soft hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="relative aspect-video overflow-hidden bg-brand-mint/40">
+                                <img src="${item.image}" alt="${title}" onerror="this.onerror=null;this.src='https://placehold.co/800x450/0F3934/B7E348?text=Tallaqee+Masterpiece'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 ${isAr ? 'right-3' : 'left-3'} bg-brand-dark/90 text-brand-lime text-[11px] font-bold px-3 py-1 rounded-lg backdrop-blur-sm border border-brand-teal/30">
+                                    ${cat}
+                                </span>
+                                <span class="absolute top-3 ${isAr ? 'left-3' : 'right-3'} ${isSpecial ? 'bg-brand-lime text-brand-dark font-black' : 'bg-brand-teal text-white font-bold'} text-[10px] px-2.5 py-1 rounded-lg shadow">
+                                    ${sellerBadge}
+                                </span>
+                            </div>
+
+                            <div class="p-5 space-y-2.5 ${isAr ? 'text-right' : 'text-left'}">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-brand-teal font-black">${dict.creatorPrefix} ${artist}</span>
+                                    <span class="text-[11px] font-mono bg-brand-mint dark:bg-brand-darkSurface text-brand-dark dark:text-brand-lavender px-2 py-0.5 rounded font-bold border border-brand-teal/20">
+                                        ${dict.verifiedRating}
+                                    </span>
+                                </div>
+                                <h3 class="font-extrabold text-base text-brand-dark dark:text-brand-mint leading-snug prevent-clip">${title}</h3>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2">${desc}</p>
+                                
+                                <div class="pt-2">
+                                    <div class="text-[11px] font-bold text-gray-500 dark:text-gray-400 bg-brand-mint/60 dark:bg-brand-darkSurface p-2 rounded-xl border border-brand-teal/15 flex items-center gap-1.5">
+                                        <i data-lucide="cpu" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>
+                                        <span class="line-clamp-1">${dict.techUsedPrefix} ${tech}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-0">
+                            <div class="pt-3 border-t border-brand-teal/15 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block font-bold">${dict.certifiedPrice}</span>
+                                    <span class="text-lg font-black text-brand-dark dark:text-brand-lime font-mono">${item.price} ${currency}</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="addToCart(${item.id})" class="px-3.5 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface text-brand-dark dark:text-brand-mint border border-brand-teal/30 hover:border-brand-lime font-bold text-xs flex items-center gap-1.5 transition-all">
+                                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                                        <span>${dict.btnAddToCart}</span>
+                                    </button>
+                                    <button onclick="buyNowDirectly(${item.id})" class="px-4 py-2 rounded-xl bg-brand-dark text-brand-lime hover:bg-brand-teal hover:text-white font-black text-xs shadow transition-all">
+                                        ${dict.btnBuyNow}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+            lucide.createIcons();
+        }
+
+        // محرك نطق صوتي ثنائي اللغة (Bilingual Speech Synthesis)
+        function speakText(text, lang) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const cleanText = text.replace(/[\u{1F600}-\u{1F6FF}\u{2600}-\u{26FF}]/gu, '');
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.lang = (lang || currentLang) === 'ar' ? 'ar-SA' : 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakArabicText(text) {
+            speakText(text, currentLang);
+        }
+
+        // تطبيق الفلاتر
+        function applyMarketFilters() {
+            const query = (document.getElementById('market-search-input')?.value || '').trim().toLowerCase();
+
+            const filtered = marketItems.filter(item => {
+                const itemCat = item.category_ar || item.category || '';
+                const matchCategory = selectedCategoryFilter === 'all' || itemCat === selectedCategoryFilter;
+                const matchSeller = selectedSellerFilter === 'all' || item.sellerType === selectedSellerFilter;
+
+                const titleAr = item.title_ar || item.title || '';
+                const titleEn = item.title_en || '';
+                const artistAr = item.artist_ar || item.artist || '';
+                const artistEn = item.artist_en || '';
+                const descAr = item.desc_ar || item.desc || '';
+                const descEn = item.desc_en || '';
+
+                const matchQuery = !query || 
+                    titleAr.toLowerCase().includes(query) || 
+                    titleEn.toLowerCase().includes(query) || 
+                    artistAr.toLowerCase().includes(query) || 
+                    artistEn.toLowerCase().includes(query) || 
+                    descAr.toLowerCase().includes(query) ||
+                    descEn.toLowerCase().includes(query);
+
+                return matchCategory && matchSeller && matchQuery;
+            });
+
+            renderMarketplace(filtered);
+        }
+
+        function filterCategory(cat) {
+            selectedCategoryFilter = cat;
+            document.querySelectorAll('.cat-filter-btn').forEach(b => {
+                b.className = "cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 hover:bg-brand-teal/15 flex items-center gap-1.5";
+            });
+            event.currentTarget.className = "cat-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-teal text-white flex items-center gap-1.5";
+            applyMarketFilters();
+        }
+
+        function filterSellerType(type) {
+            selectedSellerFilter = type;
+            document.querySelectorAll('.seller-filter-btn').forEach(b => {
+                b.className = "seller-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint";
+            });
+            event.currentTarget.className = "seller-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-dark text-brand-lime";
+            applyMarketFilters();
+        }
+
+        function addToCart(itemId) {
+            const item = marketItems.find(i => i.id === itemId);
+            if (!item) return;
+
+            cart.push(item);
+            updateCartUI();
+            const itemTitle = currentLang === 'ar' ? (item.title_ar || item.title) : (item.title_en || item.title_ar || item.title);
+            const addedTitle = currentLang === 'ar' ? "تمت الإضافة للسلة" : "Added to Cart";
+            const addedDesc = currentLang === 'ar' ? `تمت إضافة "${itemTitle}" بقيمة ${item.price} ر.س` : `Added "${itemTitle}" for ${item.price} SAR`;
+            showToastNotification(addedTitle, addedDesc);
+            speakText(addedDesc, currentLang);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function buyNowDirectly(itemId) {
+            addToCart(itemId);
+            openCartDrawer();
+        }
+
+        function updateCartUI() {
+            const counter = document.getElementById('cart-counter');
+            if (counter) counter.innerText = cart.length;
+
+            const list = document.getElementById('cart-items-list');
+            const totalElem = document.getElementById('cart-total-price');
+            if (!list || !totalElem) return;
+
+            list.innerHTML = '';
+            let total = 0;
+            const isAr = currentLang === 'ar';
+            const currency = isAr ? 'ر.س' : 'SAR';
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-8 text-gray-400 space-y-2">
+                        <i data-lucide="shopping-cart" class="w-8 h-8 mx-auto opacity-40"></i>
+                        <p class="text-xs">${isAr ? 'سلة المقتنيات فارغة حالياً' : 'Your cart is currently empty'}</p>
+                    </div>
+                `;
+                totalElem.innerText = `0 ${currency}`;
+                lucide.createIcons();
+                return;
+            }
+
+            cart.forEach((item, idx) => {
+                total += item.price;
+                const title = isAr ? (item.title_ar || item.title) : (item.title_en || item.title_ar || item.title);
+                list.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/20">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="" class="w-12 h-12 rounded-xl object-cover">
+                            <div>
+                                <h4 class="font-bold text-xs text-brand-dark dark:text-brand-mint line-clamp-1">${title}</h4>
+                                <span class="text-[11px] text-brand-teal font-black font-mono">${item.price} ${currency}</span>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" title="حذف من السلة" class="text-red-500 hover:text-red-700 p-1.5 rounded-lg text-xs">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            totalElem.innerText = `${total} ${currency}`;
+            lucide.createIcons();
+        }
+
+        function openCartDrawer() {
+            document.getElementById('cart-drawer').classList.remove('hidden');
+        }
+
+        function closeCartDrawer() {
+            document.getElementById('cart-drawer').classList.add('hidden');
+        }
+
+        function startCheckoutProcess() {
+            if (cart.length === 0) {
+                const emptyMsg = currentLang === 'ar' ? "السلة فارغة، يرجى اختيار قطعة أولاً." : "Cart is empty, please select a piece first.";
+                showToastNotification(currentLang === 'ar' ? "تنبيه السلة" : "Cart Notice", emptyMsg);
+                return;
+            }
+            closeCartDrawer();
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const successTitle = currentLang === 'ar' ? "تم إتمام الطلب بنجاح" : "Order Completed Successfully";
+            const successDesc = currentLang === 'ar' ? `تمت معالجة الشراء بقيمة ${total} ر.س وسوف يتم التواصل لإتمام التوصيل المباشر.` : `Processed purchase of ${total} SAR. Direct handover will be arranged with the artisan.`;
+            showToastNotification(successTitle, successDesc);
+            speakText(successDesc, currentLang);
+            cart = [];
+            updateCartUI();
+        }
+
+        // إدراج قطعة جديدة للبيع مع دعم ثنائي اللغة بالكامل
+        function openSellModal() {
+            document.getElementById('sell-modal').classList.remove('hidden');
+        }
+
+        function closeSellModal() {
+            document.getElementById('sell-modal').classList.add('hidden');
+        }
+
+        function handleNewItemSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('new-item-title').value.trim();
+            const category = document.getElementById('new-item-category').value;
+            const price = parseInt(document.getElementById('new-item-price').value);
+            const artist = document.getElementById('new-item-artist').value.trim();
+            const sellerType = document.getElementById('new-item-seller-type').value;
+            const tech = document.getElementById('new-item-tech').value.trim() || 'صنع يدوي متقن';
+            const desc = document.getElementById('new-item-desc').value.trim() || 'قطعة فنية أصيلة معروضة للبيع المباشر.';
+
+            const catEnglishMap = {
+                'خزف': 'Pottery',
+                'سدو': 'Sadu',
+                'موزاييك': 'Mosaic',
+                'لوحات': 'Paintings',
+                'جلود': 'Leather'
+            };
+
+            const newItem = {
+                id: Date.now(),
+                title_ar: title,
+                title_en: title,
+                category_ar: category,
+                category_en: catEnglishMap[category] || category,
+                price: price,
+                artist_ar: artist,
+                artist_en: artist,
+                sellerType: sellerType,
+                sellerTypeLabel_ar: sellerType === 'special' ? 'مبدع إرادة' : 'حرفي مستقل',
+                sellerTypeLabel_en: sellerType === 'special' ? 'Determined Artist' : 'Independent Artisan',
+                assistiveTech_ar: tech,
+                assistiveTech_en: tech,
+                image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80",
+                desc_ar: desc,
+                desc_en: desc
+            };
+
+            marketItems.unshift(newItem);
+            applyMarketFilters();
+            closeSellModal();
+
+            const toastTitle = currentLang === 'ar' ? "تم إدراج القطعة للبيع" : "Piece Listed in Marketplace";
+            const toastDesc = currentLang === 'ar' ? `تم نشر عملك "${title}" بقيمة ${price} ر.س في السوق.` : `Your piece "${title}" is now live for ${price} SAR.`;
+            showToastNotification(toastTitle, toastDesc);
+            speakText(toastDesc, currentLang);
+            navigate('market');
+        }
+
+        function sellCurrentCraftPiece() {
+            const w = document.getElementById('pottery-width').value;
+            const h = document.getElementById('pottery-height').value;
+            const label = document.getElementById('pottery-label').innerText;
+            const isAr = currentLang === 'ar';
+
+            const newCraftItem = {
+                id: Date.now(),
+                title_ar: `${label} (مشكلة في استوديو تلاقي)`,
+                title_en: `${label} (Crafted in Tallaqee Studio)`,
+                category_ar: "خزف",
+                category_en: "Pottery",
+                price: 340,
+                artist_ar: activeProfile.name_ar,
+                artist_en: activeProfile.name_en,
+                sellerType: activeProfile.id === 'regular' ? 'regular' : 'special',
+                sellerTypeLabel_ar: activeProfile.id === 'regular' ? 'حرفي مستقل' : 'مبدع إرادة',
+                sellerTypeLabel_en: activeProfile.id === 'regular' ? 'Independent Artisan' : 'Determined Artist',
+                assistiveTech_ar: "عجلة الخزف التكيفية بالتحكم الرقمي",
+                assistiveTech_en: "Adaptive Digital Wheel with Calibrated Lathe",
+                image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80",
+                desc_ar: `تحفة فخارية مميزة بارتفاع ${h} ملم وفوهة ${w} ملم، تم تشكيلها وتزجيجها في استوديو الخزف الهندسي.`,
+                desc_en: `Authentic ceramic amphora sculpted at ${h}mm height and ${w}mm rim diameter in the adaptive pottery studio.`
+            };
+
+            marketItems.unshift(newCraftItem);
+            applyMarketFilters();
+            const toastTitle = isAr ? "تم إدراج التحفة في السوق" : "Sculpted Piece Published";
+            const toastDesc = isAr ? `تم نشر ${newCraftItem.title_ar} بنجاح بقيمة 340 ر.س` : `Published ${newCraftItem.title_en} for 340 SAR`;
+            showToastNotification(toastTitle, toastDesc);
+            speakText(toastDesc, currentLang);
+            navigate('market');
+        }
+
+        function updatePotteryMesh() {
+            const w = document.getElementById('pottery-width').value;
+            const waist = document.getElementById('pottery-waist').value;
+            const h = document.getElementById('pottery-height').value;
+            const visual = document.getElementById('pottery-visual');
+
+            visual.style.width = `${w * 3.2}px`;
+            visual.style.height = `${h}px`;
+            visual.style.borderRadius = `${w/2}% ${w/2}% ${waist/1.5}% ${waist/1.5}% / ${waist}% ${waist}% ${100 - waist}% ${100 - waist}%`;
+
+            const unit = currentLang === 'ar' ? 'ملم' : 'mm';
+            document.getElementById('val-width-ind').innerText = `${w} ${unit}`;
+            document.getElementById('val-waist-ind').innerText = `${waist} ${unit}`;
+            document.getElementById('val-height-ind').innerText = `${h} ${unit}`;
+        }
+
+        function changePotteryShape(shape) {
+            const wSlider = document.getElementById('pottery-width');
+            const waistSlider = document.getElementById('pottery-waist');
+            const hSlider = document.getElementById('pottery-height');
+            const label = document.getElementById('pottery-label');
+            const isAr = currentLang === 'ar';
+
+            if (shape === 'vase') {
+                wSlider.value = 45; waistSlider.value = 75; hSlider.value = 240;
+                label.innerText = isAr ? "مزهرية نجدية انسيابية" : "Harmonic Najdi Amphora";
+            } else if (shape === 'bowl') {
+                wSlider.value = 85; waistSlider.value = 35; hSlider.value = 140;
+                label.innerText = isAr ? "إناء فخاري عريض متكئ" : "Wide Traditional Clay Bowl";
+            } else if (shape === 'amphora') {
+                wSlider.value = 50; waistSlider.value = 90; hSlider.value = 280;
+                label.innerText = isAr ? "جرة تراثية ذات تجويف واسع" : "Fluted Deep Vintage Amphora";
+            }
+            updatePotteryMesh();
+            speakText(label.innerText, currentLang);
+        }
+
+        function togglePotteryRotation() {
+            isPotteryRotating = !isPotteryRotating;
+            const wheelHead = document.getElementById('wheel-head');
+            const btnText = document.getElementById('btn-pottery-spin-text');
+            const dict = i18nDictionary[currentLang];
+            if (isPotteryRotating) {
+                wheelHead.classList.add('pottery-spin-active');
+                btnText.innerText = dict.potterySpinStop;
+            } else {
+                wheelHead.classList.remove('pottery-spin-active');
+                btnText.innerText = dict.potterySpinStart;
+            }
+        }
+
+        function setGlaze(color, title) {
+            const visual = document.getElementById('pottery-visual');
+            const label = document.getElementById('pottery-label');
+            visual.style.background = `radial-gradient(circle at 35% 30%, #ffffff30, ${color} 40%, #0F3934 90%)`;
+            label.innerText = title;
+            speakText(title, currentLang);
+        }
+
+        function initSaduLoom() {
+            const colors = ['#0F3934', '#46A889', '#B5A6E4', '#B7E348', '#A06535'];
+            for (let r = 1; r <= 4; r++) {
+                const row = document.getElementById(`sadu-row-${r}`);
+                if (row) {
+                    row.innerHTML = '';
+                    for (let c = 0; c < 14; c++) {
+                        const col = colors[(r + c) % colors.length];
+                        row.innerHTML += `<div class="flex-1 rounded-sm shadow-sm" style="background-color: ${col};"></div>`;
+                    }
+                }
+            }
+        }
+
+        function advanceSaduWeave() {
+            const shuttle = document.getElementById('sadu-shuttle');
+            if (shuttle) {
+                const isLeft = shuttle.style.left === '12px' || shuttle.style.left === '';
+                shuttle.style.left = isLeft ? '82%' : '12px';
+                const isAr = currentLang === 'ar';
+                shuttle.innerText = isLeft ? (isAr ? 'المكوك (يسار)' : 'Shuttle (Left)') : (isAr ? 'المكوك (يمين)' : 'Shuttle (Right)');
+                speakText(isAr ? "تم نسج صف سدو جديد بنجاح." : "Sadu row woven successfully.", currentLang);
+            }
+        }
+
+        function setSaduPattern(pat) {
+            initSaduLoom();
+            const isAr = currentLang === 'ar';
+            const patternTitle = pat === 'shajara' ? 
+                (isAr ? 'نقش الشجرة النجدية' : 'Najdi Tree Pattern') : 
+                (isAr ? 'نقش المذخر التراثي' : 'Dhur Heritage Pattern');
+            speakText(patternTitle, currentLang);
+        }
+
+        function initMosaicGrid() {
+            const grid = document.getElementById('mosaic-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            for (let i = 0; i < 36; i++) {
+                grid.innerHTML += `
+                    <div onclick="placeMosaicTile(this)" class="aspect-square rounded-lg bg-white/80 dark:bg-black/40 border border-brand-teal/20 cursor-pointer hover:border-brand-lime transition-all" role="button" aria-label="خلية حجر موزاييك"></div>
+                `;
+            }
+        }
+
+        function selectMosaicTileColor(c) {
+            selectedMosaicColor = c;
+        }
+
+        function placeMosaicTile(el) {
+            el.style.backgroundColor = selectedMosaicColor;
+            el.style.borderColor = '#FFFFFF';
+            playColorTone(selectedMosaicColor === '#46A889' ? 'green' : 'lime', currentLang === 'ar' ? 'تم رصف حجر الفسيفساء' : 'Mosaic tile placed');
+        }
+
+        function resetMosaicGrid() {
+            initMosaicGrid();
+            speakText(currentLang === 'ar' ? "تمت إعادة تهيئة جدارية الموزاييك." : "Mosaic wall reset.", currentLang);
+        }
+
+        async function sendCoachMessage() {
+            const input = document.getElementById('coach-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const chatBox = document.getElementById('coach-chat-box');
+            chatBox.innerHTML += `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="bg-brand-dark text-brand-lime p-3.5 rounded-2xl rounded-tl-none text-xs font-bold max-w-md shadow">
+                        ${message}
+                    </div>
+                </div>
+            `;
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const loadingId = 'loading-' + Date.now();
+            const isAr = currentLang === 'ar';
+            chatBox.innerHTML += `
+                <div id="${loadingId}" class="flex items-center gap-2 text-xs text-brand-teal font-bold py-1">
+                    <span class="h-2 w-2 rounded-full bg-brand-lime animate-ping"></span>
+                    ${isAr ? 'المرشد يطابق السؤال مع قاعدة معارف معهد "وَرَث" والملف السريري النشط...' : 'Mentor matching query with TRITA heritage knowledge and active clinical profile...'}
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            let aiResponse = "";
+            let citation = "";
+
+            try {
+                const systemPrompt = isAr ? 
+                    `أنت المرشد الفني والمهني لمنصة "تلاقي" (Tallaqee Platform). تقدم نصائح فنية وطبية مساندة لحرفيي الفنون التكيفية مستنداً إلى معايير المعهد الملكي للفنون التقليدية "وَرَث" وهيئة الفنون البصرية. الملف السريري النشط: ${activeProfile.name_ar} (${activeProfile.diagnosis_ar}). يمنع استخدام الرموز التعبيرية.` :
+                    `You are the art and vocational coach for Tallaqee Platform. You provide technical, vocational and adaptive advice based on The Royal Institute of Traditional Arts (TRITA) and the Visual Arts Commission standards. Active clinical profile: ${activeProfile.name_en} (${activeProfile.diagnosis_en}). Do not use emojis.`;
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [
+                        ...chatHistory,
+                        { role: "user", parts: [{ text: message }] }
+                    ],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
+                    aiResponse = result.candidates[0].content.parts[0].text;
+                    citation = isAr ? "المصدر: معايير المعهد الملكي للفنون التقليدية (وَرَث) وهيئة الفنون البصرية." : "Source: The Royal Institute of Traditional Arts (TRITA) & Visual Arts Commission standards.";
+                    chatHistory.push({ role: "user", parts: [{ text: message }] });
+                    chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                } else {
+                    throw new Error("Empty AI response");
+                }
+            } catch (err) {
+                if (isAr) {
+                    aiResponse = "وفقاً للمعهد الملكي للفنون التقليدية (وَرَث) وهيئة الفنون البصرية، تتطلب المشغولات الخزفية التراثية طمي رسوبي مع حرق أولي عند 950-1000 درجة مئوية. وللتسعير العادل نوصي بمعادلة: التكلفة = الخامات + (ساعات العمل × 35 ر.س) × 1.20 لهامش التمكين التكيفي.";
+                    citation = "المرجع: دليل الفنون والحرف التكيفية - المعهد الملكي للفنون التقليدية (وَرَث)";
+                } else {
+                    aiResponse = "According to The Royal Institute of Traditional Arts (TRITA), authentic heritage ceramics utilize alluvial clays with bisque firing at 950-1000C. For fair socioeconomic pricing: Final Price = [Raw Materials + (Work Hours x 35 SAR)] x 1.20 adaptive empowerment factor.";
+                    citation = "Reference: TRITA Traditional Crafts Guidelines & Adaptive Rehabilitation Standards";
+                }
+            }
+
+            const loader = document.getElementById(loadingId);
+            if (loader) loader.remove();
+
+            chatBox.innerHTML += `
+                <div class="flex items-start gap-3">
+                    <div class="h-8 w-8 rounded-lg bg-brand-teal text-white grid place-items-center shrink-0 shadow">
+                        <i data-lucide="bot" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-brand-mint dark:bg-brand-darkSurface p-4 rounded-2xl rounded-tr-none border border-brand-teal/20 text-xs md:text-sm max-w-xl space-y-2 shadow">
+                        <p class="font-semibold text-brand-dark dark:text-brand-mint leading-relaxed">${aiResponse}</p>
+                        <div class="pt-2 border-t border-brand-teal/15 flex items-center justify-between text-[10px] text-brand-teal font-bold font-mono">
+                            <span>${citation}</span>
+                            <span class="text-gray-400">${isAr ? 'توثيق تلاقي' : 'Tallaqee Verified'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            lucide.createIcons();
+            speakText(aiResponse, currentLang);
+        }
+
+        function quickPromptCoach(text) {
+            document.getElementById('coach-input').value = text;
+            sendCoachMessage();
+        }
+
+        function readAloudLastCoachMessage() {
+            const chatBox = document.getElementById('coach-chat-box');
+            const messages = chatBox.querySelectorAll('.font-semibold');
+            if (messages.length > 0) {
+                speakText(messages[messages.length - 1].innerText, currentLang);
+            }
+        }
+
+        function initCanvasSandbox() {
+            canvas = document.getElementById('live-art-canvas');
+            if (!canvas) return;
+            const container = document.getElementById('sandbox-canvas-area');
+            canvas.width = container.clientWidth - 32;
+            canvas.height = 320;
+            ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            lastX = clientX - rect.left;
+            lastY = clientY - rect.top;
+        }
+
+        function stopDrawing() { isDrawing = false; }
+
+        function handleSandboxDrawing(e) {
+            if (!ctx || !canvas) return;
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (!clientX || !clientY) return;
+
+            let targetX = clientX - rect.left;
+            let targetY = clientY - rect.top;
+
+            const gazePointer = document.getElementById('gaze-pointer');
+            if (gazePointer) {
+                gazePointer.style.left = `${targetX}px`;
+                gazePointer.style.top = `${targetY}px`;
+            }
+
+            if (!isDrawing && !isGazeActive) return;
+
+            // خوارزمية التخميد والتنعيم ثنائية المرحلة للرعاش الحركي
+            let smoothedX = lastX + (targetX - lastX) * (1 - tremorDampingFactor * 0.7);
+            let smoothedY = lastY + (targetY - lastY) * (1 - tremorDampingFactor * 0.7);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(smoothedX, smoothedY);
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = brushSize;
+            ctx.stroke();
+
+            lastX = smoothedX;
+            lastY = smoothedY;
+        }
+
+        function updateTremorDamping(val) {
+            tremorDampingFactor = val / 100;
+            document.getElementById('tremor-damping-val').innerText = `${val}%`;
+        }
+
+        function clearCanvasSandbox() {
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                speakText(currentLang === 'ar' ? "تم مسح لوحة المعايرة بنجاح." : "Canvas cleared successfully.", currentLang);
+            }
+        }
+
+        function setSandboxColor(color) { currentColor = color; }
+
+        function toggleSandboxGazeMode() {
+            isGazeActive = !isGazeActive;
+            const btn = document.getElementById('sandbox-gaze-btn');
+            const text = document.getElementById('sandbox-gaze-text');
+            const pointer = document.getElementById('gaze-pointer');
+            const dict = i18nDictionary[currentLang];
+            if (isGazeActive) {
+                text.innerText = dict.sandboxGazeOn;
+                btn.className = "w-full py-2.5 rounded-xl text-xs font-bold bg-brand-lime text-brand-dark shadow-glow-lime flex items-center justify-center gap-1.5";
+                pointer.classList.remove('hidden');
+                speakText(dict.sandboxGazeOn, currentLang);
+            } else {
+                text.innerText = dict.sandboxGazeOff;
+                btn.className = "w-full py-2.5 rounded-xl text-xs font-bold bg-brand-lavender text-brand-dark flex items-center justify-center gap-1.5";
+                pointer.classList.add('hidden');
+                speakText(dict.sandboxGazeOff, currentLang);
+            }
+        }
+
+        // توليد النغمات الصوتية للألوان لخدمة المكفوفين
+        function playColorTone(type, desc) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                let freq = 432;
+                if (type === 'green' || type === '#46A889') freq = 528;
+                else if (type === 'lime' || type === '#B7E348') freq = 639;
+                else if (type === 'dark' || type === '#0F3934') freq = 396;
+                else if (type === 'lavender' || type === '#B5A6E4') freq = 432;
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.8);
+                speakText(desc, currentLang);
+            } catch(e) {
+                speakText(desc, currentLang);
+            }
+        }
+
+        function toggleVoiceControl() {
+            const voiceBtn = document.getElementById('voice-control-btn');
+            const indicator = document.getElementById('voice-indicator-bar');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                const unsupp = currentLang === 'ar' ? "خاصية التعرف الصوتي تتطلب متصفحاً حديثاً مثل Chrome أو Edge." : "Speech recognition requires a modern browser like Chrome or Edge.";
+                showToastNotification(currentLang === 'ar' ? "المايكروفون غير مدعوم" : "Microphone Unsupported", unsupp);
+                return;
+            }
+
+            if (isVoiceListening) {
+                isVoiceListening = false;
+                if (speechRecognition) speechRecognition.stop();
+                voiceBtn.classList.remove('mic-listening-pulse', 'bg-brand-lime');
+                voiceBtn.classList.add('bg-brand-lavender');
+                indicator.classList.add('hidden');
+            } else {
+                const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+                speechRecognition = new SpeechRec();
+                speechRecognition.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+                speechRecognition.continuous = true;
+
+                speechRecognition.onstart = function() {
+                    isVoiceListening = true;
+                    voiceBtn.classList.add('mic-listening-pulse', 'bg-brand-lime');
+                    voiceBtn.classList.remove('bg-brand-lavender');
+                    indicator.classList.remove('hidden');
+                    speakText(currentLang === 'ar' ? "المايكروفون نشط.. تحدث بأوامرك." : "Microphone active.. Speak your commands.", currentLang);
+                };
+
+                speechRecognition.onresult = function(event) {
+                    const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+                    processVoiceCommand(transcript);
+                };
+
+                speechRecognition.onerror = function() {
+                    isVoiceListening = false;
+                    voiceBtn.classList.remove('mic-listening-pulse');
+                    indicator.classList.add('hidden');
+                };
+
+                speechRecognition.start();
+            }
+        }
+
+        function processVoiceCommand(cmd) {
+            const indText = document.getElementById('voice-indicator-text');
+            if (indText) indText.innerText = `${currentLang === 'ar' ? 'الأمر الملتقط' : 'Captured Command'}: "${cmd}"`;
+
+            if (cmd.includes("سوق") || cmd.includes("معرض") || cmd.includes("market")) {
+                navigate('market');
+                speakText(currentLang === 'ar' ? "الانتقال إلى سوق القطع الحرفية." : "Navigating to Marketplace.", currentLang);
+            } else if (cmd.includes("خزف") || cmd.includes("فخار") || cmd.includes("pottery")) {
+                navigate('crafts');
+                speakText(currentLang === 'ar' ? "فتح استوديو الخزف الهندسي." : "Opening Pottery Studio.", currentLang);
+            } else if (cmd.includes("سدو") || cmd.includes("موزاييك") || cmd.includes("sadu")) {
+                navigate('sadu-loom');
+                speakText(currentLang === 'ar' ? "الانتقال إلى استوديو السدو والموزاييك." : "Navigating to Sadu & Mosaic Studio.", currentLang);
+            } else if (cmd.includes("مدرب") || cmd.includes("مرشد") || cmd.includes("coach")) {
+                navigate('coach');
+                speakText(currentLang === 'ar' ? "الانتقال إلى المرشد الفني والمهني." : "Navigating to Art Coach.", currentLang);
+            } else if (cmd.includes("سلة") || cmd.includes("cart")) {
+                openCartDrawer();
+                speakText(currentLang === 'ar' ? "فتح سلة المشتريات." : "Opening Cart Drawer.", currentLang);
+            } else if (cmd.includes("بيع") || cmd.includes("طرح") || cmd.includes("sell")) {
+                openSellModal();
+                speakText(currentLang === 'ar' ? "فتح نافذة طرح عمل للبيع." : "Opening artwork listing window.", currentLang);
+            } else if (cmd.includes("صحتي") || cmd.includes("ملف") || cmd.includes("sehhaty")) {
+                openSehhatySyncModal();
+                speakText(currentLang === 'ar' ? "فتح محاكي منصة صحتي." : "Opening Sehhaty Clinical Profiler.", currentLang);
+            }
+        }
+
+        function startVoiceInputForCoach() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return;
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const rec = new SpeechRec();
+            rec.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+            rec.onstart = () => document.getElementById('coach-mic-btn').classList.add('bg-brand-lime', 'animate-pulse');
+            rec.onresult = (e) => {
+                const text = e.results[0][0].transcript;
+                document.getElementById('coach-input').value = text;
+                sendCoachMessage();
+            };
+            rec.onend = () => document.getElementById('coach-mic-btn').classList.remove('bg-brand-lime', 'animate-pulse');
+            rec.start();
+        }
+
+        function selectHealthProfile(type) {
+            activeProfile = healthProfilesData[type] || healthProfilesData.regular;
+            const isAr = currentLang === 'ar';
+
+            document.getElementById('active-profile-badge').innerText = isAr ? activeProfile.badge_ar : activeProfile.badge_en;
+            document.getElementById('active-user-status-text').innerText = isAr ? activeProfile.statusText_ar : activeProfile.statusText_en;
+
+            closeSehhatyModal();
+
+            const toastTitle = isAr ? "تم تحديث الملف السريري" : "Clinical Profile Synced";
+            const toastDesc = isAr ? `تم تكييف أدوات المنصة واستوديوهات الحرف للملف: ${activeProfile.name_ar}` : `Adaptive tools calibrated for: ${activeProfile.name_en}`;
+            showToastNotification(toastTitle, toastDesc);
+            speakText(toastDesc, currentLang);
+        }
+
+        function openSehhatySyncModal() {
+            document.getElementById('sehhaty-modal').classList.remove('hidden');
+        }
+
+        function closeSehhatyModal() {
+            document.getElementById('sehhaty-modal').classList.add('hidden');
+        }
+
+        function showToastNotification(title, desc) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-24 left-6 z-50 bg-brand-dark text-brand-mint border-2 border-brand-lime p-4 rounded-2xl shadow-2xl max-w-sm flex items-start gap-3 transition-all";
+            toast.innerHTML = `
+                <div class="h-8 w-8 rounded-xl bg-brand-lime text-brand-dark grid place-items-center shrink-0 font-bold">
+                    <i data-lucide="bell" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <h4 class="font-black text-xs text-brand-lime">${title}</h4>
+                    <p class="text-[11px] text-brand-mint/90 mt-0.5 leading-relaxed">${desc}</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => { toast.remove(); }, 3800);
+        }
+
+        function toggleQuickAccPanel() {
+            document.getElementById('quick-acc-panel').classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.documentElement.classList.toggle('dark', isDarkMode);
+        }
+
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            document.documentElement.classList.toggle('high-contrast', isHighContrast);
+        }
+
+        function toggleLargeCursor() {
+            isLargeCursor = !isLargeCursor;
+            document.body.classList.toggle('large-cursor', isLargeCursor);
+        }
+
+        function toggleSingleSwitchMode() {
+            isSingleSwitchActive = !isSingleSwitchActive;
+            const btn = document.getElementById('switch-mode-btn');
+            const isAr = currentLang === 'ar';
+            if (isSingleSwitchActive) {
+                btn.classList.add('bg-brand-lime', 'text-brand-dark');
+                showToastNotification(isAr ? "المسح بالمفتاح الفردي" : "Single-Switch Scanning", isAr ? "تم تفعيل نمط التنقل بالمسح. اضغط مفتاح Enter أو مفتاح المسافة للانتقال." : "Single-switch navigation active. Press Enter or Space to scan.");
+                speakText(isAr ? "تم تفعيل نظام المسح بالمفتاح الفردي." : "Single-switch access activated.", currentLang);
+            } else {
+                btn.classList.remove('bg-brand-lime', 'text-brand-dark');
+                showToastNotification(isAr ? "المسح بالمفتاح الفردي" : "Single-Switch Scanning", isAr ? "تم إلغاء نمط التنقل بالمسح." : "Single-switch navigation deactivated.");
+                speakText(isAr ? "تم إيقاف نظام المسح بالمفتاح الفردي." : "Single-switch access deactivated.", currentLang);
+            }
+        }
+
+        function adjustGlobalFontSize(val) {
+            baseFontSize = Math.min(135, baseFontSize + val);
+            document.documentElement.style.fontSize = `${baseFontSize}%`;
+        }
+
+        function resetGlobalFontSize() {
+            baseFontSize = 100;
+            document.documentElement.style.fontSize = "100%";
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function navigate(pageId) {
+            currentSection = pageId;
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.className = "nav-link px-4 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-brand-teal/15 transition-all flex items-center gap-2";
+            });
+
+            const activeLink = document.getElementById(`nav-${pageId}`);
+            if (activeLink) {
+                activeLink.className = "nav-link px-4 py-2 rounded-xl text-xs font-black bg-brand-dark text-brand-lime shadow-sm transition-all flex items-center gap-2";
+            }
+
+            if (pageId === 'tools-sandbox') {
+                setTimeout(initCanvasSandbox, 100);
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // اختصارات لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+                toggleVoiceControl();
+            } else if (e.key === '1') navigate('market');
+            else if (e.key === '2') navigate('crafts');
+            else if (e.key === '3') navigate('sadu-loom');
+            else if (e.key === '4') navigate('coach');
+            else if (e.key === '5') navigate('tools-sandbox');
+        });
+
+        window.onload = function() {
+            applyLanguage();
+            initSaduLoom();
+            initMosaicGrid();
+            updateCartUI();
+            lucide.createIcons();
+            window.addEventListener('resize', () => {
+                if (currentSection === 'tools-sandbox') initCanvasSandbox();
+            });
+        };
+    </script>
+</body>
+</html>

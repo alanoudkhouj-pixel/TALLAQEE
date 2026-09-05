@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>منصة تلاقي | فضاء الفنون والأشغال التكيفية</title>
+    
+    <!-- الخطوط المعتمدة: Tajawal للعربية الفاخرة و Plus Jakarta Sans للأرقام واللاتيني -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- مكتبة الأيقونات الهندسية الاحترافية Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Tajawal"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Plus Jakarta Sans"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0F3934',         /* الأخضر الداكن الفاخر الأساسي */
+                            teal: '#46A889',         /* الأخضر الزمردي التفاعلي */
+                            lavender: '#B5A6E4',     /* البنفسجي اللافندر الهادئ */
+                            lime: '#B7E348',         /* الليموني المشع عالي التباين */
+                            mint: '#E4F4ED',         /* النعناعي الثلجي الفاتح للخلفيات */
+                            darkSurface: '#08211E',  /* مساحات خلفية فائقة العمق للوضع الداكن */
+                            cardDark: '#123530',     /* بطاقات بيئة العمل الداكنة الفاخرة */
+                            cardDarkHover: '#18443e',/* بطاقات داكنة عند التمرير */
+                        }
+                    },
+                    boxShadow: {
+                        'glow-lime': '0 0 24px rgba(183, 227, 72, 0.45)',
+                        'glow-teal': '0 0 24px rgba(70, 168, 137, 0.4)',
+                        'glow-lavender': '0 0 24px rgba(181, 166, 228, 0.4)',
+                        'card-luxury': '0 12px 32px -8px rgba(15, 57, 52, 0.12), 0 2px 6px rgba(15, 57, 52, 0.04)',
+                        'chassis': '0 30px 90px -15px rgba(0, 0, 0, 0.75), 0 0 0 10px #1e293b, 0 0 0 12px #334155',
+                    },
+                    animation: {
+                        'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.82 }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        :root {
+            --bg-page: #E4F4ED;
+            --text-main: #0F3934;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(70, 168, 137, 0.22);
+        }
+
+        .dark {
+            --bg-page: #08211E;
+            --text-main: #E4F4ED;
+            --card-bg: #123530;
+            --border-color: rgba(181, 166, 228, 0.22);
+        }
+
+        .high-contrast {
+            --bg-page: #000000 !important;
+            --text-main: #B7E348 !important;
+            --card-bg: #0d1211 !important;
+            filter: contrast(1.4) saturate(1.15);
+        }
+
+        .large-cursor, .large-cursor * {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 24 24' fill='%23B7E348' stroke='%230F3934' stroke-width='2.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto !important;
+        }
+
+        body {
+            background-color: #061513;
+            color: var(--text-main);
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .prevent-clip {
+            padding-bottom: 0.28em !important;
+            line-height: 1.4 !important;
+        }
+
+        .pottery-spin-active {
+            animation: spinPottery 2.2s linear infinite;
+        }
+
+        @keyframes spinPottery {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mic-listening-pulse {
+            animation: micPulse 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+        }
+
+        @keyframes micPulse {
+            0% { box-shadow: 0 0 0 0 rgba(183, 227, 72, 0.75); }
+            70% { box-shadow: 0 0 0 16px rgba(183, 227, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(183, 227, 72, 0); }
+        }
+
+        .ios-scroll {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .ios-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dynamic-island-glow {
+            box-shadow: 0 0 20px rgba(183, 227, 72, 0.65);
+            border-color: #B7E348 !important;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .dark .glass-panel {
+            background: rgba(18, 53, 48, 0.84);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        [dir="ltr"] .text-right {
+            text-align: left !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col items-center justify-center p-0 sm:p-4 selection:bg-brand-lime selection:text-brand-dark overflow-x-hidden">
+
+    <!-- بقع إضاءة وتوهج جمالي للخلفية الخارجية لبيئة المحاكي -->
+    <div class="fixed top-[-8%] right-[-5%] w-[480px] h-[480px] rounded-full bg-brand-teal/20 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-8%] left-[-5%] w-[480px] h-[480px] rounded-full bg-brand-lavender/25 blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed top-[45%] left-[20%] w-[320px] h-[320px] rounded-full bg-brand-lime/10 blur-[120px] pointer-events-none z-0"></div>
+
+    <aside aria-label="أدوات محاكي الجوال" class="hidden sm:flex items-center justify-between gap-4 w-full max-w-[425px] mb-2.5 px-4 py-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white text-xs z-50 shadow-lg">
+        <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-brand-lime animate-pulse"></span>
+            <span class="font-bold font-mono tracking-wide">Tallaqee Studio OS</span>
+            <span class="text-[9px] bg-brand-teal/40 px-1.5 py-0.2 rounded font-mono font-bold text-brand-lime">v2.5 PRO</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="togglePhoneFrameMode()" id="btn-toggle-frame" class="px-3 py-1 rounded-xl bg-brand-lime text-brand-dark font-black hover:opacity-90 transition-all text-[11px] shadow-sm">
+                ملء الشاشة
+            </button>
+        </div>
+    </aside>
+
+    <div id="iphone-chassis" class="relative w-full sm:max-w-[420px] h-[100dvh] sm:h-[870px] bg-brand-mint dark:bg-brand-darkSurface sm:rounded-[52px] shadow-2xl sm:shadow-chassis border-0 sm:border-[3px] sm:border-slate-800 flex flex-col overflow-hidden transition-all duration-300 z-10">
+
+        <!-- 1. شريط حالة iOS والجزيرة التفاعلية (Dynamic Island Pro) -->
+        <header class="w-full pt-3 px-6 pb-2 flex items-center justify-between text-xs font-bold text-brand-dark dark:text-brand-mint z-40 shrink-0 select-none bg-brand-mint/90 dark:bg-brand-darkSurface/90 backdrop-blur-md border-b border-brand-teal/10">
+            <span id="ios-clock" class="font-mono text-xs font-black tracking-tight w-12 text-center">09:41</span>
+
+            <!-- الجزيرة التفاعلية المتطورة -->
+            <div id="dynamic-island" onclick="toggleVoiceControl()" class="h-7 w-32 bg-black rounded-full border border-white/15 flex items-center justify-between px-2.5 shadow-md cursor-pointer transition-all duration-300 hover:scale-105" title="الجزيرة التفاعلية: اضغط لتفعيل الأوامر الصوتية">
+                <span class="h-2 w-2 rounded-full bg-brand-teal" id="island-dot-left"></span>
+                <span class="text-[9px] text-white font-mono font-bold tracking-wider truncate px-1" id="island-status-text">تلاقي الذكي</span>
+                <span class="h-2 w-2 rounded-full bg-brand-lime" id="island-dot-right"></span>
+            </div>
+
+            <!-- إشارات الشبكة والبطارية -->
+            <div class="flex items-center gap-1.5 w-12 justify-end text-brand-dark dark:text-brand-mint">
+                <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+                <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+                <div class="w-5 h-2.5 rounded-sm border border-current p-0.5 flex items-center">
+                    <div class="h-full w-4/5 bg-brand-lime rounded-2xs"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="px-3.5 py-2.5 border-b border-brand-teal/20 glass-panel flex items-center justify-between gap-2 shrink-0 z-30 shadow-xs">
+            <div class="flex items-center gap-2 cursor-pointer group" onclick="navigate('home')">
+                <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-brand-dark to-[#184841] border border-brand-teal/40 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+                    <i data-lucide="palette" class="w-4 h-4 text-brand-lime"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1">
+                        <span class="font-black text-base text-brand-dark dark:text-brand-lime tracking-tight leading-none prevent-clip" data-i18n="siteTitle">تلاقي</span>
+                        <span class="text-[8px] px-1.5 py-0.2 rounded-md bg-brand-lime text-brand-dark font-black tracking-wider">PRO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-1.5">
+                <!-- زر تبديل اللغة الفوري -->
+                <button onclick="toggleLanguage()" id="lang-switcher-btn" title="تبديل اللغة" aria-label="تبديل اللغة" class="h-7 px-2 rounded-xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 hover:border-brand-lime text-brand-dark dark:text-brand-lime text-[11px] font-black transition-all shadow-sm flex items-center gap-1">
+                    <i data-lucide="languages" class="w-3.5 h-3.5 text-brand-teal"></i>
+                    <span id="lang-btn-label" class="font-mono">EN</span>
+                </button>
+
+                <!-- زر حالة ملف صحتي المباشر الذكي -->
+                <button onclick="openSehhatySyncModal()" title="ملف صحتي السريري" class="h-7 px-2 rounded-xl bg-brand-dark text-brand-mint text-[10px] font-bold border border-brand-teal/40 flex items-center gap-1 shadow-sm hover:border-brand-lime transition-all">
+                    <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-brand-lime"></i>
+                    <span id="active-profile-badge" class="bg-brand-teal text-white text-[9px] px-1.5 py-0.2 rounded-md font-black max-w-[65px] truncate">مستخدم عام</span>
+                </button>
+
+                <!-- زر السلة التفاعلية -->
+                <button onclick="openCartDrawer()" title="السلة" aria-label="عرض سلة المشتريات" class="relative h-7 w-7 rounded-xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 grid place-items-center text-brand-dark dark:text-brand-lime hover:bg-brand-teal/10 shadow-sm shrink-0">
+                    <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                    <span id="cart-counter" class="absolute -top-1 -right-1 h-3.5 w-3.5 rounded-full bg-brand-dark text-brand-lime text-[9px] font-black grid place-items-center border border-brand-lime shadow-xs">
+                        0
+                    </span>
+                </button>
+
+                <!-- زر المايكروفون التفاعلي -->
+                <button onclick="toggleVoiceControl()" id="voice-control-btn" title="المايكروفون" aria-label="تفعيل الأوامر الصوتية" class="h-7 w-7 rounded-xl bg-brand-lavender text-brand-dark grid place-items-center shadow-sm hover:bg-brand-lime transition-all shrink-0">
+                    <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="voice-indicator-bar" class="hidden bg-brand-dark text-brand-lime px-3.5 py-1.5 text-[11px] font-bold border-b border-brand-lime/40 flex items-center justify-between gap-2 shrink-0 z-30 shadow-inner">
+            <div class="flex items-center gap-2 truncate">
+                <span class="h-2.5 w-2.5 rounded-full bg-brand-lime animate-ping shrink-0"></span>
+                <span id="voice-indicator-text" class="truncate" data-i18n="voiceIndicatorPrompt">المايكروفون يستمع.. قل: "سوق"، "خزف"، "سدو"، "خيارات"</span>
+            </div>
+            <button onclick="toggleVoiceControl()" class="px-2 py-0.5 rounded-md bg-red-900 text-red-200 text-[10px] font-bold shrink-0" data-i18n="voiceStop">إيقاف</button>
+        </div>
+
+        <main class="flex-grow overflow-y-auto ios-scroll px-3 py-3 space-y-4 relative" id="main-content">
+
+            <!-- ==================== 0. الشاشة الرئيسية للتطبيق (Home) ==================== -->
+            <section id="page-home" class="page-section space-y-4" aria-labelledby="home-heading">
+                
+                <!-- بطاقة ترحيبية ذكية مرتبطة سريرياً بـ صحتي -->
+                <div class="rounded-3xl bg-gradient-to-br from-brand-dark via-[#12443d] to-brand-dark text-white p-4 shadow-card-luxury border border-brand-teal/35 relative overflow-hidden text-right space-y-3">
+                    <div class="absolute -top-12 -left-12 w-32 h-32 bg-brand-lime/20 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute -bottom-8 -right-8 w-28 h-28 bg-brand-lavender/15 rounded-full blur-xl pointer-events-none"></div>
+                    
+                    <div class="flex items-center justify-between relative z-10">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-teal/30 text-brand-lime text-[10px] font-bold border border-brand-teal/40">
+                            <i data-lucide="sparkles" class="w-3 h-3 text-brand-lime"></i>
+                            <span data-i18n="homeBadge">استوديو وفضاء الفنون الشاملة</span>
+                        </span>
+                        <span id="home-sehhaty-status" class="text-[9px] bg-brand-lime text-brand-dark font-black px-2 py-0.5 rounded-full font-mono shadow-xs">
+                            صحتي: موصول
+                        </span>
+                    </div>
+
+                    <h1 id="home-heading" class="text-lg font-black text-brand-mint leading-snug prevent-clip relative z-10" data-i18n="homeHeroTitle">
+                        أهلاً بك في منصة تلاقي
+                    </h1>
+                    <p class="text-[11px] text-gray-200 leading-relaxed font-semibold relative z-10" data-i18n="homeHeroSub">
+                        سوق مفتوح واستوديوهات تكيفية لتمكين الجميع: مقتنون، فنانون مستقلون، ومبدعو الإرادة من ذوي الإعاقة.
+                    </p>
+
+                    <!-- شريط التشخيص السريري التكيفي الفوري المحدث -->
+                    <div class="p-2.5 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-between gap-2 text-[10px] relative z-10">
+                        <div class="flex items-center gap-2 truncate">
+                            <div class="h-6 w-6 rounded-lg bg-brand-teal/40 grid place-items-center text-brand-lime shrink-0">
+                                <i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div class="truncate">
+                                <span id="home-profile-desc" class="font-bold text-brand-mint truncate block">الملف الصحي: مستخدم عام (كل الأدوات قياسية)</span>
+                                <span id="home-profile-metrics" class="text-[8px] text-brand-lime/90 font-mono block">ROM: 100% | Latency: 0ms</span>
+                            </div>
+                        </div>
+                        <button onclick="openSehhatySyncModal()" class="px-2.5 py-1 rounded-xl bg-brand-teal hover:bg-brand-lime hover:text-brand-dark text-white font-black text-[9px] shrink-0 transition-all shadow-sm" data-i18n="switchHealthProfileBtn">
+                            تغيير
+                        </button>
+                    </div>
+
+                    <!-- أزرار الإجراء السريع والبيع -->
+                    <div class="pt-1 flex gap-2 relative z-10">
+                        <button onclick="navigate('market')" class="flex-1 py-2 rounded-xl bg-brand-lime text-brand-dark text-xs font-black shadow-glow-lime hover:opacity-90 transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                            <span data-i18n="homeExploreMarket">تصفح السوق</span>
+                        </button>
+                        <button onclick="openSellModal()" class="flex-1 py-2 rounded-xl bg-white/15 border border-white/30 text-white text-xs font-bold hover:bg-white/25 transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-brand-lime"></i>
+                            <span data-i18n="homeSellAction">طرح عمل للبيع</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h2 class="text-xs font-black text-brand-dark dark:text-brand-mint" data-i18n="homeHubTitle">أقسام واستوديوهات المنصة</h2>
+                        <span class="text-[10px] font-bold text-brand-teal font-mono">6 استوديوهات</span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <!-- 1. السوق -->
+                        <div onclick="navigate('market')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-teal/15 text-brand-dark dark:text-brand-lime grid place-items-center mx-auto">
+                                <i data-lucide="store" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navMarket">السوق</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubMarketDesc">بيع وشراء</span>
+                        </div>
+
+                        <!-- 2. استوديو الخزف -->
+                        <div onclick="navigate('crafts')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-lime/25 text-brand-dark grid place-items-center mx-auto">
+                                <i data-lucide="disc" class="w-4 h-4 text-brand-dark"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navCrafts">الخزف</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubCraftsDesc">تشكيل الفخار</span>
+                        </div>
+
+                        <!-- 3. نول السدو -->
+                        <div onclick="navigate('sadu-loom')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-lavender/30 text-brand-dark dark:text-brand-lavender grid place-items-center mx-auto">
+                                <i data-lucide="grid" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navSaduLoom">السدو</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubSaduDesc">حياكة وموزاييك</span>
+                        </div>
+
+                        <!-- 4. المرشد الفني -->
+                        <div onclick="navigate('coach')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-teal/15 text-brand-dark dark:text-brand-lime grid place-items-center mx-auto">
+                                <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navCoach">المرشد</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubCoachDesc">ذكاء اصطناعي</span>
+                        </div>
+
+                        <!-- 5. مختبر الأدوات -->
+                        <div onclick="navigate('tools-sandbox')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-lime/25 text-brand-dark grid place-items-center mx-auto">
+                                <i data-lucide="activity" class="w-4 h-4 text-brand-dark"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navSandbox">المختبر</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubSandboxDesc">تخميد الرعاش</span>
+                        </div>
+
+                        <!-- 6. خيارات المنصة -->
+                        <div onclick="navigate('settings')" class="cursor-pointer p-2.5 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-teal/20 shadow-card-luxury text-center space-y-1.5 hover:border-brand-teal hover:scale-[1.02] transition-all">
+                            <div class="h-9 w-9 rounded-xl bg-brand-lavender/30 text-brand-dark dark:text-brand-lavender grid place-items-center mx-auto">
+                                <i data-lucide="sliders" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[11px] font-extrabold block text-brand-dark dark:text-brand-mint truncate" data-i18n="navSettings">الخيارات</span>
+                            <span class="text-[8px] text-gray-500 block truncate" data-i18n="hubSettingsDesc">تخصيص كامل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark p-3.5 border border-brand-teal/20 shadow-card-luxury space-y-2.5 text-right">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1.5">
+                            <span class="h-2 w-2 rounded-full bg-brand-teal animate-pulse"></span>
+                            <span class="text-xs font-black text-brand-dark dark:text-brand-mint" data-i18n="toolsReelTitle">المنظومة التكيفية المساندة</span>
+                        </div>
+                        <button onclick="navigate('tools-sandbox')" class="text-[10px] text-brand-teal hover:text-brand-dark dark:hover:text-brand-lime font-bold flex items-center gap-0.5 transition-colors">
+                            <span data-i18n="toolsReelTest">تجربة الأدوات</span>
+                            <i data-lucide="chevron-left" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex gap-2.5 overflow-x-auto ios-scroll pb-1">
+                        <!-- أداة 1: تتبع العين -->
+                        <div class="min-w-[155px] p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/20 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[9px] font-black bg-brand-dark text-brand-lime px-1.5 py-0.2 rounded font-mono">EYEGAZE</span>
+                                <i data-lucide="eye" class="w-3.5 h-3.5 text-brand-teal"></i>
+                            </div>
+                            <h4 class="text-[10px] font-extrabold text-brand-dark dark:text-brand-mint line-clamp-1">تتبع العين OptiKey</h4>
+                            <p class="text-[8px] text-gray-500 line-clamp-2">للشلل الرباعي مع خاصية النقر التثبيتي التلقائي (Dwell Click).</p>
+                        </div>
+                        <!-- أداة 2: ممتص الرعاش -->
+                        <div class="min-w-[155px] p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/20 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[9px] font-black bg-brand-teal text-white px-1.5 py-0.2 rounded font-mono">KALMAN 88%</span>
+                                <i data-lucide="activity" class="w-3.5 h-3.5 text-brand-lime"></i>
+                            </div>
+                            <h4 class="text-[10px] font-extrabold text-brand-dark dark:text-brand-mint line-clamp-1">ممتص الرعاش الحركي</h4>
+                            <p class="text-[8px] text-gray-500 line-clamp-2">فلتر خوارزمي يعزل اهتزاز اليد أثناء تشكيل الخزف والرسم.</p>
+                        </div>
+                        <!-- أداة 3: نغمات الألوان للمكفوفين -->
+                        <div class="min-w-[155px] p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/20 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[9px] font-black bg-brand-lavender text-brand-dark px-1.5 py-0.2 rounded font-mono">AUDIO-TONES</span>
+                                <i data-lucide="volume-2" class="w-3.5 h-3.5 text-brand-lavender"></i>
+                            </div>
+                            <h4 class="text-[10px] font-extrabold text-brand-dark dark:text-brand-mint line-clamp-1">النغمات السمعية للألوان</h4>
+                            <p class="text-[8px] text-gray-500 line-clamp-2">ترجمة ألوان التحف إلى ترددات هارمونية نقية لفاقدي البصر.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- إحصائيات التمكين والأثر -->
+                <div class="grid grid-cols-3 gap-2 text-center text-brand-dark dark:text-brand-mint">
+                    <div class="p-2.5 rounded-2xl bg-brand-teal/10 border border-brand-teal/20 shadow-xs">
+                        <span class="font-black text-sm font-mono text-brand-teal">100%</span>
+                        <p class="text-[9px] font-bold text-gray-500 truncate" data-i18n="statIncome">ريع المبيعات للفنان</p>
+                    </div>
+                    <div class="p-2.5 rounded-2xl bg-brand-lime/20 border border-brand-lime/30 shadow-xs">
+                        <span class="font-black text-sm font-mono text-brand-dark dark:text-brand-lime">4.9/5</span>
+                        <p class="text-[9px] font-bold text-gray-500 truncate" data-i18n="statRating">تقييم الموثوقية</p>
+                    </div>
+                    <div class="p-2.5 rounded-2xl bg-brand-lavender/20 border border-brand-lavender/30 shadow-xs">
+                        <span class="font-black text-sm font-mono text-brand-dark dark:text-brand-lavender">وَرَث</span>
+                        <p class="text-[9px] font-bold text-gray-500 truncate" data-i18n="statHeritage">معايير التراث الوطني</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 1. سوق القطع والتحف (Marketplace) ==================== -->
+            <section id="page-market" class="page-section hidden space-y-4" aria-labelledby="market-heading">
+                
+                <div class="rounded-3xl bg-gradient-to-r from-brand-dark via-[#13443e] to-brand-dark text-white p-4 shadow-card-luxury relative overflow-hidden border border-brand-teal/30 text-right space-y-2">
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-teal/25 text-brand-lime text-[10px] font-bold border border-brand-teal/30">
+                        <i data-lucide="check-circle-2" class="w-3 h-3 text-brand-lime"></i>
+                        <span data-i18n="marketBadge">منظومة التمكين الاقتصادي الحرفي</span>
+                    </div>
+                    <h2 id="market-heading" class="text-base font-black text-brand-mint leading-tight prevent-clip" data-i18n="marketHeading">
+                        سوق القطع الفنية والأشغال اليدوية
+                    </h2>
+                    <p class="text-[10px] text-gray-200 leading-relaxed" data-i18n="marketSub">
+                        سوق مفتوح لتمكين الحرفيين ومبدعي الإرادة من بيع واقتناء الأعمال اليدوية الأصيلة.
+                    </p>
+                </div>
+
+                <!-- شريط البحث والفلترة -->
+                <div class="bg-white dark:bg-brand-cardDark p-3.5 rounded-3xl border border-brand-teal/20 shadow-card-luxury space-y-3">
+                    <div class="relative">
+                        <i data-lucide="search" class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-brand-teal"></i>
+                        <input type="text" id="market-search-input" oninput="applyMarketFilters()" placeholder="ابحث باسم القطعة، الحرفة، أو الفنان..." class="w-full pr-9 pl-3 py-2 rounded-2xl border border-brand-teal/25 bg-brand-mint/40 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none focus:border-brand-lime transition-all">
+                    </div>
+
+                    <!-- فلترة نوع البائع -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 ios-scroll" role="group">
+                        <button onclick="filterSellerType('all')" class="seller-filter-btn active px-3.5 py-1.5 rounded-xl text-[10px] font-black bg-brand-dark text-brand-lime shrink-0 shadow-xs" data-i18n="allSellers">الكل</button>
+                        <button onclick="filterSellerType('special')" class="seller-filter-btn px-3.5 py-1.5 rounded-xl text-[10px] font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint shrink-0" data-i18n="specialSellers">مبدعو الإرادة</button>
+                        <button onclick="filterSellerType('regular')" class="seller-filter-btn px-3.5 py-1.5 rounded-xl text-[10px] font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint shrink-0" data-i18n="regularSellers">حرفيون مستقلون</button>
+                    </div>
+
+                    <!-- فلترة التصنيفات الفنية -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 ios-scroll border-t border-brand-teal/15 pt-2.5" role="group">
+                        <button onclick="filterCategory('all')" class="cat-filter-btn active px-3 py-1 rounded-xl text-[9px] font-black bg-brand-teal text-white shrink-0 shadow-xs" data-i18n="catAll">كافة المعروضات</button>
+                        <button onclick="filterCategory('خزف')" class="cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0" data-i18n="catPottery">خزف وفخار</button>
+                        <button onclick="filterCategory('سدو')" class="cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0" data-i18n="catSadu">نسيج وسدو</button>
+                        <button onclick="filterCategory('موزاييك')" class="cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0" data-i18n="catMosaic">موزاييك</button>
+                        <button onclick="filterCategory('لوحات')" class="cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0" data-i18n="catPaintings">لوحات</button>
+                        <button onclick="filterCategory('جلود')" class="cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0" data-i18n="catLeather">جلود</button>
+                    </div>
+                </div>
+
+                <!-- شبكة بطاقات المنتجات والتحف -->
+                <div class="grid grid-cols-1 gap-3.5" id="marketplace-grid">
+                    <!-- الحقن البرمجي للبطاقات عبر JavaScript -->
+                </div>
+            </section>
+
+            <!-- ==================== 2. استوديو الخزف الهندسي (Pottery) ==================== -->
+            <section id="page-crafts" class="page-section hidden space-y-4" aria-labelledby="pottery-heading">
+                <div class="text-right space-y-1">
+                    <span class="text-[10px] font-bold text-brand-teal bg-brand-teal/15 px-2.5 py-0.5 rounded-full" data-i18n="potteryBadge">النحت الدوراني التكيفي</span>
+                    <h2 id="pottery-heading" class="text-base font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="potteryTitle">استوديو تشكيل الخزف الهندسي</h2>
+                </div>
+
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-4 shadow-card-luxury space-y-3.5 text-right">
+                    
+                    <!-- مساحة عرض الطين الدوراني -->
+                    <div class="flex flex-col items-center justify-center p-3.5 bg-gradient-to-b from-brand-mint/30 to-brand-mint/60 dark:from-brand-darkSurface dark:to-[#0c2a26] rounded-3xl border border-brand-teal/25 relative min-h-[250px] overflow-hidden">
+                        <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5 z-10">
+                            <span id="pottery-label" class="text-[9px] font-black bg-brand-dark text-brand-lime px-2 py-0.5 rounded-lg shadow font-mono">
+                                مزهرية انسيابية متوازنة
+                            </span>
+                            <span class="text-[9px] bg-brand-teal/25 text-brand-dark dark:text-brand-mint px-2 py-0.5 rounded-lg font-mono font-bold">120 RPM</span>
+                        </div>
+
+                        <div id="pottery-visual-container" class="relative flex flex-col items-center justify-end h-44 w-full max-w-xs mt-3">
+                            <div id="pottery-visual" class="transition-all duration-300 shadow-2xl relative" 
+                                 style="width: 130px; height: 155px; background: radial-gradient(circle at 35% 30%, #6be0bc, #46A889 40%, #0F3934 90%); border-radius: 30% 30% 50% 50% / 40% 40% 60% 60%;">
+                                 <div class="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-white/25 via-transparent to-black/30 pointer-events-none"></div>
+                                 <div class="absolute inset-x-2 top-2 h-2 rounded-full bg-white/20 blur-[1px]"></div>
+                            </div>
+                            <div id="wheel-head" class="w-44 h-4 bg-gradient-to-r from-gray-400 via-gray-200 to-gray-500 rounded-full mt-1.5 shadow-inner border-t border-gray-100 pottery-spin-active"></div>
+                        </div>
+                    </div>
+
+                    <!-- أزرار القوالب الجاهزة -->
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="changePotteryShape('vase')" class="flex-1 py-1.5 rounded-xl bg-brand-mint/50 dark:bg-brand-darkSurface text-[10px] font-bold border border-brand-teal/30 hover:border-brand-lime transition-all" data-i18n="shapeVase">مزهرية</button>
+                        <button onclick="changePotteryShape('bowl')" class="flex-1 py-1.5 rounded-xl bg-brand-mint/50 dark:bg-brand-darkSurface text-[10px] font-bold border border-brand-teal/30 hover:border-brand-lime transition-all" data-i18n="shapeBowl">إناء عريض</button>
+                        <button onclick="changePotteryShape('amphora')" class="flex-1 py-1.5 rounded-xl bg-brand-mint/50 dark:bg-brand-darkSurface text-[10px] font-bold border border-brand-teal/30 hover:border-brand-lime transition-all" data-i18n="shapeAmphora">جرة تراثية</button>
+                    </div>
+
+                    <!-- مؤشرات القياس الدقيقة بالمليمتر -->
+                    <div class="space-y-2.5 bg-brand-mint/30 dark:bg-brand-darkSurface p-3 rounded-2xl border border-brand-teal/15">
+                        <div>
+                            <div class="flex justify-between text-[10px] font-bold mb-1">
+                                <span data-i18n="potteryCaliperRim">قطر الفوهة:</span>
+                                <span id="val-width-ind" class="text-brand-teal dark:text-brand-lime font-black font-mono">55 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-width" min="20" max="95" value="55" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[10px] font-bold mb-1">
+                                <span data-i18n="potteryCaliperWaist">محيط الخصر:</span>
+                                <span id="val-waist-ind" class="text-brand-teal dark:text-brand-lime font-black font-mono">65 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-waist" min="25" max="95" value="65" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[10px] font-bold mb-1">
+                                <span data-i18n="potteryCaliperHeight">الارتفاع:</span>
+                                <span id="val-height-ind" class="text-brand-teal dark:text-brand-lime font-black font-mono">180 ملم</span>
+                            </div>
+                            <input type="range" id="pottery-height" min="110" max="240" value="180" oninput="updatePotteryMesh()" class="w-full accent-brand-teal cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- التزجيج اللوني التراثي -->
+                    <div class="flex items-center justify-between pt-1">
+                        <span class="text-[10px] font-bold" data-i18n="potteryGlazeLabel">التزجيج التراثي:</span>
+                        <div class="flex gap-2">
+                            <button onclick="setGlaze('#46A889', 'طلاء زمردي مصقول')" class="h-6 w-6 rounded-xl bg-[#46A889] border-2 border-white shadow hover:scale-110 transition-transform" title="زمردي"></button>
+                            <button onclick="setGlaze('#B5A6E4', 'تزجيج لافندر جبلي')" class="h-6 w-6 rounded-xl bg-[#B5A6E4] border-2 border-white shadow hover:scale-110 transition-transform" title="لافندر"></button>
+                            <button onclick="setGlaze('#B7E348', 'تزجيج ليموني عالي اللمعان')" class="h-6 w-6 rounded-xl bg-[#B7E348] border-2 border-white shadow hover:scale-110 transition-transform" title="ليموني"></button>
+                            <button onclick="setGlaze('#0F3934', 'تزجيج ملكي داكن')" class="h-6 w-6 rounded-xl bg-[#0F3934] border-2 border-white shadow hover:scale-110 transition-transform" title="ملكي داكن"></button>
+                        </div>
+                    </div>
+
+                    <!-- أزرار الإجراء والطرح في السوق -->
+                    <div class="pt-1 flex gap-2">
+                        <button onclick="sellCurrentCraftPiece()" class="flex-1 py-2.5 rounded-2xl bg-brand-lime text-brand-dark text-xs font-black shadow-glow-lime hover:opacity-95 transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="tag" class="w-4 h-4"></i>
+                            <span data-i18n="potterySellBtn">طرح التحفة للبيع</span>
+                        </button>
+                        <button onclick="togglePotteryRotation()" id="btn-pottery-spin" class="px-4 py-2.5 rounded-2xl bg-brand-teal text-white text-xs font-bold hover:bg-brand-teal/90 transition-all flex items-center gap-1">
+                            <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+                            <span id="btn-pottery-spin-text" data-i18n="potterySpinStop">إيقاف</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 3. استوديو السدو والموزاييك (Sadu Loom) ==================== -->
+            <section id="page-sadu-loom" class="page-section hidden space-y-4" aria-labelledby="sadu-heading">
+                <div class="text-right space-y-1">
+                    <span class="text-[10px] font-bold text-brand-lavender bg-brand-dark px-2.5 py-0.5 rounded-full" data-i18n="saduBadge">النسيج والموزاييك التكيفي</span>
+                    <h2 id="sadu-heading" class="text-base font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="saduTitle">نول السدو والفسيفساء المغناطيسية</h2>
+                </div>
+
+                <!-- نول السدو الآلي التراثي -->
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-3.5 space-y-3 shadow-card-luxury text-right">
+                    <div class="flex items-center justify-between pb-2 border-b border-brand-teal/15">
+                        <div class="flex items-center gap-1.5">
+                            <i data-lucide="layers" class="w-4 h-4 text-brand-teal"></i>
+                            <span class="text-xs font-black text-brand-teal" data-i18n="saduLoomTitle">نول السدو الآلي الذكي</span>
+                        </div>
+                        <span class="text-[9px] bg-brand-lime text-brand-dark px-2 py-0.5 rounded-md font-bold font-mono" data-i18n="saduCertified">موثق وَرَث</span>
+                    </div>
+
+                    <div id="sadu-loom-visual" class="h-28 rounded-2xl bg-[#111715] p-2.5 border border-brand-teal/30 flex flex-col justify-around relative shadow-inner overflow-hidden">
+                        <div class="flex gap-1 h-3.5 w-full" id="sadu-row-1"></div>
+                        <div class="flex gap-1 h-3.5 w-full" id="sadu-row-2"></div>
+                        <div class="flex gap-1 h-3.5 w-full" id="sadu-row-3"></div>
+                        <div class="flex gap-1 h-3.5 w-full" id="sadu-row-4"></div>
+                        <div id="sadu-shuttle" class="absolute top-1/2 left-3 -translate-y-1/2 bg-brand-lime text-brand-dark px-2.5 py-1 rounded-lg text-[9px] font-black shadow-lg transition-all duration-500 font-mono flex items-center gap-1">
+                            <span class="h-1.5 w-1.5 rounded-full bg-brand-dark animate-ping"></span>
+                            <span>المكوك</span>
+                        </div>
+                    </div>
+
+                    <button onclick="advanceSaduWeave()" class="w-full py-2.5 rounded-2xl bg-brand-teal hover:bg-brand-teal/90 text-white text-xs font-black shadow-glow-teal flex items-center justify-center gap-1.5 transition-all">
+                        <i data-lucide="corner-down-left" class="w-4 h-4 text-brand-lime"></i>
+                        <span data-i18n="saduAdvanceWeave">تمرير المكوك (مفتاح فردي)</span>
+                    </button>
+                </div>
+
+                <!-- جدارية الموزاييك المغناطيسي -->
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-3.5 space-y-3 shadow-card-luxury text-right">
+                    <div class="flex items-center justify-between pb-2 border-b border-brand-teal/15">
+                        <div class="flex items-center gap-1.5">
+                            <i data-lucide="grid" class="w-4 h-4 text-brand-lavender"></i>
+                            <span class="text-xs font-black text-brand-lavender" data-i18n="mosaicTitle">الموزاييك المغناطيسي المساند</span>
+                        </div>
+                        <button onclick="resetMosaicGrid()" class="text-[9px] text-brand-teal hover:text-brand-lime font-bold" data-i18n="mosaicReset">إعادة ضبط</button>
+                    </div>
+
+                    <div class="grid grid-cols-6 gap-1.5 p-2.5 rounded-2xl bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/20" id="mosaic-grid">
+                        <!-- حقن الخلايا برمجياً -->
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <span class="text-[9px] font-bold text-gray-700 dark:text-gray-300" data-i18n="mosaicSelectedColor">اللون المختار:</span>
+                        <div class="flex gap-2">
+                            <button onclick="selectMosaicTileColor('#46A889')" class="h-5 w-5 rounded-lg bg-[#46A889] border-2 border-white shadow hover:scale-110 transition-transform" title="زمردي"></button>
+                            <button onclick="selectMosaicTileColor('#B5A6E4')" class="h-5 w-5 rounded-lg bg-[#B5A6E4] border-2 border-white shadow hover:scale-110 transition-transform" title="لافندر"></button>
+                            <button onclick="selectMosaicTileColor('#B7E348')" class="h-5 w-5 rounded-lg bg-[#B7E348] border-2 border-white shadow hover:scale-110 transition-transform" title="ليموني"></button>
+                            <button onclick="selectMosaicTileColor('#0F3934')" class="h-5 w-5 rounded-lg bg-[#0F3934] border-2 border-white shadow hover:scale-110 transition-transform" title="داكن"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 4. المرشد الفني والمهني (AI Art Coach) ==================== -->
+            <section id="page-coach" class="page-section hidden space-y-4" aria-labelledby="coach-heading">
+                <div class="text-right space-y-1">
+                    <span class="text-[10px] font-bold text-brand-lime bg-brand-dark px-2.5 py-0.5 rounded-full" data-i18n="coachBadge">توجيه مهني وسريري</span>
+                    <h2 id="coach-heading" class="text-base font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="coachTitle">المرشد الفني والمهني الذكي</h2>
+                </div>
+
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-3.5 flex flex-col h-[460px] shadow-card-luxury text-right">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-brand-teal/20">
+                        <div class="flex items-center gap-2">
+                            <div class="h-8 w-8 rounded-xl bg-brand-dark text-brand-lime grid place-items-center shadow-xs">
+                                <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-xs text-brand-dark dark:text-brand-mint" data-i18n="coachSubHeading">مرشد تلاقي الفني</h3>
+                                <span class="text-[9px] text-brand-teal font-bold font-mono">Gemini AI + وَرَث TRITA</span>
+                            </div>
+                        </div>
+                        <button onclick="readAloudLastCoachMessage()" title="قراءة صوتية" class="text-[10px] font-bold text-brand-teal bg-brand-teal/10 hover:bg-brand-teal hover:text-white px-2.5 py-1.5 rounded-xl transition-all">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div id="coach-chat-box" class="flex-grow overflow-y-auto py-2.5 space-y-2.5 pr-1 ios-scroll">
+                        <div class="flex items-start gap-2">
+                            <div class="h-7 w-7 rounded-xl bg-brand-teal text-white grid place-items-center shrink-0 shadow-xs">
+                                <i data-lucide="bot" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-brand-mint dark:bg-brand-darkSurface p-3 rounded-2xl rounded-tr-none border border-brand-teal/20 text-xs max-w-[85%] space-y-1 shadow-xs">
+                                <p class="font-semibold text-brand-dark dark:text-brand-mint leading-relaxed" data-i18n="coachGreeting">
+                                    أهلاً بك في استوديو تلاقي. يسعدني إرشادك في مواءمة أدوات الخزف والسدو، وتسعير أعمالك الحرفية طبقاً لمعايير التراث الوطني.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-1.5 flex gap-1.5 overflow-x-auto ios-scroll">
+                        <button onclick="quickPromptCoach('ما هي معادلة التسعير العادلة لمزهرية فخارية؟')" class="text-[9px] bg-brand-mint dark:bg-brand-darkSurface px-2.5 py-1 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-all shrink-0" data-i18n="coachPrompt1">
+                            معادلة التسعير
+                        </button>
+                        <button onclick="quickPromptCoach('كيف أضبط زوايا الجلسة أثناء حياكة السدو؟')" class="text-[9px] bg-brand-mint dark:bg-brand-darkSurface px-2.5 py-1 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-all shrink-0" data-i18n="coachPrompt2">
+                            بيئة عمل السدو
+                        </button>
+                        <button onclick="quickPromptCoach('أفضل مثبتات الأدوات لضعف قبضة اليد؟')" class="text-[9px] bg-brand-mint dark:bg-brand-darkSurface px-2.5 py-1 rounded-xl font-bold border border-brand-teal/20 hover:border-brand-lime transition-all shrink-0" data-i18n="coachPrompt3">
+                            دعم قبضة اليد
+                        </button>
+                    </div>
+
+                    <div class="pt-2 flex items-center gap-2 border-t border-brand-teal/20">
+                        <button onclick="startVoiceInputForCoach()" id="coach-mic-btn" class="h-8 w-8 rounded-xl bg-brand-lavender text-brand-dark grid place-items-center shrink-0 hover:bg-brand-lime transition-all shadow-xs" title="تحدث للمرشد">
+                            <i data-lucide="mic" class="w-4 h-4"></i>
+                        </button>
+                        <input type="text" id="coach-input" onkeypress="if(event.key==='Enter') sendCoachMessage()" placeholder="اطرح استفسارك الفني أو السريري..." class="flex-grow bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/30 rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:border-brand-lime transition-all">
+                        <button onclick="sendCoachMessage()" class="px-3 py-1.5 rounded-xl bg-brand-dark text-brand-lime text-xs font-black shadow-sm hover:opacity-90 transition-all">
+                            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+
+                    <!-- شريط تحكم الصوت البشري المطور للمرشد -->
+                    <div class="pt-2 mt-1 border-t border-brand-teal/15 flex items-center justify-between text-[9px] text-gray-600 dark:text-gray-300">
+                        <div class="flex items-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-teal"></i>
+                            <span class="font-bold">المساعد الصوتي الإنساني:</span>
+                            <span id="active-voice-name-badge" class="font-mono text-[8px] bg-brand-teal/15 text-brand-teal px-1.5 py-0.5 rounded font-bold">جاري الفحص...</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="stopSpeechPlayback()" class="px-2 py-0.5 rounded bg-gray-100 dark:bg-brand-darkSurface text-red-600 hover:bg-red-100 dark:hover:bg-red-950 font-bold transition-all" title="إيقاف الصوت">
+                                كتم الصوت
+                            </button>
+                            <button onclick="testHumanVoice()" class="px-2 py-0.5 rounded bg-brand-lime text-brand-dark font-black hover:opacity-90 shadow-xs transition-all">
+                                تجربة النبرة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 5. مختبر الأجهزة والتقنيات المساندة (Sandbox) ==================== -->
+            <section id="page-tools-sandbox" class="page-section hidden space-y-4" aria-labelledby="sandbox-heading">
+                <div class="text-right space-y-1">
+                    <span class="text-[10px] font-bold text-brand-lime bg-brand-dark px-2.5 py-0.5 rounded-full" data-i18n="sandboxBadge">المعايرة الهندسية الحية</span>
+                    <h2 id="sandbox-heading" class="text-base font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="sandboxTitle">مختبر الرسم التكيفي وممتص الرعاش</h2>
+                </div>
+
+                <div class="p-3.5 rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 space-y-3 shadow-card-luxury text-right">
+                    <div class="space-y-1.5">
+                        <span class="text-[9px] font-bold block" data-i18n="sandboxAudioTonesTitle">نغمات الألوان السمعية للمكفوفين:</span>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="setSandboxColor('#0F3934'); playColorTone('dark', 'داكن 396Hz')" class="py-1.5 rounded-xl bg-brand-dark text-brand-lime text-[9px] font-bold font-mono shadow-xs">داكن</button>
+                            <button onclick="setSandboxColor('#46A889'); playColorTone('green', 'زمردي 528Hz')" class="py-1.5 rounded-xl bg-brand-teal text-white text-[9px] font-bold font-mono shadow-xs">زمردي</button>
+                            <button onclick="setSandboxColor('#B5A6E4'); playColorTone('lavender', 'لافندر 432Hz')" class="py-1.5 rounded-xl bg-brand-lavender text-brand-dark text-[9px] font-bold font-mono shadow-xs">لافندر</button>
+                            <button onclick="setSandboxColor('#B7E348'); playColorTone('lime', 'ليموني 639Hz')" class="py-1.5 rounded-xl bg-brand-lime text-brand-dark text-[9px] font-bold font-mono shadow-xs">ليموني</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1 bg-brand-mint/30 dark:bg-brand-darkSurface p-2.5 rounded-2xl border border-brand-teal/15">
+                        <div class="flex justify-between text-[9px] font-bold">
+                            <span data-i18n="sandboxDampingLabel">معامل تخميد الرعاش (Kalman):</span>
+                            <span id="tremor-damping-val" class="text-brand-teal dark:text-brand-lime font-mono font-bold">85%</span>
+                        </div>
+                        <input type="range" id="tremor-damping-slider" min="10" max="98" value="85" oninput="updateTremorDamping(this.value)" class="w-full accent-brand-teal cursor-pointer">
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="toggleSandboxGazeMode()" id="sandbox-gaze-btn" class="flex-1 py-2 rounded-xl text-[10px] font-bold bg-brand-lavender text-brand-dark flex items-center justify-center gap-1.5 transition-all shadow-xs">
+                            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                            <span id="sandbox-gaze-text" data-i18n="sandboxGazeOff">تتبع العين</span>
+                        </button>
+                        <button onclick="clearCanvasSandbox()" class="px-3.5 py-2 rounded-xl text-[10px] font-bold bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300 transition-all" title="مسح اللوحة">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+
+                    <div class="rounded-2xl overflow-hidden bg-[#FAFCFB] dark:bg-[#071916] border border-brand-teal/25 h-52 relative shadow-inner" id="sandbox-canvas-area">
+                        <canvas id="live-art-canvas" class="w-full h-full cursor-crosshair touch-action-none" 
+                                onmousedown="startDrawing(event)" onmouseup="stopDrawing()" onmouseleave="stopDrawing()" onmousemove="handleSandboxDrawing(event)" 
+                                ontouchstart="startDrawing(event)" ontouchend="stopDrawing()" ontouchcancel="stopDrawing()" ontouchmove="handleSandboxDrawing(event)"></canvas>
+                        <div id="gaze-pointer" class="hidden absolute h-6 w-6 rounded-full border-2 border-brand-lime bg-brand-lime/25 pointer-events-none transform -translate-x-1/2 -translate-y-1/2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 6. صفحة الخيارات والإعدادات الشاملة (Settings) ==================== -->
+            <section id="page-settings" class="page-section hidden space-y-4" aria-labelledby="settings-heading">
+                <div class="text-right space-y-1">
+                    <span class="text-[10px] font-bold text-brand-dark dark:text-brand-lime bg-brand-lime/20 px-2.5 py-0.5 rounded-full" data-i18n="settingsBadge">تخصيص الواجهة</span>
+                    <h2 id="settings-heading" class="text-base font-black text-brand-dark dark:text-brand-mint prevent-clip" data-i18n="settingsTitle">خيارات المنصة وتسهيلات الوصول</h2>
+                </div>
+
+                <div class="rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/30 p-4 space-y-3 shadow-card-luxury text-right">
+                    
+                    <!-- بطاقة صحتي السريعة المحدثة -->
+                    <div class="p-3 rounded-2xl bg-brand-mint/50 dark:bg-brand-darkSurface border border-brand-teal/20 flex items-center justify-between shadow-xs">
+                        <div>
+                            <span class="text-[10px] font-bold text-brand-teal block">ملف منصة صحتي المرتبط:</span>
+                            <span id="settings-sehhaty-badge" class="font-extrabold text-xs text-brand-dark dark:text-brand-lime">مستخدم عام (قياسي)</span>
+                        </div>
+                        <button onclick="openSehhatySyncModal()" class="px-3 py-1.5 rounded-xl bg-brand-dark text-brand-lime font-black text-[10px] shadow-sm hover:opacity-90 transition-all">
+                            تغيير الحالة
+                        </button>
+                    </div>
+
+                    <div class="space-y-2 pt-1">
+                        <button onclick="toggleDarkMode()" class="w-full p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/25 flex items-center justify-between text-xs font-bold hover:border-brand-teal transition-all">
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="moon" class="w-4 h-4 text-brand-teal"></i>
+                                <span data-i18n="accDarkMode">الوضع الداكن / المضيء</span>
+                            </span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-brand-teal/20 text-brand-teal font-mono">Toggle</span>
+                        </button>
+
+                        <button onclick="toggleHighContrast()" class="w-full p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/25 flex items-center justify-between text-xs font-bold hover:border-brand-lime transition-all">
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="contrast" class="w-4 h-4 text-brand-lime"></i>
+                                <span data-i18n="accHighContrast">التباين العالي المخصص</span>
+                            </span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-brand-lime text-brand-dark font-black font-mono">AAA</span>
+                        </button>
+
+                        <!-- إعدادات تخصيص الصوت البشري العصبي الفائق (Gemini Studio Neural HD TTS) -->
+                        <div class="p-3 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/25 space-y-2.5">
+                            <div class="flex items-center justify-between text-xs font-bold">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-teal"></i>
+                                    <span>المحرك الصوتي البشري الفائق (Studio HD)</span>
+                                </span>
+                                <span id="speech-engine-badge" class="text-[8px] font-mono font-black text-brand-dark bg-brand-lime px-2 py-0.5 rounded shadow-xs">Gemini Neural</span>
+                            </div>
+                            
+                            <!-- اختيار خامة الصوت البشري العربي -->
+                            <div class="space-y-1">
+                                <label class="text-[9px] text-gray-500 dark:text-gray-400 font-bold block">خامة ونبرة الصوت البشري المعتمد:</label>
+                                <select id="voice-neural-select" onchange="changeNeuralVoice(this.value)" class="w-full text-[10px] font-bold p-2 rounded-xl border border-brand-teal/30 bg-white dark:bg-brand-cardDark text-brand-dark dark:text-brand-mint focus:outline-none focus:border-brand-lime shadow-xs">
+                                    <option value="Sulafat" selected>صوت سُلافة (Sulafat) — نبرة عربية دافئة وناعمة</option>
+                                    <option value="Algieba">صوت الجبهة (Algieba) — نبرة وقورة وفصيحة متزنة</option>
+                                    <option value="Vindemiatrix">صوت وينديمياتريكس (Vindemiatrix) — نبرة رقيقة وهادئة</option>
+                                    <option value="Zephyr">صوت زفير (Zephyr) — نبرة مشرقة وواضحة</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-1.5 text-[9px] font-bold">
+                                <button onclick="setVoiceTonePreset('gentle')" class="py-1.5 rounded-lg bg-brand-teal text-white shadow-xs border border-brand-teal hover:opacity-90 transition-all text-center">
+                                    دافئ ناعم
+                                </button>
+                                <button onclick="setVoiceTonePreset('serene')" class="py-1.5 rounded-lg bg-white dark:bg-brand-cardDark border border-brand-teal/30 hover:border-brand-lime transition-all text-center">
+                                    وقور رصين
+                                </button>
+                                <button onclick="setVoiceTonePreset('balanced')" class="py-1.5 rounded-lg bg-white dark:bg-brand-cardDark border border-brand-teal/30 hover:border-brand-lime transition-all text-center">
+                                    فصيح حيوي
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between pt-1 text-[9px]">
+                                <button onclick="testHumanVoice()" class="flex-1 py-1.5 rounded-xl bg-brand-lime text-brand-dark font-black hover:opacity-90 shadow-xs transition-all flex items-center justify-center gap-1">
+                                    <i data-lucide="play" class="w-3 h-3"></i>
+                                    <span>استماع للنبرة البشرية</span>
+                                </button>
+                                <button onclick="stopSpeechPlayback()" class="ml-2 px-3 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/40 text-red-600 font-bold hover:bg-red-100 transition-all">
+                                    كتم
+                                </button>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleLargeCursor()" class="w-full p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/25 flex items-center justify-between text-xs font-bold hover:border-brand-lavender transition-all">
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="mouse-pointer" class="w-4 h-4 text-brand-lavender"></i>
+                                <span data-i18n="accLargeCursor">مؤشر الفأرة المكبر</span>
+                            </span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-brand-lavender/20 text-brand-dark dark:text-brand-lavender font-mono">Large</span>
+                        </button>
+
+                        <button onclick="toggleSingleSwitchMode()" id="switch-mode-btn" class="w-full p-2.5 rounded-2xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/25 flex items-center justify-between text-xs font-bold hover:border-brand-teal transition-all">
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="toggle-left" class="w-4 h-4 text-brand-teal"></i>
+                                <span data-i18n="accSingleSwitch">المسح بالمفتاح الفردي</span>
+                            </span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-brand-teal/20 text-brand-teal font-mono">Switch</span>
+                        </button>
+                    </div>
+
+                    <div class="pt-2 border-t border-brand-teal/15 space-y-2">
+                        <div class="flex justify-between items-center text-xs font-bold">
+                            <span data-i18n="settingsTypographyTitle">حجم الخط والواجهة:</span>
+                            <span id="settings-font-scale-ind" class="text-brand-teal dark:text-brand-lime font-mono font-bold">100%</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="adjustGlobalFontSize(10)" class="flex-1 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-xs font-bold hover:border-brand-lime transition-all" data-i18n="accFontIncrease">تكبير +</button>
+                            <button onclick="resetGlobalFontSize()" class="flex-1 py-2 rounded-xl bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-xs font-bold hover:border-brand-lime transition-all" data-i18n="accFontReset">الأصلي</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 4. شريط التبويبات السفلي الأصلي لتطبيق الآيفون (iOS Bottom Tab Bar) -->
+        <nav id="iphone-tab-bar" class="w-full bg-white/95 dark:bg-brand-darkSurface/95 backdrop-blur-xl border-t border-brand-teal/20 px-1 pt-1.5 pb-1 shadow-2xl flex items-center justify-around shrink-0 z-40 select-none">
+            <!-- تبويب الرئيسية -->
+            <button onclick="navigate('home')" id="mob-nav-home" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-brand-dark dark:text-brand-lime font-black bg-brand-teal/15 dark:bg-brand-cardDark transition-all min-w-[52px]">
+                <i data-lucide="home" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navHome">الرئيسية</span>
+            </button>
+            <!-- تبويب السوق -->
+            <button onclick="navigate('market')" id="mob-nav-market" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navMarket">السوق</span>
+            </button>
+            <!-- تبويب الخزف -->
+            <button onclick="navigate('crafts')" id="mob-nav-crafts" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]">
+                <i data-lucide="disc" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navCrafts">الخزف</span>
+            </button>
+            <!-- تبويب السدو -->
+            <button onclick="navigate('sadu-loom')" id="mob-nav-sadu-loom" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]">
+                <i data-lucide="grid" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navSaduLoom">السدو</span>
+            </button>
+            <!-- تبويب المرشد -->
+            <button onclick="navigate('coach')" id="mob-nav-coach" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]">
+                <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navCoach">المرشد</span>
+            </button>
+            <!-- تبويب الخيارات -->
+            <button onclick="navigate('settings')" id="mob-nav-settings" class="mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]">
+                <i data-lucide="sliders" class="w-4 h-4"></i>
+                <span class="text-[8px] mt-0.5" data-i18n="navSettings">الخيارات</span>
+            </button>
+        </nav>
+
+        <!-- 5. شريط العودة للرئيسية بنظام iOS (Home Indicator) -->
+        <div class="w-full bg-white/95 dark:bg-brand-darkSurface/95 pb-1 flex justify-center shrink-0 z-40">
+            <div class="w-28 h-1 bg-gray-400 dark:bg-gray-600 rounded-full"></div>
+        </div>
+    </div>
+
+    <!-- نافذة سلة المقتنيات (iOS Bottom Sheet) -->
+    <div id="cart-drawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center" role="dialog" aria-modal="true">
+        <div class="w-full sm:max-w-md bg-white dark:bg-brand-cardDark rounded-t-[36px] sm:rounded-3xl p-5 flex flex-col justify-between shadow-2xl border-t sm:border border-brand-teal/25 text-right max-h-[85vh]">
+            <div class="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-3 sm:hidden"></div>
+            <div>
+                <div class="flex items-center justify-between pb-3 border-b border-brand-teal/20">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="shopping-cart" class="w-4 h-4 text-brand-teal"></i>
+                        <h3 class="font-extrabold text-base text-brand-dark dark:text-brand-mint" data-i18n="cartTitle">سلة المقتنيات الفنية</h3>
+                    </div>
+                    <button onclick="closeCartDrawer()" aria-label="إغلاق السلة" class="h-7 w-7 rounded-full bg-gray-100 dark:bg-brand-darkSurface grid place-items-center hover:bg-gray-200 transition-colors">
+                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div id="cart-items-list" class="py-3 space-y-2 overflow-y-auto max-h-[45vh] ios-scroll"></div>
+            </div>
+            <div class="border-t border-brand-teal/20 pt-3 space-y-2.5">
+                <div class="flex justify-between items-center text-xs font-bold">
+                    <span data-i18n="cartTotalLabel">القيمة الإجمالية:</span>
+                    <span id="cart-total-price" class="text-brand-teal dark:text-brand-lime text-lg font-black font-mono">0 ر.س</span>
+                </div>
+                <button onclick="startCheckoutProcess()" class="w-full py-2.5 rounded-2xl bg-brand-dark text-brand-lime text-xs font-black shadow-glow-lime flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+                    <i data-lucide="credit-card" class="w-4 h-4"></i>
+                    <span data-i18n="cartCheckoutBtn">إتمام الشراء والدعم المالي المباشر</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة طرح قطعة جديدة للبيع في السوق (Sell Modal) -->
+    <div id="sell-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center" role="dialog" aria-modal="true">
+        <div class="bg-white dark:bg-brand-cardDark border-t sm:border border-brand-teal/40 rounded-t-[36px] sm:rounded-3xl w-full sm:max-w-md p-5 space-y-3.5 shadow-2xl text-right max-h-[90vh] overflow-y-auto ios-scroll">
+            <div class="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-2 sm:hidden"></div>
+            <div class="flex items-center justify-between pb-2 border-b border-brand-teal/20">
+                <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 rounded-xl bg-brand-lime text-brand-dark grid place-items-center font-black shadow-xs">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="font-extrabold text-sm text-brand-dark dark:text-brand-mint" data-i18n="sellModalTitle">طرح قطعة في السوق</h3>
+                </div>
+                <button onclick="closeSellModal()" class="h-7 w-7 rounded-full bg-gray-100 dark:bg-brand-darkSurface grid place-items-center hover:bg-gray-200 transition-colors">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleNewItemSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[10px] font-bold mb-1" data-i18n="sellPieceTitleLabel">اسم القطعة:</label>
+                    <input type="text" id="new-item-title" required placeholder="مثال: جرة خزفية مزججة" class="w-full px-3 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold focus:outline-none focus:border-brand-lime transition-all">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1" data-i18n="sellPieceCatLabel">الحرفة:</label>
+                        <select id="new-item-category" class="w-full px-2 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold">
+                            <option value="خزف" data-i18n="catPottery">خزف وفخار</option>
+                            <option value="سدو" data-i18n="catSadu">نسيج وسدو</option>
+                            <option value="موزاييك" data-i18n="catMosaic">موزاييك</option>
+                            <option value="لوحات" data-i18n="catPaintings">لوحة</option>
+                            <option value="جلود" data-i18n="catLeather">مشغولات جلدية</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1" data-i18n="sellPiecePriceLabel">السعر (ر.س):</label>
+                        <input type="number" id="new-item-price" min="10" required placeholder="350" class="w-full px-3 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1" data-i18n="sellPieceArtistLabel">اسم الصانع:</label>
+                        <input type="text" id="new-item-artist" required placeholder="اسم الفنان" class="w-full px-3 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1" data-i18n="sellPieceSellerTypeLabel">التصنيف:</label>
+                        <select id="new-item-seller-type" class="w-full px-2 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold">
+                            <option value="special" data-i18n="specialSellerOpt">مبدع إرادة (صحتي)</option>
+                            <option value="regular" data-i18n="regularSellerOpt">حرفي مستقل</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold mb-1" data-i18n="sellPieceTechLabel">التقنية التكيفية المستخدمة:</label>
+                    <input type="text" id="new-item-tech" placeholder="عجلة بالصوت / ملقاط مغناطيسي" class="w-full px-3 py-2 rounded-xl border border-brand-teal/30 bg-brand-mint/30 dark:bg-brand-darkSurface text-xs font-bold">
+                </div>
+                <div class="pt-1 flex gap-2">
+                    <button type="submit" class="flex-1 py-2.5 rounded-2xl bg-brand-dark text-brand-lime text-xs font-black shadow-glow-lime flex items-center justify-center gap-1.5 hover:opacity-90 transition-all">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                        <span data-i18n="sellSubmitBtn">طرح في السوق</span>
+                    </button>
+                    <button type="button" onclick="closeSellModal()" class="px-4 py-2.5 rounded-2xl bg-gray-100 dark:bg-brand-darkSurface text-xs font-bold hover:bg-gray-200 transition-all" data-i18n="sellCancelBtn">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة محاكاة منصة صحتي الذكية (Sehhaty Sync Modal) -->
+    <div id="sehhaty-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center" role="dialog" aria-modal="true">
+        <div class="bg-white dark:bg-brand-cardDark border-t sm:border border-brand-teal/40 rounded-t-[36px] sm:rounded-3xl w-full sm:max-w-md p-5 space-y-3.5 shadow-2xl text-right max-h-[85vh] overflow-y-auto ios-scroll">
+            <div class="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-2 sm:hidden"></div>
+            <div class="flex items-center justify-between pb-2 border-b border-brand-teal/20">
+                <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 rounded-xl bg-brand-teal text-white grid place-items-center shadow-xs">
+                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-sm text-brand-dark dark:text-brand-mint" data-i18n="sehhatyModalTitle">محاكي منصة صحتي السريري</h3>
+                        <span class="text-[9px] text-brand-teal font-mono">Saudi Sehhaty FHIR Sync Engine</span>
+                    </div>
+                </div>
+                <button onclick="closeSehhatyModal()" class="h-7 w-7 rounded-full bg-gray-100 dark:bg-brand-darkSurface grid place-items-center hover:bg-gray-200 transition-colors">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+
+            <p class="text-[10px] text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="sehhatyModalSub">
+                اختر الحالة السريرية لتفعيل الذكاء الاصطناعي وتكييف واجهات واستوديوهات المنصة فورياً:
+            </p>
+
+            <div class="space-y-2">
+                <!-- 1. مستخدم عام -->
+                <button onclick="selectHealthProfile('regular')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all shadow-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileRegTitle">مستخدم عام / مقتنٍ</span>
+                        <span class="text-[9px] bg-brand-teal text-white px-2 py-0.5 rounded-md font-bold font-mono" data-i18n="profileRegBadge">قياسي</span>
+                    </div>
+                    <p class="text-[9px] text-gray-500" data-i18n="profileRegDesc">الوضع الطبيعي المفتوح للجميع لبيع واقتناء الأعمال الفنية.</p>
+                </button>
+
+                <!-- 2. شلل رباعي -->
+                <button onclick="selectHealthProfile('quadriplegia')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all shadow-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileQuadTitle">أحمد القحطاني (شلل رباعي C5-C6)</span>
+                        <span class="text-[9px] bg-brand-lime text-brand-dark px-2 py-0.5 rounded-md font-bold font-mono" data-i18n="profileQuadBadge">عين + صوت</span>
+                    </div>
+                    <p class="text-[9px] text-gray-500" data-i18n="profileQuadDesc">تفعيل الشراء الصوتي، عجلة الخزف الصوتية ومكوك السدو الآلي.</p>
+                </button>
+
+                <!-- 3. رعاش حركي -->
+                <button onclick="selectHealthProfile('tremor')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all shadow-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileTremorTitle">فيصل الغامدي (رعاش حركي 6Hz)</span>
+                        <span class="text-[9px] bg-brand-lavender text-brand-dark px-2 py-0.5 rounded-md font-bold font-mono" data-i18n="profileTremorBadge">تخميد 88%</span>
+                    </div>
+                    <p class="text-[9px] text-gray-500" data-i18n="profileTremorDesc">تفعيل فلتر تنعيم الاهتزاز والمحاذاة المغناطيسية للقطع.</p>
+                </button>
+
+                <!-- 4. كف بصر -->
+                <button onclick="selectHealthProfile('visual')" class="w-full p-3 rounded-2xl border border-brand-teal/30 bg-brand-mint/40 dark:bg-brand-darkSurface hover:border-brand-lime text-right space-y-1 transition-all shadow-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="font-black text-xs text-brand-dark dark:text-brand-lime" data-i18n="profileVisualTitle">سارة السبيعي (كف بصر كلي)</span>
+                        <span class="text-[9px] bg-brand-teal text-white px-2 py-0.5 rounded-md font-bold font-mono" data-i18n="profileVisualBadge">نغمي صوتي</span>
+                    </div>
+                    <p class="text-[9px] text-gray-500" data-i18n="profileVisualDesc">نطق صوتي فوري للأعمال وترجمة الألوان لنغمات سمعية هارمونية.</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+        let currentSection = 'home';
+        let cart = [];
+        let selectedCategoryFilter = 'all';
+        let selectedSellerFilter = 'all';
+        let isPotteryRotating = true;
+        let selectedMosaicColor = '#46A889';
+        let canvas = null;
+        let ctx = null;
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let currentColor = '#0F3934';
+        let brushSize = 3.5;
+        let tremorDampingFactor = 0.85;
+        let isGazeActive = false;
+        let isVoiceListening = false;
+        let speechRecognition = null;
+        let isDarkMode = false;
+        let isHighContrast = false;
+        let isLargeCursor = false;
+        let isSingleSwitchActive = false;
+        let baseFontSize = 100;
+        let isPhoneFrameActive = true;
+
+        // =========================================================================
+        // محرك الصوت الإنساني فائق النقاء المطور (Gemini 2.5 Studio Neural HD TTS)
+        // =========================================================================
+        let currentGeminiVoice = "Sulafat"; // النبرة الدافئة العربية الطبيعية
+        let humanVoiceRate = 0.90;
+        let humanVoicePitch = 0.94;
+        let currentAudioElement = null;
+        const ttsAudioCache = new Map(); // تخزين مؤقت لسرعة الاستجابة اللحظية
+        let isGeneratingSpeech = false;
+        let globalAudioCtx = null;
+
+        // تفعيل وإيقاظ سياق الصوت لضمان تصريح المتصفح للتشغيل
+        function getGlobalAudioContext() {
+            try {
+                if (!globalAudioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) globalAudioCtx = new AudioContext();
+                }
+                if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
+                    globalAudioCtx.resume();
+                }
+            } catch (e) {}
+            return globalAudioCtx;
+        }
+
+        // تحويل بيانات Base64 الثنائية إلى ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // تحويل إشارات PCM16 الخام إلى ملف صوتي متوافق WAV
+        function pcmToWav(pcmData, sampleRate = 24000) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+            const blockAlign = numChannels * (bitsPerSample / 8);
+            const dataSize = pcmData.byteLength;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            // 1. RIFF Chunk
+            view.setUint8(0, 'R'.charCodeAt(0));
+            view.setUint8(1, 'I'.charCodeAt(0));
+            view.setUint8(2, 'F'.charCodeAt(0));
+            view.setUint8(3, 'F'.charCodeAt(0));
+            view.setUint32(4, 36 + dataSize, true);
+            view.setUint8(8, 'W'.charCodeAt(0));
+            view.setUint8(9, 'A'.charCodeAt(0));
+            view.setUint8(10, 'V'.charCodeAt(0));
+            view.setUint8(11, 'E'.charCodeAt(0));
+
+            // 2. fmt Sub-chunk
+            view.setUint8(12, 'f'.charCodeAt(0));
+            view.setUint8(13, 'm'.charCodeAt(0));
+            view.setUint8(14, 't'.charCodeAt(0));
+            view.setUint8(15, ' '.charCodeAt(0));
+            view.setUint32(16, 16, true); // Subchunk1Size (16 for PCM)
+            view.setUint16(20, 1, true);  // AudioFormat (1 for PCM)
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+
+            // 3. data Sub-chunk
+            view.setUint8(36, 'd'.charCodeAt(0));
+            view.setUint8(37, 'a'.charCodeAt(0));
+            view.setUint8(38, 't'.charCodeAt(0));
+            view.setUint8(39, 'a'.charCodeAt(0));
+            view.setUint32(40, dataSize, true);
+
+            const pcmBytes = new Uint8Array(pcmData.buffer || pcmData);
+            const wavBytes = new Uint8Array(buffer, 44);
+            wavBytes.set(pcmBytes);
+
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        // دالة تنظيف وصياغة النصوص لغوياً لنطق بشري فصيح ومتقن
+        function sanitizeTextForHumanSpeech(text) {
+            if (!text) return "";
+            return text
+                .replace(/https?:\/\/\S+/gi, '')
+                .replace(/[`*#_~\[\](){}<>|\\]/g, ' ')
+                .replace(/\bر\.س\b|\bSAR\b/gi, currentLang === 'ar' ? ' ريالاً سعودياً ' : ' Saudi Riyals ')
+                .replace(/\bملم\b|\bmm\b/gi, currentLang === 'ar' ? ' مليمتر ' : ' millimeters ')
+                .replace(/\bROM\b/gi, currentLang === 'ar' ? ' المدى الحركي ' : ' Range of Motion ')
+                .replace(/\bHz\b/gi, currentLang === 'ar' ? ' هرتز ' : ' Hertz ')
+                .replace(/\bRPM\b/gi, currentLang === 'ar' ? ' دورة في الدقيقة ' : ' RPM ')
+                .replace(/C5-C6/gi, currentLang === 'ar' ? ' الفقرات العنقية الخامسة والسادسة ' : ' C5 to C6 ')
+                .replace(/1-Switch/gi, currentLang === 'ar' ? ' مفتاح فردي ' : ' single switch ')
+                .replace(/(\d+)\s*%/g, currentLang === 'ar' ? '$1 بالمئة ' : '$1 percent ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        // نطق النصوص بالصوت البشري العصبي عالي النقاء
+        async function speakText(text) {
+            if (!text || text.trim().length === 0) return;
+            const cleanText = sanitizeTextForHumanSpeech(text);
+            if (!cleanText) return;
+
+            getGlobalAudioContext();
+            stopSpeechPlayback();
+
+            const isAr = currentLang === 'ar';
+            const cacheKey = `${currentGeminiVoice}_${cleanText.substring(0, 100)}`;
+
+            // 1. التحقق من وجود المقطع الصوتي في الذاكرة المؤقتة للتشغيل الفوري
+            if (ttsAudioCache.has(cacheKey)) {
+                try {
+                    const cachedBlobUrl = ttsAudioCache.get(cacheKey);
+                    currentAudioElement = new Audio(cachedBlobUrl);
+                    currentAudioElement.play();
+                    updateDynamicIslandAudioVisual(true);
+                    currentAudioElement.onended = () => updateDynamicIslandAudioVisual(false);
+                    return;
+                } catch(e) {}
+            }
+
+            // 2. مؤشر مرئي في الجزيرة التفاعلية
+            updateDynamicIslandAudioVisual(true, isAr ? "نطق بشري فائق..." : "Neural Voice...");
+
+            try {
+                // صياغة توجيه أسلوب الإلقاء الصوتي البشري
+                const speechStyle = isAr 
+                    ? `تحدث بنبرة عربية سعودية طبيعية ودافئة ومريحة، فصيحة النطق وسلسة بدون استعجال: ${cleanText}`
+                    : `Speak in a warm, friendly, natural human voice: ${cleanText}`;
+
+                const payload = {
+                    contents: [{
+                        parts: [{ text: speechStyle }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: currentGeminiVoice }
+                            }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType || "audio/x-pcm;rate=24000";
+
+                if (audioData) {
+                    const rateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+
+                    const pcmBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmBuffer);
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+
+                    ttsAudioCache.set(cacheKey, audioUrl);
+
+                    currentAudioElement = new Audio(audioUrl);
+                    currentAudioElement.play();
+                    currentAudioElement.onended = () => updateDynamicIslandAudioVisual(false);
+                    return;
+                } else {
+                    throw new Error("No audio payload from neural TTS");
+                }
+            } catch (err) {
+                console.warn("Neural TTS unavailable, falling back gracefully to smooth system speech:", err);
+                fallbackBrowserSpeech(cleanText);
+            }
+        }
+
+        // محاكي احتياطي في حال انقطاع الشبكة
+        function fallbackBrowserSpeech(cleanText) {
+            if (!('speechSynthesis' in window)) {
+                updateDynamicIslandAudioVisual(false);
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const isAr = currentLang === 'ar';
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = isAr ? 'ar-SA' : 'en-US';
+            utterance.rate = humanVoiceRate;
+            utterance.pitch = humanVoicePitch;
+
+            const voices = window.speechSynthesis.getVoices();
+            const naturalVoice = voices.find(v => v.lang.startsWith(isAr ? 'ar' : 'en') && /natural|neural|naayf|maged|salma|tariq/i.test(v.name));
+            if (naturalVoice) utterance.voice = naturalVoice;
+
+            utterance.onend = () => updateDynamicIslandAudioVisual(false);
+            utterance.onerror = () => updateDynamicIslandAudioVisual(false);
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // إيقاف تشغيل أي صوت حالي
+        function stopSpeechPlayback() {
+            if (currentAudioElement) {
+                try {
+                    currentAudioElement.pause();
+                    currentAudioElement.currentTime = 0;
+                } catch(e) {}
+                currentAudioElement = null;
+            }
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            updateDynamicIslandAudioVisual(false);
+            playHapticSound('click');
+        }
+
+        // تحديث الجزيرة التفاعلية أثناء التحدث
+        function updateDynamicIslandAudioVisual(isActive, label) {
+            const island = document.getElementById('dynamic-island');
+            const islandText = document.getElementById('island-status-text');
+            const leftDot = document.getElementById('island-dot-left');
+            const rightDot = document.getElementById('island-dot-right');
+            if (!island || !islandText) return;
+
+            if (isActive) {
+                island.classList.add('dynamic-island-glow', 'border-brand-lime');
+                islandText.innerText = label || (currentLang === 'ar' ? "صوت بشري نقي" : "Neural HD Voice");
+                if (leftDot) leftDot.className = "h-2 w-2 rounded-full bg-brand-lime animate-ping";
+                if (rightDot) rightDot.className = "h-2 w-2 rounded-full bg-brand-teal animate-pulse";
+            } else {
+                island.classList.remove('dynamic-island-glow', 'border-brand-lime');
+                islandText.innerText = "تلاقي الذكي";
+                if (leftDot) leftDot.className = "h-2 w-2 rounded-full bg-brand-teal";
+                if (rightDot) rightDot.className = "h-2 w-2 rounded-full bg-brand-lime";
+            }
+        }
+
+        // تبديل خامة الصوت البشري المعتمدة
+        function changeNeuralVoice(voiceName) {
+            currentGeminiVoice = voiceName;
+            playHapticSound('click');
+            const badge = document.getElementById('active-voice-name-badge');
+            if (badge) badge.innerText = voiceName;
+            testHumanVoice();
+        }
+
+        function setVoiceTonePreset(preset) {
+            playHapticSound('click');
+            if (preset === 'gentle') {
+                currentGeminiVoice = "Sulafat";
+                humanVoiceRate = 0.88;
+                humanVoicePitch = 0.92;
+            } else if (preset === 'serene') {
+                currentGeminiVoice = "Algieba";
+                humanVoiceRate = 0.85;
+                humanVoicePitch = 0.89;
+            } else if (preset === 'balanced') {
+                currentGeminiVoice = "Vindemiatrix";
+                humanVoiceRate = 0.93;
+                humanVoicePitch = 0.96;
+            }
+            const selectEl = document.getElementById('voice-neural-select');
+            if (selectEl) selectEl.value = currentGeminiVoice;
+            testHumanVoice();
+        }
+
+        function testHumanVoice() {
+            playHapticSound('click');
+            const sample = currentLang === 'ar'
+                ? "مرحباً بك في منصة تلاقي. هذا هو الصوت البشري الطبيعي، مُصمم ليكون دافئاً ومريحاً لإرشادك في كافة أروقة الاستوديو والسوق."
+                : "Welcome to Tallaqee platform. This is your studio-quality neural voice, designed to deliver a smooth and warm creative companion experience.";
+            speakText(sample);
+        }
+
+        // رنين صوتي لمسي دافئ وعضوي بدلاً من الصافرات الإلكترونية الحادة
+        function playHapticSound(type = 'click') {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const audioCtx = new AudioContext();
+
+                if (type === 'click') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const filter = audioCtx.createBiquadFilter();
+
+                    filter.type = 'lowpass';
+                    filter.frequency.setValueAtTime(1400, audioCtx.currentTime);
+                    filter.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.04);
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(420, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(160, audioCtx.currentTime + 0.04);
+
+                    gain.gain.setValueAtTime(0.045, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.045);
+
+                    osc.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.045);
+                } else if (type === 'success') {
+                    const notes = [528, 660, 792];
+                    notes.forEach((freq, i) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        const filter = audioCtx.createBiquadFilter();
+
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(2200, audioCtx.currentTime);
+
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.06);
+
+                        const startTime = audioCtx.currentTime + i * 0.06;
+                        gain.gain.setValueAtTime(0, startTime);
+                        gain.gain.linearRampToValueAtTime(0.04, startTime + 0.03);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.35);
+
+                        osc.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(audioCtx.destination);
+
+                        osc.start(startTime);
+                        osc.stop(startTime + 0.35);
+                    });
+                }
+            } catch(e) {}
+        }
+
+        // توليد رنين هارموني متناغم وعميق للألوان بدلاً من الصفير الميكانيكي
+        function playColorTone(type, desc) {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const audioCtx = new AudioContext();
+
+                let baseFreq = 432;
+                if (type === 'green') baseFreq = 528;
+                else if (type === 'lime') baseFreq = 639;
+                else if (type === 'dark') baseFreq = 396;
+                else if (type === 'lavender') baseFreq = 432;
+
+                [1, 1.5, 2].forEach((multiplier, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(baseFreq * multiplier, audioCtx.currentTime);
+
+                    const volume = idx === 0 ? 0.08 : 0.035 / idx;
+                    gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(volume, audioCtx.currentTime + 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.9);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.9);
+                });
+            } catch(e) {}
+
+            setTimeout(() => {
+                speakText(desc);
+            }, 320);
+        }
+
+        const healthProfilesData = {
+            regular: {
+                id: 'regular',
+                name_ar: 'مستخدم عام / مقتنٍ',
+                name_en: 'General User / Collector',
+                diagnosis_ar: 'سليم - لا توجد إعاقة مسجلة',
+                diagnosis_en: 'Standard - No disability',
+                badge_ar: 'مستخدم عام',
+                badge_en: 'General User',
+                statusText_ar: 'الملف الصحي: مستخدم عام (كل الأدوات قياسية)',
+                statusText_en: 'Clinical Profile: General User (Standard Tools)',
+                metricsText: 'ROM: 100% | Latency: 0ms'
+            },
+            quadriplegia: {
+                id: 'quadriplegia',
+                name_ar: 'أحمد القحطاني',
+                name_en: 'Ahmed Al-Qahtani',
+                diagnosis_ar: 'إصابة نخاع شوكي C5-C6 / شلل رباعي',
+                diagnosis_en: 'Spinal Cord Injury C5-C6 / Quadriplegia',
+                badge_ar: 'عين وصوت',
+                badge_en: 'Eye/Voice',
+                statusText_ar: 'تم الربط بـ صحتي: شلل رباعي (عين + صوت)',
+                statusText_en: 'Synced with Sehhaty: Quadriplegia (Eye/Voice)',
+                metricsText: 'Eyegaze Dwell: 1.2s | Voice Active'
+            },
+            tremor: {
+                id: 'tremor',
+                name_ar: 'فيصل الغامدي',
+                name_en: 'Faisal Al-Ghamdi',
+                diagnosis_ar: 'رعاش حركي 6 هرتز',
+                diagnosis_en: 'Motor Tremor 6 Hz',
+                badge_ar: 'تخميد 88%',
+                badge_en: 'Damping 88%',
+                statusText_ar: 'تم الربط بـ صحتي: رعاش حركي (ممتص اهتزاز)',
+                statusText_en: 'Synced with Sehhaty: Tremor (Damping Active)',
+                metricsText: 'Freq: 6.2 Hz | Kalman Filter: 88%'
+            },
+            visual: {
+                id: 'visual',
+                name_ar: 'سارة السبيعي',
+                name_en: 'Sarah Al-Subaie',
+                diagnosis_ar: 'كف بصر كلي',
+                diagnosis_en: 'Total Visual Impairment',
+                badge_ar: 'نغمي صوتي',
+                badge_en: 'Audio/Tones',
+                statusText_ar: 'تم الربط بـ صحتي: كف بصر كلي (قارئ ونغمات)',
+                statusText_en: 'Synced with Sehhaty: Total Visual (Screen Reader + Tones)',
+                metricsText: 'Speech: Active | Screen Reader: ON'
+            },
+            partial_visual: {
+                id: 'partial_visual',
+                name_ar: 'نورة الشمري',
+                name_en: 'Noura Al-Shammari',
+                diagnosis_ar: 'ضعف بصر جزئي وعشى ليلي',
+                diagnosis_en: 'Partial Visual Impairment / Low Vision',
+                badge_ar: 'تباين ونطق',
+                badge_en: 'High-Contrast/Audio',
+                statusText_ar: 'تم الربط بـ صحتي: ضعف بصر جزئي (تكبير ونطق)',
+                statusText_en: 'Synced with Sehhaty: Partial Visual (Zoom + Voice)',
+                metricsText: 'Contrast: High | Font: 120% | Audio: ON'
+            }
+        };
+
+        let activeProfile = healthProfilesData.regular;
+
+        const i18nDictionary = {
+            ar: {
+                siteTitle: "تلاقي",
+                badgeNational: "توثيق وطني",
+                topBannerSell: "طرح قطعة فنية أو حرفية للبيع",
+                navHome: "الرئيسية",
+                navMarket: "السوق",
+                navCrafts: "الخزف",
+                navSaduLoom: "السدو",
+                navCoach: "المرشد",
+                navSandbox: "المختبر",
+                navSettings: "الخيارات",
+                homeBadge: "استوديو وفضاء الفنون الشاملة",
+                homeHeroTitle: "أهلاً بك في منصة تلاقي",
+                homeHeroSub: "سوق مفتوح واستوديوهات تكيفية لتمكين الجميع: مقتنون، فنانون مستقلون، ومبدعو الإرادة من ذوي الإعاقة.",
+                homeExploreMarket: "تصفح السوق",
+                homeSellAction: "طرح عمل للبيع",
+                homeHubTitle: "أقسام واستوديوهات المنصة",
+                hubMarketDesc: "بيع وشراء",
+                hubCraftsDesc: "تشكيل الفخار",
+                hubSaduDesc: "حياكة وموزاييك",
+                hubCoachDesc: "ذكاء اصطناعي",
+                hubSandboxDesc: "تخميد الرعاش",
+                hubSettingsDesc: "تخصيص كامل",
+                toolsReelTitle: "المنظومة التكيفية المساندة",
+                toolsReelTest: "تجربة الأدوات",
+                statIncome: "ريع المبيعات للفنان",
+                statRating: "تقييم الموثوقية",
+                statHeritage: "معايير التراث الوطني",
+                marketBadge: "منظومة التمكين الاقتصادي الحرفي",
+                marketHeading: "سوق القطع الفنية والأشغال اليدوية",
+                marketSub: "سوق مفتوح لتمكين الحرفيين ومبدعي الإرادة من بيع واقتناء الأعمال اليدوية الأصيلة.",
+                switchHealthProfileBtn: "تغيير",
+                searchPlaceholder: "ابحث باسم القطعة، الحرفة، أو الفنان...",
+                allSellers: "الكل",
+                specialSellers: "مبدعو الإرادة",
+                regularSellers: "حرفيون مستقلون",
+                catAll: "كافة المعروضات",
+                catPottery: "خزف وفخار",
+                catSadu: "نسيج وسدو",
+                catMosaic: "موزاييك",
+                catPaintings: "لوحات",
+                catLeather: "جلود",
+                btnAddToCart: "السلة",
+                btnBuyNow: "شراء",
+                creatorPrefix: "الصانع:",
+                verifiedRating: "موثق 4.9/5",
+                techUsedPrefix: "التقنية:",
+                potteryBadge: "النحت الدوراني التكيفي",
+                potteryTitle: "استوديو تشكيل الخزف الهندسي",
+                shapeVase: "مزهرية",
+                shapeBowl: "إناء عريض",
+                shapeAmphora: "جرة تراثية",
+                potteryCaliperRim: "قطر الفوهة:",
+                potteryCaliperWaist: "محيط الخصر:",
+                potteryCaliperHeight: "الارتفاع:",
+                potteryGlazeLabel: "التزجيج التراثي:",
+                potterySellBtn: "طرح التحفة للبيع",
+                potterySpinStop: "إيقاف",
+                potterySpinStart: "دوران",
+                saduBadge: "النسيج والموزاييك التكيفي",
+                saduTitle: "نول السدو والفسيفساء المغناطيسية",
+                saduLoomTitle: "نول السدو الآلي الذكي",
+                saduCertified: "موثق وَرَث",
+                saduAdvanceWeave: "تمرير المكوك (مفتاح فردي)",
+                mosaicTitle: "الموزاييك المغناطيسي المساند",
+                mosaicSelectedColor: "اللون المختار:",
+                mosaicReset: "إعادة ضبط",
+                coachBadge: "توجيه مهني وسريري",
+                coachTitle: "المرشد الفني والمهني الذكي",
+                coachSubHeading: "مرشد تلاقي الفني",
+                coachGreeting: "أهلاً بك في استوديو تلاقي. يسعدني إرشادك في مواءمة أدوات الخزف والسدو، وتسعير أعمالك الحرفية طبقاً لمعايير التراث الوطني.",
+                coachPrompt1: "معادلة التسعير",
+                coachPrompt2: "بيئة عمل السدو",
+                coachPrompt3: "دعم قبضة اليد",
+                sandboxBadge: "المعايرة الهندسية الحية",
+                sandboxTitle: "مختبر الرسم التكيفي وممتص الرعاش",
+                sandboxAudioTonesTitle: "نغمات الألوان السمعية للمكفوفين:",
+                sandboxDampingLabel: "معامل تخميد الرعاش (Kalman):",
+                sandboxGazeOff: "تتبع العين",
+                sandboxGazeOn: "تتبع العين: نشط",
+                cartTitle: "سلة المقتنيات الفنية",
+                cartTotalLabel: "القيمة الإجمالية:",
+                cartCheckoutBtn: "إتمام الشراء والدعم المالي المباشر",
+                sellModalTitle: "طرح قطعة في السوق",
+                sellPieceTitleLabel: "اسم القطعة:",
+                sellPieceCatLabel: "الحرفة:",
+                sellPiecePriceLabel: "السعر (ر.س):",
+                sellPieceArtistLabel: "اسم الصانع:",
+                sellPieceSellerTypeLabel: "التصنيف:",
+                specialSellerOpt: "مبدع إرادة (صحتي)",
+                regularSellerOpt: "حرفي مستقل",
+                sellPieceTechLabel: "التقنية التكيفية المستخدمة:",
+                sellSubmitBtn: "طرح في السوق",
+                sellCancelBtn: "إلغاء",
+                sehhatyModalTitle: "محاكي منصة صحتي السريري",
+                sehhatyModalSub: "اختر الحالة السريرية لتفعيل الذكاء الاصطناعي وتكييف واجهات واستوديوهات المنصة فورياً:",
+                profileRegTitle: "مستخدم عام / مقتنٍ",
+                profileRegBadge: "قياسي",
+                profileRegDesc: "الوضع الطبيعي المفتوح للجميع لبيع واقتناء الأعمال الفنية.",
+                profileQuadTitle: "أحمد القحطاني (شلل رباعي C5-C6)",
+                profileQuadBadge: "عين + صوت",
+                profileQuadDesc: "تفعيل الشراء الصوتي، عجلة الخزف الصوتية ومكوك السدو الآلي.",
+                profileTremorTitle: "فيصل الغامدي (رعاش حركي 6Hz)",
+                profileTremorBadge: "تخميد 88%",
+                profileTremorDesc: "تفعيل فلتر تنعيم الاهتزاز والمحاذاة المغناطيسية للقطع.",
+                profileVisualTitle: "سارة السبيعي (كف بصر كلي)",
+                profileVisualBadge: "نغمي صوتي",
+                profileVisualDesc: "نطق صوتي فوري للأعمال وترجمة الألوان لنغمات سمعية هارمونية.",
+                settingsBadge: "تخصيص الواجهة",
+                settingsTitle: "خيارات المنصة وتسهيلات الوصول",
+                accDarkMode: "الوضع الداكن / المضيء",
+                accHighContrast: "التباين العالي المخصص",
+                accLargeCursor: "مؤشر الفأرة المكبر",
+                accSingleSwitch: "المسح بالمفتاح الفردي",
+                settingsTypographyTitle: "حجم الخط والواجهة:",
+                accFontIncrease: "تكبير +",
+                accFontReset: "الأصلي",
+                voiceIndicatorPrompt: "المايكروفون يستمع.. قل: \"سوق\"، \"خزف\"، \"سدو\"، \"خيارات\"",
+                voiceStop: "إيقاف"
+            },
+            en: {
+                siteTitle: "Tallaqee",
+                badgeNational: "National Accreditation",
+                topBannerSell: "List a Piece for Direct Sale",
+                navHome: "Home",
+                navMarket: "Market",
+                navCrafts: "Pottery",
+                navSaduLoom: "Sadu",
+                navCoach: "Coach",
+                navSandbox: "Sandbox",
+                navSettings: "Settings",
+                homeBadge: "Inclusive Art & Craft Hub",
+                homeHeroTitle: "Welcome to Tallaqee App",
+                homeHeroSub: "Open marketplace and adaptive studios empowering everyone: collectors, independent artisans, and determined artists.",
+                homeExploreMarket: "Explore Market",
+                homeSellAction: "Sell a Piece",
+                homeHubTitle: "Studios & Options",
+                hubMarketDesc: "Buy & Sell",
+                hubCraftsDesc: "Clay Wheel",
+                hubSaduDesc: "Weaving & Mosaic",
+                hubCoachDesc: "AI Mentor",
+                hubSandboxDesc: "Tremor Damping",
+                hubSettingsDesc: "Customization",
+                toolsReelTitle: "Assistive Engineering Suite",
+                toolsReelTest: "Test Tools",
+                statIncome: "Direct Profit to Artist",
+                statRating: "Trust Score",
+                statHeritage: "TRITA Standards",
+                marketBadge: "Craft Socioeconomic Platform",
+                marketHeading: "Masterpiece & Handicraft Market",
+                marketSub: "An open marketplace enabling independent artisans and determined artists to trade authentic crafts.",
+                switchHealthProfileBtn: "Change",
+                searchPlaceholder: "Search by title, craft, or artist...",
+                allSellers: "All",
+                specialSellers: "Determined",
+                regularSellers: "Independent",
+                catAll: "All Masterpieces",
+                catPottery: "Pottery",
+                catSadu: "Sadu",
+                catMosaic: "Mosaic",
+                catPaintings: "Paintings",
+                catLeather: "Leather",
+                btnAddToCart: "Cart",
+                btnBuyNow: "Buy",
+                creatorPrefix: "Artisan:",
+                verifiedRating: "Score 4.9/5",
+                techUsedPrefix: "Tech:",
+                potteryBadge: "Adaptive Lathe",
+                potteryTitle: "Assistive Pottery Studio",
+                shapeVase: "Vase",
+                shapeBowl: "Bowl",
+                shapeAmphora: "Amphora",
+                potteryCaliperRim: "Rim Diameter:",
+                potteryCaliperWaist: "Waist:",
+                potteryCaliperHeight: "Height:",
+                potteryGlazeLabel: "Heritage Glaze:",
+                potterySellBtn: "List in Marketplace",
+                potterySpinStop: "Pause",
+                potterySpinStart: "Spin",
+                saduBadge: "Adaptive Weaving",
+                saduTitle: "Sadu Loom & Magnetic Mosaic",
+                saduLoomTitle: "Automated Smart Loom",
+                saduCertified: "TRITA Certified",
+                saduAdvanceWeave: "Pass Shuttle (1-Switch)",
+                mosaicTitle: "Magnetic Mosaic Board",
+                mosaicSelectedColor: "Selected Color:",
+                mosaicReset: "Reset",
+                coachBadge: "Vocational & Clinical AI",
+                coachTitle: "AI Art & Vocational Coach",
+                coachSubHeading: "Tallaqee Art Mentor",
+                coachGreeting: "Welcome to Tallaqee Studio. I am here to guide your pottery, Sadu weaving, and fair artwork pricing based on national heritage standards.",
+                coachPrompt1: "Pricing Formula",
+                coachPrompt2: "Sadu Ergonomics",
+                coachPrompt3: "Grip Support",
+                sandboxBadge: "Live Calibration Lab",
+                sandboxTitle: "Adaptive Drawing Canvas",
+                sandboxAudioTonesTitle: "Harmonic Color Tones for Visually Impaired:",
+                sandboxDampingLabel: "Tremor Damping Factor (Kalman):",
+                sandboxGazeOff: "Eye-Tracking",
+                sandboxGazeOn: "Eye-Tracking: Active",
+                cartTitle: "Art Collector Cart",
+                cartTotalLabel: "Total Amount:",
+                cartCheckoutBtn: "Checkout & Direct Support",
+                sellModalTitle: "List Masterpiece in Market",
+                sellPieceTitleLabel: "Artwork Title:",
+                sellPieceCatLabel: "Craft Category:",
+                sellPiecePriceLabel: "Price (SAR):",
+                sellPieceArtistLabel: "Artisan Name:",
+                sellPieceSellerTypeLabel: "Tier:",
+                specialSellerOpt: "Determined Artist (Sehhaty)",
+                regularSellerOpt: "Independent Artisan",
+                sellPieceTechLabel: "Assistive Tech Used:",
+                sellSubmitBtn: "Publish to Market",
+                sellCancelBtn: "Cancel",
+                sehhatyModalTitle: "Sehhaty Clinical Profiler",
+                sehhatyModalSub: "Choose a clinical profile to calibrate platform tools in real-time:",
+                profileRegTitle: "General User / Collector",
+                profileRegBadge: "Standard",
+                profileRegDesc: "Standard mode open for everyone to buy and sell artworks.",
+                profileQuadTitle: "Ahmed Al-Qahtani (Quadriplegia C5-C6)",
+                profileQuadBadge: "Eye/Voice",
+                profileQuadDesc: "Enables voice checkout, voice pottery lathe, and auto shuttle.",
+                profileTremorTitle: "Faisal Al-Ghamdi (Motor Tremor 6Hz)",
+                profileTremorBadge: "Damping 88%",
+                profileTremorDesc: "Enables line-smoothing Kalman filters and magnetic mosaic.",
+                profileVisualTitle: "Sarah Al-Subaie (Visual Impairment)",
+                profileVisualBadge: "Audio/Tones",
+                profileVisualDesc: "Live speech readout and harmonic color-to-pitch audio.",
+                settingsBadge: "Interface Setup",
+                settingsTitle: "Platform Options & Accessibility",
+                accDarkMode: "Dark / Light Mode",
+                accHighContrast: "Custom High Contrast",
+                accLargeCursor: "Enlarged Cursor",
+                accSingleSwitch: "Single-Switch Scanning",
+                settingsTypographyTitle: "Font Scale:",
+                accFontIncrease: "Increase +",
+                accFontReset: "Reset",
+                voiceIndicatorPrompt: "Microphone listening.. Say: \"Market\", \"Pottery\", \"Sadu\", \"Settings\"",
+                voiceStop: "Stop"
+            }
+        };
+
+        let marketItems = [
+            {
+                id: 1,
+                title_ar: "جرة فخارية تراثية بطلاء زمردي مصقول",
+                title_en: "Heritage Clay Amphora with Polished Emerald Glaze",
+                category_ar: "خزف",
+                category_en: "Pottery",
+                price: 380,
+                artist_ar: "سعود الدوسري",
+                artist_en: "Saud Al-Dossary",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined",
+                assistiveTech_ar: "عجلة خزف تكيفية بالصوت",
+                assistiveTech_en: "Voice-Assisted Pottery Wheel",
+                image: "https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "خزف مصنوع من طمي طبيعي معالج، شُكلت بالكامل عبر منظومة الأوامر الصوتية المعيارية.",
+                desc_en: "Crafted from organic clay and emerald glaze, shaped using calibrated voice commands."
+            },
+            {
+                id: 2,
+                title_ar: "مفرش سدو تراثي بنقش الشجرة النجدية",
+                title_en: "Authentic Sadu Runner with Najdi Tree Pattern",
+                category_ar: "سدو",
+                category_en: "Sadu",
+                price: 520,
+                artist_ar: "فاطمة الشهري",
+                artist_en: "Fatima Al-Shehri",
+                sellerType: "special",
+                sellerTypeLabel_ar: "مبدع إرادة",
+                sellerTypeLabel_en: "Determined",
+                assistiveTech_ar: "نول آلي ذكي بمكوك بمفتاح فردي",
+                assistiveTech_en: "Automated Loom with 1-Key Shuttle",
+                image: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "نسيج أصيل محبوك من الصوف الطبيعي المصبوغ بنباتات برية بدقة حياكة متناهية.",
+                desc_en: "Handcrafted weaving from natural wool dyed with desert flora with extreme precision."
+            },
+            {
+                id: 3,
+                title_ar: "طقم أواني قهوة فخارية مذهبة",
+                title_en: "Gilded Ceramic Saudi Coffee Serving Set",
+                category_ar: "خزف",
+                category_en: "Pottery",
+                price: 290,
+                artist_ar: "عبدالله العتيبي",
+                artist_en: "Abdullah Al-Otaibi",
+                sellerType: "regular",
+                sellerTypeLabel_ar: "حرفي مستقل",
+                sellerTypeLabel_en: "Independent",
+                assistiveTech_ar: "حرفة يدوية كلاسيكية",
+                assistiveTech_en: "Classic Handmade Craftsmanship",
+                image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80",
+                desc_ar: "أواني خزفية يدوية الصنع لتقديم القهوة السعودية الفاخرة بطابع عصري وتراثي مدمج.",
+                desc_en: "Handmade ceramic cups and pitcher crafted for Saudi coffee with luxury gilding."
+            }
+        ];
+
+        function applyMarketFilters() {
+            const searchInput = document.getElementById('market-search-input');
+            const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const grid = document.getElementById('marketplace-grid');
+            if (!grid) return;
+
+            const isAr = currentLang === 'ar';
+            const dict = i18nDictionary[currentLang] || i18nDictionary.ar;
+
+            const filtered = marketItems.filter(item => {
+                const matchCat = (selectedCategoryFilter === 'all' || item.category_ar === selectedCategoryFilter || item.category_en.toLowerCase() === selectedCategoryFilter.toLowerCase());
+                const matchSeller = (selectedSellerFilter === 'all' || item.sellerType === selectedSellerFilter);
+                const title = (isAr ? item.title_ar : item.title_en).toLowerCase();
+                const artist = (isAr ? item.artist_ar : item.artist_en).toLowerCase();
+                const matchSearch = !term || title.includes(term) || artist.includes(term);
+                return matchCat && matchSeller && matchSearch;
+            });
+
+            grid.innerHTML = '';
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="p-8 text-center bg-white/60 dark:bg-brand-cardDark rounded-3xl border border-brand-teal/20 text-gray-500">
+                        <i data-lucide="package-open" class="w-8 h-8 mx-auto mb-2 text-brand-teal"></i>
+                        <p class="text-xs font-bold">${isAr ? 'لا توجد قطع مطابقة للبحث' : 'No items match your search'}</p>
+                    </div>
+                `;
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+
+            filtered.forEach(item => {
+                const title = isAr ? item.title_ar : item.title_en;
+                const artist = isAr ? item.artist_ar : item.artist_en;
+                const tech = isAr ? item.assistiveTech_ar : item.assistiveTech_en;
+                const sellerBadge = isAr ? item.sellerTypeLabel_ar : item.sellerTypeLabel_en;
+                const desc = isAr ? item.desc_ar : item.desc_en;
+
+                const card = document.createElement('div');
+                card.className = "p-3.5 rounded-3xl bg-white dark:bg-brand-cardDark border border-brand-teal/25 shadow-card-luxury space-y-2.5 text-right transition-all hover:border-brand-teal";
+                card.innerHTML = `
+                    <div class="relative h-40 rounded-2xl overflow-hidden bg-brand-mint/40 dark:bg-brand-darkSurface">
+                        <img src="${item.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='https://placehold.co/600x400/0F3934/B7E348?text=Tallaqee'">
+                        <span class="absolute top-2.5 right-2.5 text-[9px] font-black px-2.5 py-0.5 rounded-full ${item.sellerType === 'special' ? 'bg-brand-lime text-brand-dark' : 'bg-brand-dark text-brand-mint'} shadow-sm">
+                            ${sellerBadge}
+                        </span>
+                        <span class="absolute bottom-2.5 left-2.5 text-xs font-black font-mono px-2.5 py-0.5 rounded-xl bg-brand-dark/90 text-brand-lime backdrop-blur-sm shadow-sm">
+                            ${item.price} ${isAr ? 'ر.س' : 'SAR'}
+                        </span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between gap-2">
+                            <h3 class="font-extrabold text-xs text-brand-dark dark:text-brand-mint leading-snug truncate">${title}</h3>
+                            <button onclick="readItemDetailsAloud(${item.id})" class="h-6 w-6 rounded-lg bg-brand-teal/15 text-brand-teal hover:bg-brand-teal hover:text-white grid place-items-center shrink-0 transition-colors" title="${isAr ? 'استماع لتفاصيل العمل' : 'Listen to artwork details'}">
+                                <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5">${desc}</p>
+                    </div>
+                    <div class="pt-1 border-t border-brand-teal/15 flex items-center justify-between text-[9px] font-bold text-gray-600 dark:text-gray-300">
+                        <span class="truncate">${dict.creatorPrefix} <strong class="text-brand-teal dark:text-brand-lime">${artist}</strong></span>
+                        <span class="text-brand-teal truncate font-mono text-[8px] bg-brand-mint dark:bg-brand-darkSurface px-1.5 py-0.5 rounded border border-brand-teal/20">${tech}</span>
+                    </div>
+                    <div class="flex gap-2 pt-0.5">
+                        <button onclick="addToCart(${item.id})" class="flex-1 py-1.5 rounded-xl bg-brand-teal hover:bg-brand-teal/90 text-white text-[11px] font-black shadow-sm transition-all flex items-center justify-center gap-1">
+                            <i data-lucide="shopping-cart" class="w-3 h-3 text-brand-lime"></i>
+                            <span>${dict.btnAddToCart}</span>
+                        </button>
+                        <button onclick="quickBuyItem(${item.id})" class="flex-1 py-1.5 rounded-xl bg-brand-lime text-brand-dark text-[11px] font-black shadow-glow-lime hover:opacity-90 transition-all flex items-center justify-center gap-1">
+                            <i data-lucide="zap" class="w-3 h-3"></i>
+                            <span>${dict.btnBuyNow}</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function filterSellerType(type) {
+            playHapticSound('click');
+            selectedSellerFilter = type;
+            document.querySelectorAll('.seller-filter-btn').forEach(btn => {
+                btn.className = "seller-filter-btn px-3.5 py-1.5 rounded-xl text-[10px] font-bold bg-brand-mint dark:bg-brand-darkSurface border border-brand-teal/20 text-brand-dark dark:text-brand-mint shrink-0";
+            });
+            if (event && event.currentTarget) {
+                event.currentTarget.className = "seller-filter-btn active px-3.5 py-1.5 rounded-xl text-[10px] font-black bg-brand-dark text-brand-lime shrink-0 shadow-xs";
+            }
+            applyMarketFilters();
+        }
+
+        function filterCategory(cat) {
+            playHapticSound('click');
+            selectedCategoryFilter = cat;
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                btn.className = "cat-filter-btn px-3 py-1 rounded-xl text-[9px] font-bold bg-gray-100 dark:bg-brand-darkSurface text-gray-700 dark:text-gray-300 shrink-0";
+            });
+            if (event && event.currentTarget) {
+                event.currentTarget.className = "cat-filter-btn active px-3 py-1 rounded-xl text-[9px] font-black bg-brand-teal text-white shrink-0 shadow-xs";
+            }
+            applyMarketFilters();
+        }
+
+        function readItemDetailsAloud(itemId) {
+            const item = marketItems.find(i => i.id === itemId);
+            if (!item) return;
+            playHapticSound('click');
+            const isAr = currentLang === 'ar';
+            const text = isAr
+                ? `${item.title_ar}. الصانع: ${item.artist_ar}. السعر: ${item.price} ريال سعودي. التقنية المستخدمة: ${item.assistiveTech_ar}. ${item.desc_ar}`
+                : `${item.title_en}. Artisan: ${item.artist_en}. Price: ${item.price} Saudi Riyals. Assistive technique: ${item.assistiveTech_en}. ${item.desc_en}`;
+            speakText(text);
+        }
+
+        function openCartDrawer() {
+            playHapticSound('click');
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer) drawer.classList.remove('hidden');
+            updateCartUI();
+        }
+
+        function closeCartDrawer() {
+            playHapticSound('click');
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer) drawer.classList.add('hidden');
+        }
+
+        function addToCart(itemId) {
+            const item = marketItems.find(i => i.id === itemId);
+            if (!item) return;
+            cart.push(item);
+            playHapticSound('success');
+            updateCartUI();
+            const isAr = currentLang === 'ar';
+            const title = isAr ? item.title_ar : item.title_en;
+            showToastNotification(isAr ? "أضيف للسلة" : "Added to Cart", title);
+        }
+
+        function removeFromCart(index) {
+            playHapticSound('click');
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function quickBuyItem(itemId) {
+            addToCart(itemId);
+            openCartDrawer();
+        }
+
+        function updateCartUI() {
+            const countBadge = document.getElementById('cart-counter');
+            if (countBadge) countBadge.innerText = cart.length;
+
+            const list = document.getElementById('cart-items-list');
+            const totalEl = document.getElementById('cart-total-price');
+            const isAr = currentLang === 'ar';
+
+            let total = 0;
+            cart.forEach(item => { total += item.price; });
+            if (totalEl) totalEl.innerText = `${total} ${isAr ? 'ر.س' : 'SAR'}`;
+
+            if (!list) return;
+            list.innerHTML = '';
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div class="py-8 text-center text-gray-500 space-y-1">
+                        <i data-lucide="shopping-cart" class="w-8 h-8 mx-auto text-brand-teal/40"></i>
+                        <p class="text-xs font-bold">${isAr ? 'السلة فارغة حالياً' : 'Your cart is empty'}</p>
+                    </div>
+                `;
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const title = isAr ? item.title_ar : item.title_en;
+                const row = document.createElement('div');
+                row.className = "flex items-center justify-between p-2 rounded-xl bg-brand-mint/40 dark:bg-brand-darkSurface border border-brand-teal/20 text-xs";
+                row.innerHTML = `
+                    <div class="flex items-center gap-2 truncate">
+                        <img src="${item.image}" alt="${title}" class="h-9 w-9 rounded-lg object-cover shrink-0">
+                        <div class="truncate">
+                            <h4 class="font-extrabold text-brand-dark dark:text-brand-mint text-[11px] truncate">${title}</h4>
+                            <span class="text-[9px] text-brand-teal font-mono font-bold">${item.price} ${isAr ? 'ر.س' : 'SAR'}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="h-6 w-6 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950/50 grid place-items-center shrink-0">
+                        <i data-lucide="trash" class="w-3.5 h-3.5"></i>
+                    </button>
+                `;
+                list.appendChild(row);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function startCheckoutProcess() {
+            if (cart.length === 0) {
+                showToastNotification(currentLang === 'ar' ? "السلة فارغة" : "Cart Empty", currentLang === 'ar' ? "يرجى إضافة قطع قبل الشراء" : "Add pieces first");
+                return;
+            }
+            playHapticSound('success');
+            const isAr = currentLang === 'ar';
+            cart = [];
+            updateCartUI();
+            closeCartDrawer();
+            showToastNotification(isAr ? "تم إتمام الطلب بنجاح!" : "Order Completed!", isAr ? "شكراً لدعمك المباشر للفنانين" : "Thank you for supporting artists directly");
+            speakText(isAr ? "تم إتمام عملية الشراء بنجاح. شكراً لدعمك المباشر لمبدعي الإرادة والحرفيين." : "Purchase completed successfully. Thank you for directly supporting artists.");
+        }
+
+        function openSellModal() {
+            playHapticSound('click');
+            const modal = document.getElementById('sell-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSellModal() {
+            playHapticSound('click');
+            const modal = document.getElementById('sell-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function handleNewItemSubmit(e) {
+            e.preventDefault();
+            playHapticSound('success');
+            const title = document.getElementById('new-item-title').value.trim();
+            const category = document.getElementById('new-item-category').value;
+            const price = parseFloat(document.getElementById('new-item-price').value) || 100;
+            const artist = document.getElementById('new-item-artist').value.trim();
+            const sellerType = document.getElementById('new-item-seller-type').value;
+            const tech = document.getElementById('new-item-tech').value.trim() || (sellerType === 'special' ? 'أدوات مساندة' : 'صناعة يدوية');
+
+            const isAr = currentLang === 'ar';
+            const newItem = {
+                id: Date.now(),
+                title_ar: title,
+                title_en: title,
+                category_ar: category,
+                category_en: category,
+                price: price,
+                artist_ar: artist,
+                artist_en: artist,
+                sellerType: sellerType,
+                sellerTypeLabel_ar: sellerType === 'special' ? 'مبدع إرادة' : 'حرفي مستقل',
+                sellerTypeLabel_en: sellerType === 'special' ? 'Determined' : 'Independent',
+                assistiveTech_ar: tech,
+                assistiveTech_en: tech,
+                image: 'https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?auto=format&fit=crop&w=800&q=80',
+                desc_ar: `عمل حرفي أصيل ومتقن تم تصنيعه بواسطة ${artist} باستخدام ${tech}.`,
+                desc_en: `Authentic craft masterpiece created by ${artist} using ${tech}.`
+            };
+
+            marketItems.unshift(newItem);
+            closeSellModal();
+            e.target.reset();
+            applyMarketFilters();
+            showToastNotification(isAr ? "تم طرح القطعة" : "Item Listed", isAr ? `تم إدراج ${title} في السوق بنجاح` : `${title} published to market`);
+            navigate('market');
+        }
+
+        let currentPotteryColor = '#46A889';
+        let currentPotteryGlazeName = 'طلاء زمردي مصقول';
+
+        function updatePotteryMesh() {
+            const widthVal = document.getElementById('pottery-width');
+            const waistVal = document.getElementById('pottery-waist');
+            const heightVal = document.getElementById('pottery-height');
+            const visual = document.getElementById('pottery-visual');
+            if (!visual || !widthVal || !waistVal || !heightVal) return;
+
+            const w = parseInt(widthVal.value);
+            const waist = parseInt(waistVal.value);
+            const h = parseInt(heightVal.value);
+
+            const widthInd = document.getElementById('val-width-ind');
+            const waistInd = document.getElementById('val-waist-ind');
+            const heightInd = document.getElementById('val-height-ind');
+            const isAr = currentLang === 'ar';
+
+            if (widthInd) widthInd.innerText = `${w} ${isAr ? 'ملم' : 'mm'}`;
+            if (waistInd) waistInd.innerText = `${waist} ${isAr ? 'ملم' : 'mm'}`;
+            if (heightInd) heightInd.innerText = `${h} ${isAr ? 'ملم' : 'mm'}`;
+
+            visual.style.width = `${Math.min(220, Math.max(70, w * 2.1))}px`;
+            visual.style.height = `${Math.min(220, Math.max(90, h * 0.9))}px`;
+            const topCurv = Math.min(50, Math.max(15, w * 0.6));
+            const botCurv = Math.min(65, Math.max(25, waist * 0.8));
+            visual.style.borderRadius = `${topCurv}% ${topCurv}% ${botCurv}% ${botCurv}% / 40% 40% 60% 60%`;
+        }
+
+        function changePotteryShape(shape) {
+            playHapticSound('click');
+            const widthVal = document.getElementById('pottery-width');
+            const waistVal = document.getElementById('pottery-waist');
+            const heightVal = document.getElementById('pottery-height');
+            const label = document.getElementById('pottery-label');
+            const isAr = currentLang === 'ar';
+
+            if (shape === 'vase') {
+                if (widthVal) widthVal.value = 55;
+                if (waistVal) waistVal.value = 65;
+                if (heightVal) heightVal.value = 180;
+                if (label) label.innerText = isAr ? 'مزهرية انسيابية متوازنة' : 'Balanced Streamlined Vase';
+            } else if (shape === 'bowl') {
+                if (widthVal) widthVal.value = 85;
+                if (waistVal) waistVal.value = 40;
+                if (heightVal) heightVal.value = 125;
+                if (label) label.innerText = isAr ? 'إناء عريض مجوف' : 'Wide Ceramic Bowl';
+            } else if (shape === 'amphora') {
+                if (widthVal) widthVal.value = 45;
+                if (waistVal) waistVal.value = 88;
+                if (heightVal) heightVal.value = 210;
+                if (label) label.innerText = isAr ? 'جرة تراثية عميقة' : 'Deep Heritage Amphora';
+            }
+            updatePotteryMesh();
+        }
+
+        function setGlaze(colorHex, nameDesc) {
+            playHapticSound('click');
+            currentPotteryColor = colorHex;
+            currentPotteryGlazeName = nameDesc;
+            const visual = document.getElementById('pottery-visual');
+            if (visual) {
+                visual.style.background = `radial-gradient(circle at 35% 30%, ${colorHex}cc, ${colorHex} 40%, #0F3934 90%)`;
+            }
+            speakText(nameDesc);
+        }
+
+        function togglePotteryRotation() {
+            playHapticSound('click');
+            isPotteryRotating = !isPotteryRotating;
+            const wheelHead = document.getElementById('wheel-head');
+            const spinBtnText = document.getElementById('btn-pottery-spin-text');
+            const dict = i18nDictionary[currentLang] || i18nDictionary.ar;
+
+            if (wheelHead) {
+                if (isPotteryRotating) {
+                    wheelHead.classList.add('pottery-spin-active');
+                } else {
+                    wheelHead.classList.remove('pottery-spin-active');
+                }
+            }
+            if (spinBtnText) {
+                spinBtnText.innerText = isPotteryRotating ? dict.potterySpinStop : dict.potterySpinStart;
+            }
+        }
+
+        function sellCurrentCraftPiece() {
+            playHapticSound('success');
+            const isAr = currentLang === 'ar';
+            const labelEl = document.getElementById('pottery-label');
+            const shapeName = labelEl ? labelEl.innerText : (isAr ? 'قطعة خزفية فريدة' : 'Unique Ceramic Piece');
+
+            const newCraft = {
+                id: Date.now(),
+                title_ar: `${shapeName} - ${currentPotteryGlazeName}`,
+                title_en: `${shapeName} with handcrafted glaze`,
+                category_ar: 'خزف',
+                category_en: 'Pottery',
+                price: 340,
+                artist_ar: activeProfile ? activeProfile.name_ar : 'فنان تلاقي',
+                artist_en: activeProfile ? activeProfile.name_en : 'Tallaqee Artist',
+                sellerType: (activeProfile && activeProfile.id !== 'regular') ? 'special' : 'regular',
+                sellerTypeLabel_ar: (activeProfile && activeProfile.id !== 'regular') ? 'مبدع إرادة' : 'حرفي مستقل',
+                sellerTypeLabel_en: (activeProfile && activeProfile.id !== 'regular') ? 'Determined' : 'Independent',
+                assistiveTech_ar: 'عجلة خزف تكيفية رقمية',
+                assistiveTech_en: 'Digital Adaptive Lathe',
+                image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80',
+                desc_ar: `تحفة فخارية مشكلة يدوياً ومزججة بتقنية ${currentPotteryGlazeName}.`,
+                desc_en: `Handcrafted pottery masterpiece shaped and glazed with ${currentPotteryGlazeName}.`
+            };
+
+            marketItems.unshift(newCraft);
+            applyMarketFilters();
+            showToastNotification(isAr ? "طرحت التحفة للبيع!" : "Masterpiece Listed!", `${shapeName} (340 ${isAr ? 'ر.س' : 'SAR'})`);
+            navigate('market');
+        }
+
+        function initSaduLoom() {
+            const colors = ['#B7E348', '#0F3934', '#B5A6E4', '#46A889'];
+            for (let r = 1; r <= 4; r++) {
+                const row = document.getElementById(`sadu-row-${r}`);
+                if (row && row.children.length === 0) {
+                    for (let c = 0; c < 18; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = "flex-1 rounded-xs h-full";
+                        cell.style.backgroundColor = colors[(r + c) % colors.length];
+                        row.appendChild(cell);
+                    }
+                }
+            }
+        }
+
+        function updateIOSClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            const clockEl = document.getElementById('ios-clock');
+            if (clockEl) clockEl.innerText = `${hours}:${minutes}`;
+        }
+        setInterval(updateIOSClock, 1000);
+
+        function togglePhoneFrameMode() {
+            const chassis = document.getElementById('iphone-chassis');
+            const btn = document.getElementById('btn-toggle-frame');
+            isPhoneFrameActive = !isPhoneFrameActive;
+            playHapticSound('click');
+
+            if (!isPhoneFrameActive) {
+                chassis.classList.remove('sm:max-w-[420px]', 'sm:h-[870px]', 'sm:rounded-[52px]', 'sm:shadow-chassis', 'sm:border-[3px]');
+                chassis.classList.add('w-full', 'h-screen', 'rounded-none');
+                if (btn) btn.innerText = "إطار الآيفون";
+            } else {
+                chassis.classList.add('sm:max-w-[420px]', 'sm:h-[870px]', 'sm:rounded-[52px]', 'sm:shadow-chassis', 'sm:border-[3px]');
+                chassis.classList.remove('w-full', 'h-screen', 'rounded-none');
+                if (btn) btn.innerText = "ملء الشاشة";
+            }
+            if (currentSection === 'tools-sandbox') setTimeout(initCanvasSandbox, 150);
+            updatePotteryMesh();
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            playHapticSound('click');
+            selectBestHumanVoice();
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const isAr = currentLang === 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+            const langLabel = document.getElementById('lang-btn-label');
+            if (langLabel) langLabel.innerText = isAr ? 'EN' : 'عربي';
+
+            const dict = i18nDictionary[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerText = dict[key];
+                }
+            });
+
+            const searchInput = document.getElementById('market-search-input');
+            if (searchInput) searchInput.placeholder = dict.searchPlaceholder;
+
+            const badgeElem = document.getElementById('active-profile-badge');
+            const homeDesc = document.getElementById('home-profile-desc');
+            const setBadge = document.getElementById('settings-sehhaty-badge');
+
+            if (badgeElem && activeProfile) badgeElem.innerText = isAr ? activeProfile.badge_ar : activeProfile.badge_en;
+            if (homeDesc && activeProfile) homeDesc.innerText = isAr ? activeProfile.statusText_ar : activeProfile.statusText_en;
+            if (setBadge && activeProfile) setBadge.innerText = isAr ? activeProfile.name_ar : activeProfile.name_en;
+
+            const spinBtnText = document.getElementById('btn-pottery-spin-text');
+            if (spinBtnText) spinBtnText.innerText = isPotteryRotating ? dict.potterySpinStop : dict.potterySpinStart;
+
+            const gazeText = document.getElementById('sandbox-gaze-text');
+            if (gazeText) gazeText.innerText = isGazeActive ? dict.sandboxGazeOn : dict.sandboxGazeOff;
+
+            applyMarketFilters();
+            updateCartUI();
+        }
+
+        function navigate(pageId) {
+            currentSection = pageId;
+            playHapticSound('click');
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.mob-nav-item').forEach(item => {
+                item.className = "mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-gray-500 dark:text-gray-400 font-bold transition-all min-w-[52px]";
+            });
+            const activeMobItem = document.getElementById(`mob-nav-${pageId}`);
+            if (activeMobItem) {
+                activeMobItem.className = "mob-nav-item flex flex-col items-center justify-center p-1.5 rounded-2xl text-brand-dark dark:text-brand-lime font-black bg-brand-teal/15 dark:bg-brand-cardDark transition-all min-w-[52px] shadow-xs";
+            }
+
+            if (pageId === 'tools-sandbox') {
+                setTimeout(initCanvasSandbox, 120);
+            }
+
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // قراءة صوتية تلقائية للصفحة في حالتي كف البصر الكلي والجزئي
+            if (activeProfile && (activeProfile.id === 'visual' || activeProfile.id === 'partial_visual')) {
+                const isAr = currentLang === 'ar';
+                let pageDescription = "";
+                if (pageId === 'home') {
+                    pageDescription = isAr ? "الصفحة الرئيسية لمنصة تلاقي. تصفح الاستوديوهات وسوق الأعمال الفنية." : "Home page of Tallaqee platform. Explore studios and art marketplace.";
+                } else if (pageId === 'market') {
+                    pageDescription = isAr ? "سوق القطع الفنية. تصفح المعروضات واستمع لتفاصيل كل قطعة." : "Art marketplace. Browse items and listen to details.";
+                } else if (pageId === 'crafts') {
+                    pageDescription = isAr ? "استوديو الخزف التكيفي. يمكنك تعديل أبعاد المزهرية والتزجيج اللوني." : "Adaptive pottery studio. Adjust dimensions and heritage glazes.";
+                } else if (pageId === 'sadu-loom') {
+                    pageDescription = isAr ? "استوديو نول السدو والموزاييك التكيفي. تمرير المكوك ورصف الفسيفساء." : "Sadu loom and mosaic studio. Pass the shuttle and place tiles.";
+                } else if (pageId === 'coach') {
+                    pageDescription = isAr ? "المرشد الفني الذكي. اطرح استفساراتك الفنية أو استمع لمعادلة التسعير." : "AI art mentor. Ask artistic questions or listen to pricing formulas.";
+                } else if (pageId === 'tools-sandbox') {
+                    pageDescription = isAr ? "مختبر الرسم التكيفي ونغمات الألوان للمكفوفين." : "Adaptive drawing canvas and harmonic color tones.";
+                } else if (pageId === 'settings') {
+                    pageDescription = isAr ? "خيارات المنصة وتسهيلات الوصول وتعديل الخطوط والتباين." : "Platform options, accessibility features, font scale and contrast.";
+                }
+                if (pageDescription) {
+                    setTimeout(() => speakText(pageDescription), 200);
+                }
+            }
+        }
+
+        function advanceSaduWeave() {
+            playHapticSound('click');
+            const shuttle = document.getElementById('sadu-shuttle');
+            if (shuttle) {
+                const isLeft = shuttle.style.left === '12px' || shuttle.style.left === '';
+                shuttle.style.left = isLeft ? '75%' : '12px';
+            }
+        }
+
+        function initMosaicGrid() {
+            const grid = document.getElementById('mosaic-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            for (let i = 0; i < 36; i++) {
+                grid.innerHTML += `
+                    <div onclick="placeMosaicTile(this)" class="aspect-square rounded-lg bg-white/80 dark:bg-black/40 border border-brand-teal/20 cursor-pointer hover:scale-105 transition-transform" role="button"></div>
+                `;
+            }
+        }
+
+        function selectMosaicTileColor(c) { 
+            playHapticSound('click');
+            selectedMosaicColor = c; 
+        }
+
+        function placeMosaicTile(el) {
+            playHapticSound('click');
+            el.style.backgroundColor = selectedMosaicColor;
+            el.style.borderColor = '#FFFFFF';
+        }
+
+        function resetMosaicGrid() { 
+            playHapticSound('click');
+            initMosaicGrid(); 
+        }
+
+        async function sendCoachMessage() {
+            const input = document.getElementById('coach-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            playHapticSound('click');
+            const chatBox = document.getElementById('coach-chat-box');
+            chatBox.innerHTML += `
+                <div class="flex items-start justify-end gap-2">
+                    <div class="bg-brand-dark text-brand-lime p-2.5 rounded-2xl rounded-tl-none text-[10px] font-bold max-w-[80%] shadow-sm">
+                        ${message}
+                    </div>
+                </div>
+            `;
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const loadingId = 'loading-' + Date.now();
+            const isAr = currentLang === 'ar';
+            chatBox.innerHTML += `
+                <div id="${loadingId}" class="flex items-center gap-2 text-[10px] text-brand-teal font-bold py-1">
+                    <span class="h-2 w-2 rounded-full bg-brand-lime animate-ping"></span>
+                    ${isAr ? 'المرشد يطابق معايير معهد وَرَث...' : 'Mentor matching TRITA standards...'}
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            let aiResponse = "";
+            let citation = "";
+
+            try {
+                const systemPrompt = isAr ? 
+                    `أنت المرشد الفني لمنصة تلاقي. تقدم نصائح فنية وطبية مستنداً لمعايير المعهد الملكي للفنون التقليدية (وَرَث). الملف الصحي: ${activeProfile.name_ar} (${activeProfile.diagnosis_ar}). لا تستخدم إيموجي.` :
+                    `You are the art mentor for Tallaqee platform based on TRITA standards. Clinical profile: ${activeProfile.name_en}. No emojis.`;
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: message }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
+                    aiResponse = result.candidates[0].content.parts[0].text;
+                    citation = isAr ? "المصدر: معايير المعهد الملكي للفنون التقليدية (وَرَث)." : "Source: TRITA Heritage Standards.";
+                } else {
+                    throw new Error("Empty response");
+                }
+            } catch (err) {
+                if (isAr) {
+                    aiResponse = "وفقاً للمعهد الملكي للفنون التقليدية (وَرَث)، تتطلب الأعمال الفخارية حرقاً أولياً عند 950-1000 درجة مئوية. ومعادلة التسعير العادلة: التكلفة = الخامات + (ساعات العمل × 35 ر.س) × 1.20 للتمكين التكيفي.";
+                    citation = "المرجع: دليل الفنون والحرف التكيفية - معهد وَرَث";
+                } else {
+                    aiResponse = "According to TRITA standards, ceramic works require bisque firing at 950-1000C. Fair pricing: Total = [Raw Materials + (Hours x 35 SAR)] x 1.20.";
+                    citation = "Reference: TRITA Adaptive Handicraft Guidelines";
+                }
+            }
+
+            const loader = document.getElementById(loadingId);
+            if (loader) loader.remove();
+
+            chatBox.innerHTML += `
+                <div class="flex items-start gap-2">
+                    <div class="h-7 w-7 rounded-xl bg-brand-teal text-white grid place-items-center shrink-0 shadow-xs">
+                        <i data-lucide="bot" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-brand-mint dark:bg-brand-darkSurface p-3 rounded-2xl rounded-tr-none border border-brand-teal/20 text-[10px] max-w-[85%] space-y-1 shadow-xs">
+                        <p class="font-semibold text-brand-dark dark:text-brand-mint leading-relaxed">${aiResponse}</p>
+                        <span class="text-[8px] text-brand-teal block font-mono font-bold">${citation}</span>
+                    </div>
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            if (window.lucide) lucide.createIcons();
+            speakText(aiResponse);
+        }
+
+        function quickPromptCoach(text) {
+            document.getElementById('coach-input').value = text;
+            sendCoachMessage();
+        }
+
+        function readAloudLastCoachMessage() {
+            const chatBox = document.getElementById('coach-chat-box');
+            const messages = chatBox.querySelectorAll('.font-semibold');
+            if (messages.length > 0) {
+                speakText(messages[messages.length - 1].innerText);
+            }
+        }
+
+        function initCanvasSandbox() {
+            canvas = document.getElementById('live-art-canvas');
+            if (!canvas) return;
+            const container = document.getElementById('sandbox-canvas-area');
+            canvas.width = container.clientWidth || 300;
+            canvas.height = container.clientHeight || 205;
+            ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        function getCanvasPoint(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: (clientX - rect.left) * (canvas.width / rect.width),
+                y: (clientY - rect.top) * (canvas.height / rect.height)
+            };
+        }
+
+        function startDrawing(e) {
+            if (e.cancelable && e.type.startsWith('touch')) e.preventDefault();
+            isDrawing = true;
+            const pt = getCanvasPoint(e);
+            lastX = pt.x;
+            lastY = pt.y;
+        }
+
+        function stopDrawing() { isDrawing = false; }
+
+        function handleSandboxDrawing(e) {
+            if (!ctx || !canvas) return;
+            if (e.cancelable && e.type.startsWith('touch')) e.preventDefault();
+
+            const pt = getCanvasPoint(e);
+            let targetX = pt.x;
+            let targetY = pt.y;
+
+            const gazePointer = document.getElementById('gaze-pointer');
+            if (gazePointer) {
+                gazePointer.style.left = `${targetX}px`;
+                gazePointer.style.top = `${targetY}px`;
+            }
+
+            if (!isDrawing && !isGazeActive) return;
+
+            let smoothedX = lastX + (targetX - lastX) * (1 - tremorDampingFactor * 0.7);
+            let smoothedY = lastY + (targetY - lastY) * (1 - tremorDampingFactor * 0.7);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(smoothedX, smoothedY);
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = brushSize;
+            ctx.stroke();
+
+            lastX = smoothedX;
+            lastY = smoothedY;
+        }
+
+        function updateTremorDamping(val) {
+            tremorDampingFactor = val / 100;
+            document.getElementById('tremor-damping-val').innerText = `${val}%`;
+        }
+
+        function clearCanvasSandbox() {
+            playHapticSound('click');
+            if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function setSandboxColor(color) { currentColor = color; }
+
+        function toggleSandboxGazeMode() {
+            isGazeActive = !isGazeActive;
+            playHapticSound('click');
+            const btn = document.getElementById('sandbox-gaze-btn');
+            const text = document.getElementById('sandbox-gaze-text');
+            const pointer = document.getElementById('gaze-pointer');
+            const dict = i18nDictionary[currentLang];
+            if (isGazeActive) {
+                text.innerText = dict.sandboxGazeOn;
+                btn.classList.add('bg-brand-lime');
+                pointer.classList.remove('hidden');
+            } else {
+                text.innerText = dict.sandboxGazeOff;
+                btn.classList.remove('bg-brand-lime');
+                pointer.classList.add('hidden');
+            }
+        }
+
+        function toggleVoiceControl() {
+            const voiceBtn = document.getElementById('voice-control-btn');
+            const indicator = document.getElementById('voice-indicator-bar');
+            const dynamicIsland = document.getElementById('dynamic-island');
+            const islandText = document.getElementById('island-status-text');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                showToastNotification(currentLang === 'ar' ? "غير مدعوم" : "Unsupported", "Speech Recognition requires Chrome/Safari");
+                return;
+            }
+
+            if (isVoiceListening) {
+                isVoiceListening = false;
+                if (speechRecognition) speechRecognition.stop();
+                if (voiceBtn) voiceBtn.classList.remove('mic-listening-pulse', 'bg-brand-lime');
+                if (indicator) indicator.classList.add('hidden');
+                if (dynamicIsland) dynamicIsland.classList.remove('dynamic-island-glow');
+                if (islandText) islandText.innerText = "تلاقي الذكي";
+            } else {
+                playHapticSound('click');
+                const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+                speechRecognition = new SpeechRec();
+                speechRecognition.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+                speechRecognition.continuous = true;
+
+                speechRecognition.onstart = function() {
+                    isVoiceListening = true;
+                    if (voiceBtn) voiceBtn.classList.add('mic-listening-pulse', 'bg-brand-lime');
+                    if (indicator) indicator.classList.remove('hidden');
+                    if (dynamicIsland) dynamicIsland.classList.add('dynamic-island-glow');
+                    if (islandText) islandText.innerText = currentLang === 'ar' ? "استماع.." : "Listening";
+                };
+
+                speechRecognition.onresult = function(event) {
+                    const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+                    processVoiceCommand(transcript);
+                };
+
+                speechRecognition.onerror = function() {
+                    isVoiceListening = false;
+                    if (voiceBtn) voiceBtn.classList.remove('mic-listening-pulse');
+                    if (indicator) indicator.classList.add('hidden');
+                    if (dynamicIsland) dynamicIsland.classList.remove('dynamic-island-glow');
+                    if (islandText) islandText.innerText = "تلاقي الذكي";
+                };
+
+                speechRecognition.start();
+            }
+        }
+
+        function processVoiceCommand(cmd) {
+            const indText = document.getElementById('voice-indicator-text');
+            if (indText) indText.innerText = `"${cmd}"`;
+
+            if (cmd.includes("رئيسية") || cmd.includes("home")) navigate('home');
+            else if (cmd.includes("سوق") || cmd.includes("market")) navigate('market');
+            else if (cmd.includes("خزف") || cmd.includes("pottery")) navigate('crafts');
+            else if (cmd.includes("سدو") || cmd.includes("sadu")) navigate('sadu-loom');
+            else if (cmd.includes("مدرب") || cmd.includes("مرشد") || cmd.includes("coach")) navigate('coach');
+            else if (cmd.includes("مختبر") || cmd.includes("sandbox")) navigate('tools-sandbox');
+            else if (cmd.includes("خيارات") || cmd.includes("إعدادات") || cmd.includes("settings")) navigate('settings');
+            else if (cmd.includes("سلة") || cmd.includes("cart")) openCartDrawer();
+            else if (cmd.includes("بيع") || cmd.includes("طرح") || cmd.includes("sell")) openSellModal();
+            else if (cmd.includes("صحتي") || cmd.includes("sehhaty")) openSehhatySyncModal();
+        }
+
+        function startVoiceInputForCoach() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return;
+            playHapticSound('click');
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const rec = new SpeechRec();
+            rec.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+            rec.onstart = () => document.getElementById('coach-mic-btn').classList.add('bg-brand-lime', 'animate-pulse');
+            rec.onresult = (e) => {
+                document.getElementById('coach-input').value = e.results[0][0].transcript;
+                sendCoachMessage();
+            };
+            rec.onend = () => document.getElementById('coach-mic-btn').classList.remove('bg-brand-lime', 'animate-pulse');
+            rec.start();
+        }
+
+        function selectHealthProfile(type) {
+            activeProfile = healthProfilesData[type] || healthProfilesData.regular;
+            const isAr = currentLang === 'ar';
+            getGlobalAudioContext();
+            playHapticSound('success');
+
+            const badgeText = isAr ? activeProfile.badge_ar : activeProfile.badge_en;
+            const badgeEl = document.getElementById('active-profile-badge');
+            if (badgeEl) badgeEl.innerText = badgeText;
+
+            const homeDesc = document.getElementById('home-profile-desc');
+            if (homeDesc) homeDesc.innerText = isAr ? activeProfile.statusText_ar : activeProfile.statusText_en;
+
+            const metricsEl = document.getElementById('home-profile-metrics');
+            if (metricsEl) metricsEl.innerText = activeProfile.metricsText;
+
+            const setBadge = document.getElementById('settings-sehhaty-badge');
+            if (setBadge) setBadge.innerText = isAr ? activeProfile.name_ar : activeProfile.name_en;
+
+            // ضبط وتكييف المنظومة لحالات كف البصر الكلي والجزئي وتفعيل النطق المباشر
+            if (type === 'visual') {
+                setTimeout(() => {
+                    const welcomeMsg = isAr 
+                        ? "تم ربط ملف كف البصر الكلي من منصة صحتي بنجاح. القارئ الصوتي التفاعلي يعمل الآن، ونظام نغمات الألوان نشط. يمكنك الاستماع لمحتوى أي صفحة بالضغط عليها أو استخدام الأوامر الصوتية."
+                        : "Total visual impairment profile synced from Sehhaty. Screen reader and harmonic color tones are now active.";
+                    speakText(welcomeMsg);
+                }, 250);
+            } else if (type === 'partial_visual') {
+                if (!isHighContrast) toggleHighContrast();
+                adjustGlobalFontSize(15);
+                setTimeout(() => {
+                    const welcomeMsg = isAr 
+                        ? "تم ربط ملف ضعف البصر الجزئي بنجاح. تم تفعيل التباين العالي وتكبير الخطوط، والمساعد الصوتي يرافقك الآن لتصفح كل قسم."
+                        : "Partial visual impairment profile synced. High contrast and enlarged text activated, with voice companion enabled.";
+                    speakText(welcomeMsg);
+                }, 250);
+            } else if (type === 'parkinsons') {
+                tremorDampingFactor = 0.92;
+                const dampingSlider = document.getElementById('tremor-damping-slider');
+                const dampingVal = document.getElementById('tremor-damping-val');
+                if (dampingSlider) dampingSlider.value = 92;
+                if (dampingVal) dampingVal.innerText = '92%';
+
+                setTimeout(() => {
+                    speakText(isAr 
+                        ? "تم ربط ملف مرض باركنسون بنجاح. تم تفعيل ممتص الرعاش الحركي بنسبة اثنين وتسعين بالمئة وتكبير مساحات النقر لمقاومة التيبس."
+                        : "Parkinson's clinical profile synced. Tremor damping activated at 92 percent with anti-rigidity target expansion.");
+                }, 250);
+            } else if (type === 'tremor') {
+                tremorDampingFactor = 0.88;
+                const dampingSlider = document.getElementById('tremor-damping-slider');
+                const dampingVal = document.getElementById('tremor-damping-val');
+                if (dampingSlider) dampingSlider.value = 88;
+                if (dampingVal) dampingVal.innerText = '88%';
+            }
+
+            closeSehhatyModal();
+            showToastNotification(isAr ? "تم تحديث الملف" : "Profile Synced", badgeText);
+        }
+
+        function openSehhatySyncModal() { 
+            playHapticSound('click');
+            document.getElementById('sehhaty-modal').classList.remove('hidden'); 
+        }
+        function closeSehhatyModal() { 
+            document.getElementById('sehhaty-modal').classList.add('hidden'); 
+        }
+
+        function showToastNotification(title, desc) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-12 left-4 right-4 z-50 bg-brand-dark text-brand-mint border border-brand-lime p-3 rounded-2xl shadow-2xl flex items-center gap-2.5 transition-all";
+            toast.innerHTML = `
+                <div class="h-8 w-8 rounded-xl bg-brand-lime/20 grid place-items-center text-brand-lime shrink-0">
+                    <i data-lucide="bell" class="w-4 h-4"></i>
+                </div>
+                <div class="truncate">
+                    <h4 class="font-black text-xs text-brand-lime">${title}</h4>
+                    <p class="text-[9px] text-brand-mint/90 truncate">${desc}</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            if (window.lucide) lucide.createIcons();
+            setTimeout(() => { toast.remove(); }, 3000);
+        }
+
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            playHapticSound('click');
+            document.documentElement.classList.toggle('dark', isDarkMode);
+        }
+
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            playHapticSound('click');
+            document.documentElement.classList.toggle('high-contrast', isHighContrast);
+        }
+
+        function toggleLargeCursor() {
+            isLargeCursor = !isLargeCursor;
+            playHapticSound('click');
+            document.body.classList.toggle('large-cursor', isLargeCursor);
+        }
+
+        function toggleSingleSwitchMode() {
+            isSingleSwitchActive = !isSingleSwitchActive;
+            playHapticSound('click');
+            const btn = document.getElementById('switch-mode-btn');
+            const isAr = currentLang === 'ar';
+            if (isSingleSwitchActive) {
+                btn.classList.add('bg-brand-lime', 'text-brand-dark');
+                showToastNotification(isAr ? "المسح بالمفتاح الفردي" : "Single-Switch Scanning", isAr ? "نشط الآن" : "Active");
+            } else {
+                btn.classList.remove('bg-brand-lime', 'text-brand-dark');
+            }
+        }
+
+        function adjustGlobalFontSize(val) {
+            playHapticSound('click');
+            baseFontSize = Math.min(130, Math.max(85, baseFontSize + val));
+            document.documentElement.style.fontSize = `${baseFontSize}%`;
+            document.getElementById('settings-font-scale-ind').innerText = `${baseFontSize}%`;
+        }
+
+        function resetGlobalFontSize() {
+            playHapticSound('click');
+            baseFontSize = 100;
+            document.documentElement.style.fontSize = "100%";
+            document.getElementById('settings-font-scale-ind').innerText = "100%";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+                toggleVoiceControl();
+            } else if (e.key === '1') navigate('home');
+            else if (e.key === '2') navigate('market');
+            else if (e.key === '3') navigate('crafts');
+            else if (e.key === '4') navigate('sadu-loom');
+            else if (e.key === '5') navigate('coach');
+            else if (e.key === '6') navigate('tools-sandbox');
+            else if (e.key === '7') navigate('settings');
+        });
+
+        window.onload = function() {
+            updateIOSClock();
+            applyLanguage();
+            initSaduLoom();
+            initMosaicGrid();
+            updateCartUI();
+            if (window.lucide) lucide.createIcons();
+            window.addEventListener('resize', () => {
+                updatePotteryMesh();
+                if (currentSection === 'tools-sandbox') initCanvasSandbox();
+            });
+        };
+    </script>
+</body>
+</html>
